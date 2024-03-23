@@ -16,7 +16,7 @@ class master {
         // route finding
     };
 
-    float FindCost(int CostPerKm, Location a1, Location a2)
+    float FindBaseCost(int CostPerKm, Location a1, Location a2)
     {
         return CostPerKm*DistanceFinder(a1,a2);
     };
