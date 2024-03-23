@@ -1,6 +1,7 @@
 #include <iostream>
+#include "master.cpp"
 using namespace std;
 
-class plane {
+class plane: private master {
     //hello
 };
