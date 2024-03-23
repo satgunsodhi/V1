@@ -20,6 +20,11 @@ class master {
     {
         return CostPerKm*DistanceFinder(a1,a2);
     };
+
+    float CalcGST(int BaseCost)
+    {
+        return GST*BaseCost;
+    };
 };
 
 class Time {
