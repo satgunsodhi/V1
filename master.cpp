@@ -1,5 +1,8 @@
 #include <iostream>
 
+class Time;
+class Location;
+
 class master {
     protected:
     char DepartingLocation[255];
@@ -13,21 +16,21 @@ class master {
         // route finding
     };
 
-    float FindCost()
+    float FindCost(int CostPerKm, Location a1, Location a2)
     {
-        // cost finding
+        return CostPerKm*DistanceFinder(a1,a2);
     };
 };
 
 class Time {
-    protected:
+    private:
     int hour;
     int minute;
     int second;
 };
 
 class Location {
-    protected:
+    private:
     int x;
     int y;
     int z;
