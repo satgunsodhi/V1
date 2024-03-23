@@ -25,3 +25,14 @@ class Time {
     int minute;
     int second;
 };
+
+class Location {
+    protected:
+    int x;
+    int y;
+    int z;
+}
+
+float DistanceFinder(Location a1, Location a2) {
+    return ((a1.x-a2.x)**2 + (a1.y+a2.y)**2 + (a1.z+a2.z)**2)**(1/2);
+}
