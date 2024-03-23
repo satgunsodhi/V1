@@ -13,5 +13,5 @@ class Train:private master {
 };
 
 void Train::PrintTrain() {
-    cout << "Under Progress!\n Until Then check out the individual files";
+    cout << "Under Progress!\n Until Then check out the individual files\n";
 }
