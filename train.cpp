@@ -4,7 +4,7 @@
 using namespace std;
 
 class Train:private master {
-    Train(int NoofPassengers, int TrainType, char * Couch, int TrainNumber, int BerthNo) {
+    Train(int NoofPassengers, int TrainType, char * Couch, int TrainNumber, int TrainClass, int BerthNo) {
         
         this -> NoofPassengers = NoofPassengers;
         this -> TrainType = TrainType;
@@ -13,6 +13,7 @@ class Train:private master {
         strcpy(this -> DepartingLocation, DepartingLocation);
         strcpy(this -> Destination, Destination);
         setTrainInfo(TrainNumber);
+        this -> TrainClass = TrainClass;
         this -> BerthNo = BerthNo;
 
         HandlingCharges = 40;
@@ -20,9 +21,13 @@ class Train:private master {
         GST = 5;
     }
     protected:
+    int NoofPassengers;
+    int TrainType;
+    char Coach[3];
     Time Duration;
-    int TrainClass;
+    int TrainNumber;
     int BerthNo;
+    int TrainClass;
     Time DepartureTime;
     public:
     void PrintTrain();
@@ -34,6 +39,7 @@ void AddTrain() {
     int TrainType;
     char Coach[3];
     Time DepartureTime;
+    int TrainClass;
     int TrainNumber;
     int BerthNo;
     ShowTrains();
@@ -41,8 +47,9 @@ void AddTrain() {
     cin >> TrainType;
     cin >> Coach;
     cin >> TrainNumber;
+    cin >> TrainClass;
     cin >> BerthNo;
-    Train t1(NoofPassengers, TrainType, Coach, TrainNumber);
+    Train t1(NoofPassengers, TrainType, Coach, TrainNumber, TrainClass, BerthNo);
 }
 void Train::PrintTrain() {
         // display booked train info
