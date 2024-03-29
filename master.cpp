@@ -5,6 +5,9 @@ class Location;
 
 class master {
     protected:
+    int Duration;
+    int NoOfPassengers;
+    char NameOfPassengers[NoOfPassengers][255];
     char DepartingLocation[255];
     char Destination[255];
     float HandlingCharges;

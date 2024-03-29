@@ -9,10 +9,7 @@
 using namespace std;
 
 int main() {
-    Train t1;
-    //car c1;
-    //hotel h1;
-    t1.PrintTrain();
-    //c1.PrintCar();
-    //h1.PrintHotel();
+    cout << "Enter your details:";
+    char NameOfPassengers[];
+    
 }
