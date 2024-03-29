@@ -36,8 +36,7 @@ class Train:private master {
     friend void setTrainInfo(int TrainNumber);
 };
 
-void AddTrain() {
-    int NoofPassengers;
+void AddTrain(/* take required inputs*/) {
     int TrainType;
     char Coach[3];
     Time DepartureTime;
@@ -45,7 +44,6 @@ void AddTrain() {
     int TrainNumber;
     int BerthNo;
     ShowTrains();
-    cin >> NoofPassengers;
     cin >> TrainType;
     cin >> Coach;
     cin >> TrainNumber;
