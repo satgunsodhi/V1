@@ -17,6 +17,9 @@ class Train:private master {
     void PrintTrain();
 };
 
+void AddTrain() {
+    
+}
 void Train::PrintTrain() {
-    cout << "Under Progress!\n Until Then check out the individual files\n";
+        // display all available routes
 }
