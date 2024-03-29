@@ -20,6 +20,7 @@ class Train:private master {
         float CateringCharge = 400;
         GST = 5;
     }
+
     protected:
     int NoofPassengers;
     int TrainType;
@@ -29,6 +30,7 @@ class Train:private master {
     int BerthNo;
     int TrainClass;
     Time DepartureTime;
+    
     public:
     void PrintTrain();
     friend void setTrainInfo(int TrainNumber);
