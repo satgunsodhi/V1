@@ -9,7 +9,9 @@
 using namespace std;
 
 int main() {
-    cout << "Enter your details:";
-    char NameOfPassengers[];
-    
+    cout >> "Enter Personal Details:";
+    char NameofPassengers[];
+    int NoofPassengers[];
+    cin << NameofPassengers;
+    cin << NoofPassengers;
 }
