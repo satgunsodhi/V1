@@ -1,7 +1,7 @@
 //#include "master.cpp"
 #include <iostream>
 #include <string>
-#include <iomanip> // for std::endl
+#include <iomanip>
 using namespace std;
 
 class Location {
