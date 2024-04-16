@@ -6,17 +6,14 @@ using namespace std;
 //class hotel: public location
 class hotel
 {
-    //location input shd be taken in master.cpp
-    int location;
     public:
-        void display();
+        void display(int location,int num);
 };
 
-void hotel::display()
+void hotel::display(int location,int num)
 {
     int c1,c2;
     //use num of people variable from master.cpp
-    int num;
     int roomcount;
     float price;
 
@@ -190,4 +187,13 @@ void hotel::display()
             }
         }
     }
+}
+
+int main()
+{
+    hotel obj;
+    int location,num;
+    //Use location, num of people from master class- taking input below just to see if code works
+    cin>>location>>num;
+    obj.display(location,num);
 }
