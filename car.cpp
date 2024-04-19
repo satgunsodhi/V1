@@ -15,7 +15,7 @@ public:
 
     void selectLocation() {
         cout << "TOURIST PLACES" << endl;
-        cout << "1.A\n2.B\n3.C" << endl;
+        cout << "1.Goa\n2.Manali\n3.Sikkim" << endl;
         cout << "Where do you want to go? ";
         cin >> location;
     }
@@ -36,65 +36,65 @@ public:
         selectLocation();
 
         if (location == 1) {
-            cout << "A1\nDo you want to go to A1? [Y/N]: ";
+            cout << "Aguada Fort\nDo you want to go to Aguada Fort? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 35;
             
-            cout << "A2\nDo you want to go to A2? [Y/N]: ";
+            cout << "Dudhsagar\nDo you want to go to Dudhsagar? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 33;
 
-            cout << "A3\nDo you want to go to A3? [Y/N]: ";
+            cout << "Panaji\nDo you want to go to Panaji? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 40;
 
-            cout << "A4\nDo you want to go to A4? [Y/N]: ";
+            cout << "Baga beach\nDo you want to go to Baga beach? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 25;
 
-            cout << "A5\nDo you want to go to A5? [Y/N]: ";
+            cout << "Chapora Fort\nDo you want to go to Chapora Fort? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 22;
         }
         else if (location == 2) {
-            cout << "B1\nDo you want to go to B1? [Y/N]: ";
+            cout << "Jogini falls\nDo you want to go to Jogini falls? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 42;
 
-            cout << "B2\nDo you want to go to B2? [Y/N]: ";
+            cout << "Nehru kund\nDo you want to go to Nehru kund? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 28;
 
-            cout << "B3\nDo you want to go to B3? [Y/N]: ";
+            cout << "Rohtang valley\nDo you want to go to Rohtang valley? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 25;
 
-            cout << "B4\nDo you want to go to B4? [Y/N]: ";
+            cout << "Mall road\nDo you want to go to Mall road? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 33;
 
-            cout << "B5\nDo you want to go to B5? [Y/N]: ";
+            cout << "Hadimba devi temple\nDo you want to go to Hadimba devi temple? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 43;
         }
         else if (location == 3) {
-            cout << "C1\nDo you want to go to C1? [Y/N]: ";
+            cout << "Buddha Park\nDo you want to go to C1? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 21;
 
-            cout << "C2\nDo you want to go to C2? [Y/N]: ";
+            cout << "Hanuman tok\nDo you want to go to Hanuman tok? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 34;
 
-            cout << "C3\nDo you want to go to C3? [Y/N]: ";
+            cout << "Gurudongmar lake\nDo you want to go to Gurudongmar lake? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 37;
 
-            cout << "C4\nDo you want to go to C4? [Y/N]: ";
+            cout << "Gangtok\nDo you want to go to Gangtok? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 49;
 
-            cout << "C5\nDo you want to go to C5? [Y/N]: ";
+            cout << "Khangchendzonga national park\nDo you want to go to Khangchendzonga national park? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 28;
         }
