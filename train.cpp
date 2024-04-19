@@ -37,19 +37,7 @@ class Train:private master {
 };
 
 void AddTrain(/* take required inputs*/) {
-    int TrainType;
-    char Coach[3];
-    Time DepartureTime;
-    int TrainClass;
-    int TrainNumber;
-    int BerthNo;
-    ShowTrains();
-    cin >> TrainType;
-    cin >> Coach;
-    cin >> TrainNumber;
-    cin >> TrainClass;
-    cin >> BerthNo;
-    Train t1(NoofPassengers, TrainType, Coach, TrainNumber, TrainClass, BerthNo);
+    //taking extra inputs
 }
 void Train::PrintTrain() {
         // display booked train info
