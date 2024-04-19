@@ -1,4 +1,5 @@
 #include <iostream>
+using namespace std;
 
 class Time;
 class Location;
@@ -6,14 +7,22 @@ class Location;
 class master {
     protected:
     int Duration;
-    int NoOfPassengers;
-    char NameOfPassengers[NoOfPassengers][255];
+    int NoofPassengers = 1;
     char DepartingLocation[255];
     char Destination[255];
     float HandlingCharges;
     float ServiceFees;
     float GST;
 
+    public:
+    master() {
+        cin >> NoofPassengers;
+        char NameOfPassengers[NoofPassengers];
+        cin >> NameOfPassengers;
+        cin >> Destination;
+        cin >> DepartingLocation;
+        cin >> Duration;
+    }
     void FindRoute()
     {
         // route finding
