@@ -9,31 +9,32 @@
 using namespace std;
 
 int main() {
-    cout << "Enter Personal Details:\nEnter the no of passengers:";
+    master m1;
+    master *ptr;
+    cout << "Do you want custom/packages?(1,2)";
     int choice;
-    int NoOfPassengers;
-    char DepartingLocation[255];
-    char Destination[255];
-    cin >> NoofPassengers;
-    cout << "Enter the name of passengers";
-    char NameofPassengers[NoOfPassengers];
-    for(int i = 0; i < NoOfPassengers; i++) {
-        cin >> NameOfPassengers[i];
-    }
-    cout << "What brings you today?:\n1. Book a Plane\n2. Book a Train\n3. Rent a Car\n4. Stay at a hotel";
     cin >> choice;
-    cout << "Enter your Departing Location";
-    cin >> DepartingLocation;
-    cout << "Enter your Destination";
-    cin >> Destination;
-    switch(choice) {
-        case 1:
-            Addplane(NoOfPassengers, NameOfPassengers, DepartingLocation, Destination);
-        case 2:
-            Addtrain(NoOfPassengers, NameOfPassengers, DepartingLocation, Destination);
-        case 3:
-            RentCar(NoOfPassengers, NameOfPassengers, DepartingLocation, Destination);
-        case 4:
-            AddHotel(NoOfPassengers, NameOfPassengers, DepartingLocation, Destination);
+    if (choice == 1) {
+        int mode;
+        while(true) {
+            cin >> mode;
+            if(mode == 1) {
+                Plane p1(m1);
+                break;
+            }
+            else if (mode == 2) {
+                Train t1(m1);
+                break;
+            }
+            cout << "Invalid Input!";
+            continue;
+        }
+        Hotel h1(m1);
     }
+    else if (choice == 2) {
+        Package p1(m1);
+    }
+    // final route
+    // billing and payments
+    // exit
 }

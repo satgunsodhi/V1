@@ -4,13 +4,13 @@
 using namespace std;
 
 //class hotel: public location
-class hotel
+class Hotel
 {
     public:
         void display(int location,int num);
 };
 
-void hotel::display(int location,int num)
+void Hotel::display(int location,int num)
 {
     int c1,c2;
     //use num of people variable from master.cpp
@@ -191,7 +191,7 @@ void hotel::display(int location,int num)
 
 int main()
 {
-    hotel obj;
+    Hotel obj;
     int location,num;
     //Use location, num of people from master class- taking input below just to see if code works
     cin>>location>>num;
