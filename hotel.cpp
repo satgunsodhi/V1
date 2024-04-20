@@ -1,9 +1,9 @@
-//#include "master.cpp"
+#include "master.cpp"
+#include "main.cpp"
 #include <iostream>
 #include <cmath>
 using namespace std;
 
-//class hotel: public location
 class hotel
 {
     public:

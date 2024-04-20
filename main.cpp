@@ -14,7 +14,7 @@ int main() {
     int NoOfPassengers;
     char DepartingLocation[255];
     char Destination[255];
-    cin >> NoofPassengers;
+    cin >> NoOfPassengers;
     cout << "Enter the name of passengers";
     char NameofPassengers[NoOfPassengers];
     for(int i = 0; i < NoOfPassengers; i++) {
