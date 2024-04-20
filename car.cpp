@@ -11,6 +11,11 @@ protected:
     int distance;
 public:
     Car() : distance(0) {}
+     Car (Car &C1){
+        C1.location=this->location;
+        strcpy(C1.choice2,this->choice2);
+        C1.distance=this->distance;
+    }
 
     void selectLocation() {
         cout << "TOURIST PLACES" << endl;
