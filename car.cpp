@@ -1,105 +1,56 @@
-//#include "master.cpp"
 #include <iostream>
 #include <string>
-#include <iomanip>
+#include <vector>
 
 using namespace std;
 
-class Location {
+class Car {
 protected:
     int location;
     string choice2;
     int distance;
 public:
-    Location() : distance(0) {}
+    Car() : distance(0) {}
 
     void selectLocation() {
         cout << "TOURIST PLACES" << endl;
-        cout << "1.Goa\n2.Manali\n3.Sikkim" << endl;
+        cout << "1. Goa\n2. Manali\n3. Sikkim" << endl;
         cout << "Where do you want to go? ";
         cin >> location;
     }
 
     void calculateFare() {
-        cout << "Retry" << endl;
-    }
-};
-
-class Car : public Location {
-private:
-    int distanceCost;
-    int seatType;
-public:
-    Car() : distanceCost(0) {}
-
-    void calculateFare() {
         selectLocation();
 
+        vector<string> list;
+        vector<int> dist;
+
         if (location == 1) {
-            cout << "Aguada Fort\nDo you want to go to Aguada Fort? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 35;
-            
-            cout << "Dudhsagar\nDo you want to go to Dudhsagar? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 33;
-
-            cout << "Panaji\nDo you want to go to Panaji? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 40;
-
-            cout << "Baga beach\nDo you want to go to Baga beach? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 25;
-
-            cout << "Chapora Fort\nDo you want to go to Chapora Fort? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 22;
+            list = {"Aguada Fort", "Dudhsagar", "Panaji", "Baga beach", "Chapora Fort"};
+            dist = {100, 120, 25, 140, 80};
+        } else if (location == 2) {
+            list = {"Jogini falls", "Nehru kund", "Rohtang valley", "Mall road", "Hadimba devi temple"};
+            dist = {110, 76, 130, 95, 150};
+        } else if (location == 3) {
+            list = {"Buddha Park", "Hanuman tok", "Gurudongmar lake", "Gangtok", "Khangchendzonga national park"};
+            dist = {98, 76, 135, 87, 133};
+        } else {
+            cout << "Invalid location choice." << endl;
+            return;
         }
-        else if (location == 2) {
-            cout << "Jogini falls\nDo you want to go to Jogini falls? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 42;
 
-            cout << "Nehru kund\nDo you want to go to Nehru kund? [Y/N]: ";
+        for (int i = 0; i < 5; i++) {
+            cout << list[i] << "\nDo you want to go to " << list[i] << "? [Y/N]: ";
             cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 28;
-
-            cout << "Rohtang valley\nDo you want to go to Rohtang valley? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 25;
-
-            cout << "Mall road\nDo you want to go to Mall road? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 33;
-
-            cout << "Hadimba devi temple\nDo you want to go to Hadimba devi temple? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 43;
+            if (choice2[0] == 'Y' || choice2[0] == 'y') {
+                distance += dist[i];
+            }
         }
-        else if (location == 3) {
-            cout << "Buddha Park\nDo you want to go to C1? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 21;
 
-            cout << "Hanuman tok\nDo you want to go to Hanuman tok? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 34;
-
-            cout << "Gurudongmar lake\nDo you want to go to Gurudongmar lake? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 37;
-
-            cout << "Gangtok\nDo you want to go to Gangtok? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 49;
-
-            cout << "Khangchendzonga national park\nDo you want to go to Khangchendzonga national park? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') distance += 28;
-        }
+        int seatType;
         cout << "What car type will you prefer[5 seater/7 seater]: ";
         cin >> seatType;
+        int distanceCost;
         if (seatType == 5) {
             distanceCost = distance * 19.5;
             cout << "Total Fare: " << distanceCost << endl;
@@ -111,4 +62,3 @@ public:
         }
     }
 };
-      
