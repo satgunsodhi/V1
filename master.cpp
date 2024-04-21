@@ -11,7 +11,7 @@ class master {
     int NoofPassengers;
     char DepartingLocation[255];
     char Destination[255];
-    float HandlingCharges;
+    float HandlingCharges = 150;
     float ServiceFees;
     float GST;
 
