@@ -40,6 +40,7 @@ void Train::PrintTrain() {
         cout << "The Selected Train Booking is as follows:\n";
         cout << DepartingLocation.Name << "To" << Destination.Name << endl;
         cout << "Total Duration:" << DistanceFinder(DepartingLocation, Destination)/TrainSpeed;
+        cout << Duration;
 }
 
 void Train::setTrainInfo(int TrainNumber) {
@@ -66,6 +67,6 @@ void Train::ShowTrains() {
     }
 
     else if(strcmp(DepartingLocation.Name, "Manali")) {
-
+        
     }
 }

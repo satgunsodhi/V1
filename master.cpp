@@ -14,6 +14,7 @@ class Location {
     friend float DistanceFinder(Location, Location);
     public:
     char Name[255];
+    int LocationId;
     Location(float latitude, float Longitude) {
         this -> Latitude = Latitude;
         this -> Longitude = Longitude;
