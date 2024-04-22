@@ -49,8 +49,13 @@ class master {
         cin >> DepartingLocation.Name;
         cin >> Duration;
     }
+<<<<<<< HEAD
     virtual float FindBaseCost(int,Location, Location);
     virtual float CalcGST(int);
+=======
+    float FindBaseCost(int,Location, Location);
+    float CalcGST(int);
+>>>>>>> 66673b36e3d7894ef18516773b7baed05e431e58
 };
 
 float master::FindBaseCost(int CostPerKm, Location a1, Location a2) {
