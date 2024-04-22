@@ -177,6 +177,7 @@ bool packagesAvailable = false;
 }*/
 #include <iostream>
 #include <string>
+#include "master.cpp"
 
 using namespace std;
 
