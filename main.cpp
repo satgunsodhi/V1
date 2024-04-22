@@ -6,11 +6,12 @@
 #include "hotel.cpp"
 #include "car.cpp"
 #include "plane.cpp"
+#include "package.cpp"
 using namespace std;
 
 int main() {
     master m1;
-    master *ptr;
+    master *modeOfTransport;
     cout << "Do you want custom/packages?(1,2)";
     int choice;
     cin >> choice;
@@ -20,10 +21,12 @@ int main() {
             cin >> mode;
             if(mode == 1) {
                 Plane p1(m1);
+                modeOfTransport = &p1;
                 break;
             }
             else if (mode == 2) {
                 Train t1(m1);
+                modeOfTransport = &t1;
                 break;
             }
             cout << "Invalid Input!";

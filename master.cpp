@@ -1,43 +1,64 @@
+#ifndef _OBJECT_H
+#define _OBJECT_H
 #include <iostream>
 #include <cmath>
+#include <string.h>
 using namespace std;
 
 class Time;
-class Location;
+
+class Location {
+    private:
+    float Latitude;
+    float Longitude;
+    friend float DistanceFinder(Location, Location);
+    public:
+    char Name[255];
+    Location(float latitude, float Longitude) {
+        this -> Latitude = Latitude;
+        this -> Longitude = Longitude;
+    }
+    Location() {};
+
+    void operator=(const Location &loc) {
+        Latitude = loc.Latitude;
+        Longitude = loc.Longitude;
+    }
+};
+
 
 class master {
     protected:
     int Duration;
     int NoofPassengers;
-    char DepartingLocation[255];
-    char Destination[255];
+    Location DepartingLocation;
+    char NameOfPassenger[255];
+    Location Destination;
+    int BaseCost;
     float HandlingCharges = 150;
     float ServiceFees;
     float GST;
+    friend class Train;
 
     public:
     master() {
         cin >> NoofPassengers;
-        char NameOfPassengers[NoofPassengers];
-        cin >> NameOfPassengers;
-        cin >> Destination;
-        cin >> DepartingLocation;
+        cin >> NameOfPassenger;
+        cin >> NoofPassengers;
+        cin >> Destination.Name;
+        cin >> DepartingLocation.Name;
         cin >> Duration;
     }
-    void FindRoute()
-    {
-        // route finding
-    };
+    virtual float FindBaseCost(int,Location, Location);
+    virtual float CalcGST(int);
+};
 
-    float FindBaseCost(int CostPerKm, Location a1, Location a2)
-    {
-        return CostPerKm*DistanceFinder(a1,a2);
-    };
+float master::FindBaseCost(int CostPerKm, Location a1, Location a2) {
+    return CostPerKm*DistanceFinder(a1,a2);
+};
 
-    float CalcGST(int BaseCost)
-    {
-        return GST*BaseCost;
-    };
+float master::CalcGST(int BaseCost) {
+    return GST*BaseCost;
 };
 
 class Time {
@@ -45,16 +66,26 @@ class Time {
     int hour;
     int minute;
     int second;
+    public:
+    Time(int hour, int minute, int second) {
+        this-> hour = hour;
+        this-> minute = minute;
+        this-> second = second;
+    }
+    Time() {
+        hour = 0; minute = 0; second = 0;
+    }
+    friend ostream & operator << (ostream &out, Time &loc);
 };
 
-class Location {
-    private:
-    int x;
-    int y;
-    int z;
-    friend float DistanceFinder(Location, Location);
-};
+ostream & operator << (ostream &out,  Time &time) {
+    out << time.hour << 'h' << time.minute << 'm' << time.second;
+    return out;
+}
+
 
 float DistanceFinder(Location a1, Location a2) {
-    return pow((pow((a1.x-a2.x),2) + pow((a1.y-a2.y),2) + pow((a1.z-a2.z),2)),2);
+    return acos(sin(a1.Latitude)*sin(a2.Latitude)+cos(a1.Latitude)*cos(a2.Latitude)*cos(a2.Longitude-a1.Longitude))*6371;
 }
+
+#endif

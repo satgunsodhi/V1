@@ -6,31 +6,32 @@ using namespace std;
 
 string airlines[3] = {"IndiGo","Vistara","AirIndia"};
 string seatTypes[3] = {"FirstClass" , "BuisnessClass" , "Economy"};
-float costs[3][3] = {{{9.5},{7},{4}},{{11.5},{9},{5.5}},{{10.5},{8},{4.5}}}
+float costs[3][3] = {{{9.5},{7},{4}},{{11.5},{9},{5.5}},{{10.5},{8},{4.5}}};
 int GST = 0.18;
-int Aviation Tax = 0.20;
+int AviationTax = 0.20;
 
-class Plane: private master {
+class Plane: public master {
     int airline;
     int seatType;
+    int distance;
     
     int ChooseAirlines();
     int ChooseSeatType();
-    float CalculatePrice(int airline , int seatType , int GST , int distance);
+    float CalculatePrice();
 
 
     public:
     Plane(master& m1)
 
     {
-        this -> airline = airlines[ChooseAirlines()];
-        this -> seatType = seatTypes[ChooseSeatType()];
+        this -> airline = ChooseAirlines();
+        this -> seatType = ChooseSeatType();
         this -> BaseCost = (costs[this -> airline][this -> seatType])*distance;// chk distance
-        this -> ServiceFees = this -> BaseCost*AviationTax
-        cout << "You have chosen " << this -> airline << " airlines for your journey from " << this -> DepartingLocation << "to " << this -> Destination << endl;
+        this -> ServiceFees = this -> BaseCost*AviationTax;
+        cout << "You have chosen " << this -> airline << " airlines for your journey from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << endl;
         cout << "Number of Passengers: " << this -> NoofPassengers << endl;
         cout << "Your Seat Type is " << this -> seatType << endl;
-        cout << "Your ticket price is rs." << CalculatePrice(this -> airline , this -> seatType, GST , distance) << endl; // look for distance
+        cout << "Your ticket price is rs." << CalculatePrice() << endl; // look for distance
 
     }
 
@@ -40,7 +41,7 @@ class Plane: private master {
     {
         int Airline;
         cout << "Please Choose Airline: " << endl;
-        for(int i = 0; i < 3 , i++)
+        for(int i = 0; i < 3; i++)
         {
             cout << "[" << i+1 << "]  "<< airlines[i];
         }
@@ -62,7 +63,7 @@ class Plane: private master {
         return seatType;
 
     }
-    float Plane::float CalculatePrice()
+    float Plane:: CalculatePrice()
     {
-        return baseCost+ BaseCost*GST + ServiceFees;
+        return BaseCost + BaseCost*GST + ServiceFees;
     }
