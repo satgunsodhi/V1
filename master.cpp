@@ -43,10 +43,10 @@ class master {
 
     public:
     master() {
-        cin >> NoofPassengers;
         cin >> NameOfPassenger;
         cin >> NoofPassengers;
-        cin >> Destination.Name;
+        cin >> NoofPassengers;
+        cin >> Destination.LocationId;
         cin >> DepartingLocation.Name;
         cin >> Duration;
     }
