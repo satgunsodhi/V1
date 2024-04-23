@@ -31,8 +31,8 @@ class Time {
     }
 
     void set(int hour, int minute, int secoud = 0) {
-        this -> hour;
-        this -> minute;
+        this -> hour = hour;
+        this -> minute = minute;
         this -> second = second;
     }
 
@@ -58,15 +58,18 @@ class Location {
     string Name;
     int LocationId;
     char LocationPin[255];
-    Location(float latitude, float Longitude) {
-        this -> Latitude = Latitude;
-        this -> Longitude = Longitude;
+    void set(float latitude, float Longitude) {
+        this -> Latitude = Latitude*3.14152/180;
+        this -> Longitude = Longitude*3.14152/180;
     }
     Location() {};
 
     void operator=(const Location &loc) {
         Latitude = loc.Latitude;
         Longitude = loc.Longitude;
+        Name = loc.Name;
+        LocationId = loc.LocationId;
+        strcpy(LocationPin, loc.LocationPin);
     }
 };
 
@@ -102,6 +105,7 @@ class master {
         cin >> Destination.LocationId;
         cout << "\n\nWhere will you be travelling from?\n1. Mumbai\n2. Delhi\n3. Kolkata\nEnter Choice as indicated: ";
         cin >> DepartingLocation.LocationId;
+        setloc(Destination, DepartingLocation);
     }
 
     master(const char * inp) {};
@@ -110,7 +114,7 @@ class master {
     virtual float CalcPrice();
     virtual int getRoute();
     virtual int PrintBill();
-    virtual string getLoc(int);
+    void setloc(Location &, Location&);
 };
 
 float master::FindBaseCost(int CostPerKm, Location a1, Location a2) {
@@ -127,17 +131,7 @@ ostream & operator << (ostream &out,  Time &time) {
 }
 
 float DistanceFinder(Location a1, Location a2) {
-    if((a1.LocationId == 1 && a2.LocationId == 2) || (a2.LocationId == 1 && a1.LocationId == 2)) {
-        return 2200;
-    }
-    else if((a1.LocationId == 1 && a2.LocationId == 3) || (a2.LocationId == 1 && a1.LocationId == 3)) {
-        return 257;
-    }
-
-    else if((a1.LocationId == 2 && a2.LocationId == 3) || (a2.LocationId == 2 && a1.LocationId == 3)) {
-        return 2397;
-    }
-    return -1;
+    return acos(sin(a1.Latitude)*sin(a2.Latitude)+cos(a1.Latitude)*cos(a2.Latitude)*cos(a2.Longitude-a1.Longitude))*6371; 
 }
 
 float master::CalcPrice() {
@@ -150,21 +144,41 @@ int master::getRoute() {
 }
 
 int master::PrintBill() {
-    cout << "testMessage";
+    cout << "testMessage\n";
     return 0;
 }
 
-string master:: getLoc(int location)
-{
-    if(location == 1)
-    {
-        return "Shimla";
+void master::setloc(Location &Destination, Location &DepartingLocation) {
+    switch (Destination.LocationId) {
+        case 1:
+            Destination.Name = "Sikkim";
+            Destination.set(27.3516,88.3239);
+            break;
+        case 2:
+            Destination.Name = "Goa";
+            Destination.set(15.2993,74.1240);
+            break;
+        case 3:
+            Destination.Name = "Manali";
+            Destination.set(32.2432, 77.1892);
+            break;
     }
-    else if(location == 2)
-    {
-        return "Goa";
-    }
-    return "Manali";
 
+    switch (DepartingLocation.LocationId)
+    {
+    case 1:
+        DepartingLocation.Name = "Mumbai";
+        DepartingLocation.set(19.0760, 72.8777);
+        break;
+    
+    case 2:
+        DepartingLocation.Name = "Delhi";
+        DepartingLocation.set(28.7041, 77.1025);
+        break;
+    
+    case 3:
+        DepartingLocation.Name = "Kolkata";
+        DepartingLocation.set(22.5726, 88.3639);
+    }
 }
 #endif

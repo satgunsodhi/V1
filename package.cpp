@@ -13,7 +13,7 @@ class Package : public master {
         strcpy(NameOfPassenger, m1.NameOfPassenger);
         DepartingLocation.LocationId = m1.DepartingLocation.LocationId;
         Destination.LocationId = m1.Destination.LocationId;
-        Destination.Name = getLoc(Destination.LocationId);
+        Destination.Name = m1.Destination.Name;
         run(Destination.Name, NoofPassengers);
     }
     int PrintBill() {return 0;};

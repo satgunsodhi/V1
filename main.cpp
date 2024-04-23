@@ -18,12 +18,11 @@ int main() {
     if (choice == 1) {
         int mode;
         while(true) {
-            cout << "\nWhich mode of you transport would you prefer? (1:Plane, 2:Train)\nEnter Choice as indicated:  ";
+            cout << "\nWhich mode of you transport would you prefer? (1:Plane, 2:Train)\nEnter Choice as indicated: ";
             cin >> mode;
             if(mode == 1) {
                 Plane p1(m1);
                 modeOfTransport = &p1;
-                modeOfTransport->PrintBill();
                 break;
             }
             else if (mode == 2) {
@@ -34,13 +33,14 @@ int main() {
             cout << "Ah! It seems you have selected something outside of scope, Do Try Again!\n";
             continue;
         }
-        cout << "Would you wish to have a hotel reservation? [1:Yes, 0:No]: ";
+        cout << modeOfTransport->PrintBill();
+        cout << "\nWould you wish to have a hotel reservation? [1:Yes, 0:No]: ";
         cin >> choice;
         if(choice == 1) {
             Hotel h1(m1);
         }
         
-        cout << "What is the best way around town? Opt for our option car valet? [1:Yes, 2:No]";
+        cout << "What is the best way around town? Our Car valet!\nOpt for our option car valet? [1:Yes, 2:No]: ";
         cin >> choice;
         if(choice == 1) {
             Car c1(m1);
@@ -49,11 +49,9 @@ int main() {
     else if (choice == 2) {
         Package p1(m1);
     }
-    cout << "\n----------------------------\n";
-    cout << "Trip Summary";
-    modeOfTransport->getRoute();
-    modeOfTransport->PrintBill();
-    cout << "Would you like to settle the bill? [1:Yes, 0:No]";
+
+    cout << "\n----------------------------Trip Summary----------------------------\n";
+    cout << "Would you like to settle the bill? [1:Yes, 0:No]: ";
     cin >> choice;
     if (choice != 1) {
         cout << "It is a shame to let you go :(";
@@ -62,5 +60,5 @@ int main() {
     cout << "\nBill Paid!"; 
     cout << "\nYou have gotten one heck of a deal!\n";
     cout << "Come back again for your next trip!\n";
-    cout << "Happy Travels!";
+    cout << "Happy Travels!\n";
 }

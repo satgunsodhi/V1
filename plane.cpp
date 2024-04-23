@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstring>
-#include <string>
 #include "master.cpp"
 using namespace std;
 
@@ -50,11 +49,13 @@ class Plane: public master {
         this -> NoofPassengers = m1.NoofPassengers;
         this -> DepartingLocation.LocationId = m1.DepartingLocation.LocationId;
         this -> Destination.LocationId = m1.Destination.LocationId;
+        this -> Destination.Name = m1.Destination.Name;
+        this -> DepartingLocation.Name = m1.DepartingLocation.Name;
         strcpy(NameOfPassenger, m1.NameOfPassenger);
         this -> BaseCost = FindBaseCost(costs[this -> airline][this -> seatType],DepartingLocation,Destination);
         this -> ServiceFees = this -> BaseCost*AviationTax;
         this -> GST = BaseCost*GST;
-        cout << "You have chosen " << airlines[this -> airline] << " airlines for your journey from " << this -> getLoc(DepartingLocation.LocationId) << " to " << this -> getLoc(Destination.LocationId) << endl;
+        cout << "You have chosen " << airlines[this -> airline] << " airlines for your journey from " << this -> DepartingLocation.Name << " to " << this ->Destination.Name << endl;
         cout << "Number of Passengers: " << this -> NoofPassengers << endl;
         cout << "Your Seat Type is " << seatTypes[this -> seatType] << endl;
         cout << "Your ticket price is Rs." << CalcPrice() << endl; 
@@ -65,7 +66,7 @@ class Plane: public master {
 
 void Plane::ShowAvailableFlights()
 {
-    cout << "\nExcellent! We have the following Flights available for you!" << endl;
+    cout << "\nExcellent! We have the following Flights available for you!\n" << endl;
     for(int i = 0; i < 3; i++)
     {
         Time t1;
@@ -84,7 +85,7 @@ void Plane::ShowAvailableFlights()
 int Plane::ChooseAirlines()
 {
     int Airline;
-    cout << "\n Let us know your preffered brand for Aviation: " << endl;
+    cout << "\nLet us know your preffered brand for Aviation: " << endl;
     for(int i = 0; i < 3; i++)
     {
         
@@ -110,7 +111,6 @@ int Plane::ChooseSeatType()
 }
 float Plane:: CalcPrice()
 {
-    cout << "hello";
     return NoofPassengers*(BaseCost + GST + ServiceFees);
 }
 

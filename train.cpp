@@ -32,6 +32,10 @@ class Train:public master {
     void PrintTrain();
     void setTrainInfo(const char *, const char *, int, int, const char*, int, int);
     float CalcPrice();
+    int PrintBill() {
+        cout << "hello!";
+        return 0;
+    }
 };
 
 void Train::PrintTrain() {
