@@ -7,9 +7,9 @@ using namespace std;
 string airlines[3] = {"IndiGo","Vistara","AirIndia"};
 string seatTypes[3] = {"FirstClass" , "BuisnessClass" , "Economy"};
 float costs[3][3] = {
-    {9.5, 7, 4},
-    {11.5, 9, 5.5},
-    {10.5, 8, 4.5}
+    {6, 5, 4},
+    {7.5, 6, 5.5},
+    {7, 5.5, 4.5}
 };
 
 float GST = 0.18;
@@ -36,6 +36,8 @@ class Plane: public master {
         this -> airline = ChooseAirlines() -1;
         this -> seatType = ChooseSeatType() -1;
         this -> NoofPassengers = m1.NoofPassengers;
+        this -> DepartingLocation.locationId = m1.DepartingLocation.LocationId;
+        this -> Destination.LocationId = m1.Destination.LocationId;
         this -> BaseCost = FindBaseCost(costs[this -> airline][this -> seatType],DepartingLocation,Destination);
         this -> ServiceFees = this -> BaseCost*AviationTax;
         this -> GST = BaseCost*GST;
