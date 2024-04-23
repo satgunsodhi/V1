@@ -5,7 +5,8 @@
 using namespace std;
 
 // Base class to represent options
-class Option {
+class Option : public master
+{
 public:
     string name;
     double cost;
@@ -14,7 +15,8 @@ public:
 };
 
 // Derived class for transportation options
-class Transportation : public Option {
+class Transportation : public Option 
+{
 public:
     string mode;
 
@@ -22,7 +24,8 @@ public:
 };
 
 // Derived class for accommodation options
-class Accommodation : public Option {
+class Accommodation : public Option 
+{
 public:
     int num_rooms;
 
@@ -30,23 +33,26 @@ public:
 };
 
 // Class to represent a trip
-class Trip {
+class Trip 
+{
 private:
     Transportation transport;
     Accommodation accommodation;
-    int num_people;
+    //int num_people;
     double total_cost;
     string itinerary;
     string destination;
 
 public:
-    Trip(const string& destination, const Transportation& transport, const Accommodation& accommodation, int num_people, const string& itinerary)
-        : destination(destination), transport(transport), accommodation(accommodation), num_people(num_people), itinerary(itinerary) {
+    Trip(const string& destination, const Transportation& transport, const Accommodation& accommodation, /*int num_people,*/ const string& itinerary)
+        : destination(destination), transport(transport), accommodation(accommodation), /*num_people(num_people),*/ itinerary(itinerary) 
+    {
         total_cost = calculateTripCost();
     }
 
     // Function to calculate the cost of a trip
-    double calculateTripCost() const {
+    double calculateTripCost() const 
+    {
         return transport.cost * num_people + accommodation.cost;
     }
 
@@ -69,14 +75,17 @@ public:
 };
 
 // Function to display available packages based on user preferences
-void displayAvailablePackages(const Trip* packages, int numPackages, const string& destination, double Cost, int Passengers, int Rooms) {
+void displayAvailablePackages(const Trip* packages, int numPackages, const string& destination, double Cost, int Passengers, int Rooms) 
+{
     cout << "Available Packages for " << destination << ":" << endl;
-    for (int i = 0; i < numPackages; ++i) {
+    for (int i = 0; i < numPackages; ++i) 
+    {
         const Trip& package = packages[i];
         if (package.getDestination() == destination &&
             package.getTotalCost() <= Cost &&
             package.getNumPeople() >= Passengers &&
-            package.getNumRooms() >= Rooms) {
+            package.getNumRooms() >= Rooms) 
+        {
             package.display();
             cout << endl;
         }
@@ -84,12 +93,14 @@ void displayAvailablePackages(const Trip* packages, int numPackages, const strin
 }
 
 // Function to print receipt for the chosen tour package
-void printReceipt(const Trip& chosenPackage) {
+void printReceipt(const Trip& chosenPackage) 
+{
     cout << "Receipt for the chosen tour package:" << endl;
     chosenPackage.display();
 }
 
-int main() {
+int main() 
+{
     // Define transportation options
     Transportation car("Car", 50.0);
     Transportation train("Train", 100.0);
@@ -102,7 +113,8 @@ int main() {
 
     // Create an array to store pre-made packages
     const int numPackages = 9;
-    Trip packages[numPackages] = {
+    Trip packages[numPackages] = 
+    {
         Trip("Shimla", car, budgetHotel, 2, "Example Itinerary for Shimla:\nDay 1: Arrival and check-in at the hotel.\nDay 2: Sightseeing around the city.\nDay 3: Departure."),
         Trip("Shimla", train, standardHotel, 4, "Example Itinerary for Shimla:\nDay 1: Arrival and check-in at the hotel.\nDay 2-3: Explore local attractions.\nDay 4: Departure."),
         Trip("Shimla", plane, luxuryHotel, 6, "Example Itinerary for Shimla:\nDay 1: Arrival and transfer to the hotel.\nDay 2-4: Enjoy leisure activities and city tours.\nDay 5: Departure."),
@@ -124,16 +136,20 @@ int main() {
     int Passengers, Rooms;
     cout << "Enter your budget (min. 10,000/-Rs): Rs.";
     cin >> Cost;
-    cout << "Enter number of people: ";
-    cin >> Passengers;
+    //cout << "Enter number of people: ";
+    //cin >> Passengers;
+    this-> Passengers = NoofPassengers();
+    
     cout << "Enter number of rooms: ";
     cin >> Rooms;
     bool packagesAvailable = false;
-    do {
+    do 
+    {
         displayAvailablePackages(packages, numPackages, destination, Cost, Passengers, Rooms);
 
         // Check if any packages are available
-        for (int i = 0; i < numPackages; ++i) {
+        for (int i = 0; i < numPackages; ++i) 
+        {
             const Trip& package = packages[i];
             if (package.getDestination() == destination &&
                 package.getTotalCost() <= Cost &&
@@ -144,7 +160,8 @@ int main() {
             }
         }
 
-        if (!packagesAvailable) {
+        if (!packagesAvailable) 
+        {
             cout << "No packages available for the given details. ";
             cout << "Please adjust your preferences.\n";
             cout << "Enter your budget: Rs.";
@@ -160,10 +177,13 @@ int main() {
     int choice;
     cout << "Enter the package number you want to choose: ";
     cin >> choice;
-    if (choice >= 1 && choice <= numPackages) {
+    if (choice >= 1 && choice <= numPackages) 
+    {
         const Trip& chosenPackage = packages[choice - 1];
         printReceipt(chosenPackage);
-    } else {
+    } 
+    else 
+    {
         cout << "Invalid package choice!" << endl;
     }
 
