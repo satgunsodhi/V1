@@ -84,6 +84,7 @@ int Train::GetTrain() {
             BaseCost = SL;
         }
         Booked = 1;
+        cout << "Your Choices have been booked!";
     }
     return 0;
 }
