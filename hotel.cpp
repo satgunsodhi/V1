@@ -1,12 +1,11 @@
-//#include "master.cpp"
+#include "master.cpp"
 #include <iostream>
 #include <ctype.h>
 #include <string.h>
 #include <cmath>
 using namespace std;
 
-//class hotel: public location
-class Hotel
+class Hotel: public master,Location
 {
     public:
     int location;
