@@ -7,9 +7,9 @@ using namespace std;
 string airlines[3] = {"IndiGo","Vistara","AirIndia"};
 string seatTypes[3] = {"FirstClass" , "BuisnessClass" , "Economy"};
 float costs[3][3] = {
-    {9.5, 7, 4},
-    {11.5, 9, 5.5},
-    {10.5, 8, 4.5}
+    {6, 5, 4},
+    {7.5, 6, 5.5},
+    {7, 5.5, 4.5}
 };
 
 float GST = 0.18;
