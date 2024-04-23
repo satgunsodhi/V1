@@ -13,57 +13,74 @@ int AviationTax = 0.20;
 class Plane: public master {
     int airline;
     int seatType;
-    int distance;
     
+    void ShowAvailableFlights();
     int ChooseAirlines();
     int ChooseSeatType();
-    float CalculatePrice();
+    float CalcPrice();
 
 
     public:
     Plane(master& m1)
 
     {
+        ShowAvailableFlights();
         this -> airline = ChooseAirlines();
         this -> seatType = ChooseSeatType();
-        this -> BaseCost = (costs[this -> airline][this -> seatType])*distance;// chk distance
+        this -> BaseCost = FindBaseCost(costs[this -> airline][this -> seatType],DepartingLocation,Destination);
         this -> ServiceFees = this -> BaseCost*AviationTax;
         cout << "You have chosen " << this -> airline << " airlines for your journey from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << endl;
         cout << "Number of Passengers: " << this -> NoofPassengers << endl;
         cout << "Your Seat Type is " << this -> seatType << endl;
-        cout << "Your ticket price is rs." << CalculatePrice() << endl; // look for distance
+        cout << "Your ticket price is rs." << CalcPrice() << endl; 
 
     }
 
 };
 
-    int Plane::ChooseAirlines()
-    {
-        int Airline;
-        cout << "Please Choose Airline: " << endl;
-        for(int i = 0; i < 3; i++)
-        {
-            cout << "[" << i+1 << "]  "<< airlines[i];
-        }
-        cout << endl << "Please Enter Choice: ";
-        cin >> Airline;
-        return Airline;
 
-    }
-    int Plane::ChooseSeatType()
+void Plane::ShowAvailableFlights()
+{
+    cout << "Avaialble Flights:" << endl;
+    for(int i = 0; i < 3; i++)
     {
-        int seatType;
-        cout << "Please Choose your Seat Type: " << endl;
-        for(int i = 0; i < 3 ; i++)
-        {
-            cout << "[" << i+1 << "]  "<< airlines[i];
-        }
-        cout << endl << "Please Enter Choice: ";
-        cin >> seatType;
-        return seatType;
+        Time t1;
+        cout << "[" << i+1 << "]  "<< airlines[i] << endl;
+        cout << "Departure:" << t1;
+        Time t2 = t1+Duration;
+        cout << "Arrival:" << t2;
+    }
+    cout << endl << "Please Enter Choice: ";
+    
+};
 
-    }
-    float Plane:: CalculatePrice()
+int Plane::ChooseAirlines()
+{
+    int Airline;
+    cout << "Please Choose Airline: " << endl;
+    for(int i = 0; i < 3; i++)
     {
-        return BaseCost + BaseCost*GST + ServiceFees;
+        cout << "[" << i+1 << "]  "<< airlines[i];
     }
+    cout << endl << "Please Enter Choice: ";
+    cin >> Airline;
+    return Airline;
+
+}
+int Plane::ChooseSeatType()
+{
+    int seatType;
+    cout << "Please Choose your Seat Type: " << endl;
+    for(int i = 0; i < 3 ; i++)
+    {
+        cout << "[" << i+1 << "]  "<< airlines[i];
+    }
+    cout << endl << "Please Enter Choice: ";
+    cin >> seatType;
+    return seatType;
+
+}
+float Plane:: CalcPrice()
+{
+    return BaseCost + BaseCost*GST + ServiceFees;
+}
