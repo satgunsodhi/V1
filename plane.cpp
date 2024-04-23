@@ -59,7 +59,7 @@ void Plane::ShowAvailableFlights()
         float time_of_flight = DistanceFinder(DepartingLocation,Destination) / (float)900;
         // Time FlightDuration((int)time_of_flight, (int)(time_of_flight*100)%100,0);
         // cout << "Arrival:" << t1 + FlightDuration << endl;
-        cout << "Duration: " << time_of_flight;
+        cout << "Duration: " << time_of_flight << endl;
 
     }
     cout << endl << "Please Enter Choice: ";
