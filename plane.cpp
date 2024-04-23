@@ -45,10 +45,15 @@ void Plane::ShowAvailableFlights()
     for(int i = 0; i < 3; i++)
     {
         Time t1;
+        t1.randomTimeGenerator();
+        srand(time(NULL));
         cout << "[" << i+1 << "]  "<< airlines[i] << endl;
-        cout << "Departure:" << t1;
-        Time t2 = t1+Duration;
-        cout << "Arrival:" << t2;
+        cout << "Departure:" << t1 << endl;
+        float FlightDuration = DistanceFinder(DepartingLocation,Destination) / 900;
+        Duration.set()
+        cout << "Arrival:" t1 + FlightDuration << endl;
+        cout << "Duration: " << FlightDuration;
+
     }
     cout << endl << "Please Enter Choice: ";
     

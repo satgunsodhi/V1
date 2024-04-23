@@ -29,15 +29,18 @@ class Time {
         return out;
     }
 
-    void set(const char* ti) {
-        hour = (int)(ti[0]-48)*10+(int)(ti[1]-48);
-        minute = (int)(ti[4]-48)*10+(int)(ti[5]-48);
-        if(strlen(ti) > 8) {
-            second = (ti[8]-48)*10+(int)(ti[9]-48);
-        }
-        else {
-            second = 0;
-        }
+    void set(int hour, int minute, int secoud = 0) {
+        this -> hour;
+        this -> minute;
+        this -> second = second;
+    }
+        void randomTimeGenerator() {
+        const int Hour_lb = 0, Hour_ub = 23;
+        const int min_lb = 0, min_ub = 59;
+
+        this -> hour = rand() % (Hour_ub - Hour_lb + 1) + Hour_lb;
+        this -> minute = rand() % (min_ub - min_lb + 1) + min_lb;
+
     }
 };
 
