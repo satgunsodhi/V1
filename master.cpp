@@ -93,7 +93,7 @@ class master {
         cin >> NameOfPassenger;
         cout << "Enter No. of Passengers: ";
         cin >> NoofPassengers;
-        cout << "Please Choose your destination Location: \n1. Shimla\n2. Goa\n3. Manali\n Choice: ";
+        cout << "Please Choose your destination Location: \n1. Shimla\n2. Goa\n3. Manali\nChoice: ";
         cin >> Destination.LocationId;
         cout << "Please Choose your current Location: \n1. Shimla\n2. Goa\n3. Manali\nChoice: ";
         cin >> DepartingLocation.LocationId;
@@ -104,6 +104,7 @@ class master {
     virtual float CalcGST(int);
     virtual float CalcPrice();
     virtual void getRoute();
+    virtual void PrintBill();
 };
 
 float master::FindBaseCost(int CostPerKm, Location a1, Location a2) {
@@ -120,7 +121,17 @@ ostream & operator << (ostream &out,  Time &time) {
 }
 
 float DistanceFinder(Location a1, Location a2) {
-    return acos(sin(a1.Latitude)*sin(a2.Latitude)+cos(a1.Latitude)*cos(a2.Latitude)*cos(a2.Longitude-a1.Longitude))*6371;
+    if((a1.LocationId == 1 && a2.LocationId == 2) || (a2.LocationId == 1 && a1.LocationId == 2)) {
+        return 2200;
+    }
+    else if((a1.LocationId == 1 && a2.LocationId == 3) || (a2.LocationId == 1 && a1.LocationId == 3)) {
+        return 257;
+    }
+
+    else if((a1.LocationId == 2 && a2.LocationId == 3) || (a2.LocationId == 2 && a1.LocationId == 3)) {
+        return 2397;
+    }
+    return -1;
 }
 
 float master::CalcPrice() {
@@ -129,5 +140,9 @@ float master::CalcPrice() {
 
 void master::getRoute() {
     cout << Route;
+}
+
+void master::PrintBill() {
+    cout << 'a';
 }
 #endif

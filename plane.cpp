@@ -30,16 +30,16 @@ class Plane: public master {
     Plane(master& m1) : master("ignore")
 
     {
+        this -> DepartingLocation.LocationId = m1.DepartingLocation.LocationId;
+        this -> Destination.LocationId = m1.Destination.LocationId;
         ShowAvailableFlights();
         this -> airline = ChooseAirlines() -1;
         this -> seatType = ChooseSeatType() -1;
         this -> NoofPassengers = m1.NoofPassengers;
-        this -> DepartingLocation = m1.DepartingLocation;
-        this -> Destination = m1.Destination;
         this -> BaseCost = FindBaseCost(costs[this -> airline][this -> seatType],DepartingLocation,Destination);
         this -> ServiceFees = this -> BaseCost*AviationTax;
         this -> GST = BaseCost*GST;
-        cout << "You have chosen " << airlines[this -> airline] << " airlines for your journey from " << this -> getLoc(DepartingLocation.LocationId) << "to " << this -> getLoc(Destination.LocationId) << endl;
+        cout << "You have chosen " << airlines[this -> airline] << " airlines for your journey from " << this -> getLoc(DepartingLocation.LocationId) << " to " << this -> getLoc(Destination.LocationId) << endl;
         cout << "Number of Passengers: " << this -> NoofPassengers << endl;
         cout << "Your Seat Type is " << seatTypes[this -> seatType] << endl;
         cout << "Your ticket price is Rs." << CalcPrice() << endl; 
@@ -62,8 +62,7 @@ void Plane::ShowAvailableFlights()
         float time_of_flight = DistanceFinder(DepartingLocation,Destination) / (float)900;
         // Time FlightDuration((int)time_of_flight, (int)(time_of_flight*100)%100,0);
         // cout << "Arrival:" << t1 + FlightDuration << endl;
-        cout << "Duration: " << time_of_flight << endl;
-
+        cout << "Duration: " << (int)time_of_flight << "hrs " << (int)((time_of_flight-(int)time_of_flight) * 60) << "mins"<< endl;
     }
     cout << endl << "Please Enter Choice: ";
     
@@ -103,7 +102,7 @@ float Plane:: CalcPrice()
 void Plane::PrintBill()
 {
     cout << this ->airline << "Airlines" << endl ;
-    cout << "your flight from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << "has been confirmed!" << endl << endl;
+    cout << "your flight from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << " has been confirmed!" << endl << endl;
     cout << "Tax Invoice: ";
     cout << "Name  of Head Passenger: " << this -> NameOfPassenger;
     cout << "Number of Passengers: " << this -> NoofPassengers;

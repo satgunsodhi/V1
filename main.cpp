@@ -41,6 +41,8 @@ int main() {
     }
     cout << "The route chosen is: ";
     (*modeOfTransport).getRoute();
+    (*modeOfTransport).PrintBill();
+
     // billing and payments
     // exit
 }
