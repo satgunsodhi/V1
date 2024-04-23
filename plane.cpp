@@ -52,8 +52,8 @@ void Plane::ShowAvailableFlights()
     for(int i = 0; i < 3; i++)
     {
         Time t1;
-        // t1.randomTimeGenerator();
-        // srand(time(NULL));
+        t1.randomTimeGenerator();
+        srand(time(NULL));
         cout << "[" << i+1 << "]  "<< airlines[i] << endl;
         cout << "Departure:" << t1 << endl;
         float time_of_flight = DistanceFinder(DepartingLocation,Destination) / (float)900;
