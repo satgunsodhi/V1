@@ -24,7 +24,6 @@ class Plane: public master {
     int ChooseSeatType();
     float CalcPrice();
     int PrintBill() {
-<<<<<<< HEAD
     cout << this ->airline << "Airlines" << endl;
     cout << "your flight from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << " has been confirmed!" << endl << endl;
     cout << "Tax Invoice: " << endl;
@@ -36,19 +35,6 @@ class Plane: public master {
     cout << "GST: " << GST << endl;
     cout << "Grand Total: " << CalcPrice() << endl;
     cout << "Thank you Flying with us!" << endl;
-=======
-    cout << this ->airline << "Airlines" << endl ;
-    cout << "your flight from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << " has been confirmed!" << endl << endl;
-    cout << "Tax Invoice: ";
-    cout << "Name  of Head Passenger: " << this -> NameOfPassenger;
-    cout << "Number of Passengers: " << this -> NoofPassengers;
-    cout << "Seat type" << this -> seatType;
-    cout << "Base Cost: " << this -> BaseCost;
-    cout << "Aviation Tax: " << this -> ServiceFees;
-    cout << "GST: " << this -> GST;
-    cout << "Grand Total: " << CalcPrice() << endl;
-    cout << "Thank you Flying with us!";
->>>>>>> 04b67c3b2e69fb721e83a6139c2cd3f8332b47f4
     return 1;
     }
 
