@@ -122,7 +122,7 @@ float master::FindBaseCost(int CostPerKm, Location a1, Location a2) {
 };
 
 float master::CalcGST() {
-    return GST*BaseCost;
+    return GST/100*BaseCost;
 };
 
 ostream & operator << (ostream &out,  Time &time) {
@@ -135,9 +135,7 @@ float DistanceFinder(Location a1, Location a2) {
 }
 
 float master::CalcPrice() {
-    float out = BaseCost+CalcGST()+HandlingCharges+ServiceFees;
-    cout << out;
-    return out;
+    return BaseCost+CalcGST()+HandlingCharges+ServiceFees;
 }
 
 int master::getRoute() {

@@ -9,7 +9,7 @@ class Hotel: public master
 {
     public:
     int roomcount;
-    float price;
+    float BaseCost;
     char hotelName[40];
     char roomType[20];
     void display();
@@ -19,7 +19,10 @@ class Hotel: public master
     {
         this->Destination.LocationId = m.Destination.LocationId;
         this-> NoofPassengers = m.NoofPassengers;
-        this->Duration = m.Duration;
+        cout << "How many nights do you intent to stay? ";
+        int days;
+        cin >> days;
+        Duration.set(days*24,0);
         GST=12;
         display();
     }
@@ -251,23 +254,22 @@ void Hotel::display()
             }
         }
     }
-    price=price*ceil(Duration.timeReadOut()/24);
+    BaseCost=BaseCost*ceil(Duration.timeReadOut()/24);
 }
 void Hotel::f1(const char * roomname, float people, int base) 
 {
     strcpy(roomType, roomname);
     roomcount=ceil(NoofPassengers/people);
-    price=((base*roomcount)+(NoofPassengers-roomcount)*300)*(1+GST/100);
+    BaseCost=((base*roomcount)+(NoofPassengers-roomcount)*300)*(1+GST/100);
     cout<<"\nHotel Booked!!" << endl;
-    cout<<"\n--------------------------------------------------------------------------------";
+    cout<<"\n-----------------------------Hotel Booking-----------------------------";
     cout<<"\n| Name of the Hotel: " << hotelName;
     cout<<"\n| Type of Room: "<<roomType;
     cout<<"\n| Number of Rooms: "<<roomcount;
     cout<<"\n| GST= "<<GST<<"%";
-    cout<<"\n| Total Price for Hotel along with additional(if needed): Rs."<<price;
-    cout<<"\n-------------------------------------------------------------------------------\n";
+    cout<<"\n| Total BaseCost for Hotel along with additional(if needed): Rs."<<BaseCost<< endl;
 }
 
 int Hotel::PrintBill() {
-    return price;
+    return BaseCost;
 }

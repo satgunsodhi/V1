@@ -25,19 +25,19 @@ class Train:public master {
         GetTrain();
 
         ServiceFees = 40; //Reservation Fees
-        float CateringCharge = 68;
+        CateringCharge = 68;
         GST = 5;
     }
     int GetTrain();
     void setTrainInfo(float, float, const char*, int, int);
     float CalcPrice();
     int PrintBill() {
-        cout << "-------------------------Train Booking-------------------------";
-        cout << "Route Chosen: " << Route;
-        cout << "Train Fare: " << BaseCost;
-        cout << "Catering Charges: " << CateringCharge;
-        cout << "Service Fees: " << ServiceFees;
-        cout << "Total Fare: " << CalcPrice();
+        cout << "-------------------------Train Booking-------------------------\n";
+        cout << "|  Route Chosen: " << Route << endl;
+        cout << "|  Train Fare: " << BaseCost << endl;
+        cout << "|  Catering Charges: " << CateringCharge << endl;
+        cout << "|  Service Fees: " << ServiceFees << endl;
+        cout << "|  Total Fare: " << CalcPrice() << endl;
         return CalcPrice();
         return 0;
     }
@@ -50,12 +50,12 @@ void Train::setTrainInfo(float ti, float distance, const char * info, int AC, in
 }
 
 int Train::GetTrain() {
-    int AC, SL;
+    int AC = 441, SL = 225;
     static int Booked = 0;
-    cout << "We found these routes for you!\n";
+    cout << "\nWe found these routes for you!\n\n";
 
     // 1: Shimla, 2:Goa, 3:Manali
-    setTrainInfo(DistanceFinder(DepartingLocation, Destination)/380, DistanceFinder(DepartingLocation, Destination),"Runs on MTWTFSS",441, 225);
+    setTrainInfo(DistanceFinder(DepartingLocation, Destination)/380, DistanceFinder(DepartingLocation, Destination),"Runs on MTWTFSS",AC, SL);
 
     if(!Booked) {
         cout << "\nHow comfortable do you wish to be? [1: AC, 2:SL]: ";

@@ -19,6 +19,7 @@ class Car: public master{
         this-> Destination.LocationId = m.Destination.LocationId; // Location 1: Sikkim 2: Goa 3: Manali
         strcpy(NameOfPassenger,m.NameOfPassenger);
         this-> NoofPassengers = m.NoofPassengers;
+        ServiceFees = 50;
         calculateFare();
     }
     void calculateFare() {
@@ -101,7 +102,7 @@ class Car: public master{
         cout<<"|    Total distance: "<<distance<<endl;
         cout<<"|    HandlingFees: " << HandlingCharges << endl;
         cout<<"|    ServiceFees: " << ServiceFees << endl;
-        cout<<"|    Total Fare: "<<BaseCost<<endl;
+        cout<<"|    Total Fare: "<<CalcPrice()<<endl;
         cout<<"\nWe thank you for choosing our new service!\n";
         return CalcPrice();
     }

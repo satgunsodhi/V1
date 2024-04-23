@@ -99,7 +99,7 @@ float Plane:: CalcPrice()
 
 int Plane::PrintBill() {
     cout << this ->airline << "Airlines" << endl;
-    cout << "your flight from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << " has been confirmed!" << endl << endl;
+    cout << "your flight from " << this -> DepartingLocation.Name << " to " << this -> Destination.Name << " has been confirmed!" << endl << endl;
     cout << "Tax Invoice: " << endl;
     cout << "Name of Head Passenger: " << this -> NameOfPassenger << endl;
     cout << "Number of Passengers: " << this -> NoofPassengers << endl;
@@ -109,5 +109,5 @@ int Plane::PrintBill() {
     cout << "GST: " << GST << endl;
     cout << "Grand Total: " << CalcPrice() << endl;
     cout << "Thank you Flying with us!" << endl;
-    return 1;
+    return CalcPrice();
 }
