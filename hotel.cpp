@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ctype.h>
 #include <string.h>
+#include <cmath>
 using namespace std;
 
 //class hotel: public location
@@ -24,12 +25,9 @@ class Hotel
     }
 };
 
-void Hotel::display(int location,int num)
+void Hotel::display()
 {
     int c1,c2;
-    //use num of people variable from master.cpp
-    int roomcount;
-    float price;
 
     //LOCATION 1-MANALI
     if(location==1)
