@@ -4,6 +4,15 @@
 
 using namespace std;
 
+class Package : public master {
+    Package(master &m1) : master("Ignore") {
+        this -> NoofPassengers = m1.NoofPassengers;
+        strcpy(NameOfPassenger, m1.NameOfPassenger);
+        DepartingLocation.LocationId = m1.DepartingLocation.LocationId;
+        run();
+    }
+};
+
 // Base class to represent options
 class Option : public master
 {
@@ -38,14 +47,14 @@ class Trip
 private:
     Transportation transport;
     Accommodation accommodation;
-    //int num_people;
+    //int NoofPassengers;
     double total_cost;
     string itinerary;
     string destination;
 
 public:
-    Trip(const string& destination, const Transportation& transport, const Accommodation& accommodation, /*int num_people,*/ const string& itinerary)
-        : destination(destination), transport(transport), accommodation(accommodation), /*num_people(num_people),*/ itinerary(itinerary) 
+    Trip(const string& destination, const Transportation& transport, const Accommodation& accommodation, /*int NoofPassengers,*/ const string& itinerary)
+        : destination(destination), transport(transport), accommodation(accommodation), /*NoofPassengers(NoofPassengers),*/ itinerary(itinerary) 
     {
         total_cost = calculateTripCost();
     }
@@ -53,12 +62,12 @@ public:
     // Function to calculate the cost of a trip
     double calculateTripCost() const 
     {
-        return transport.cost * num_people + accommodation.cost;
+        return transport.cost * NoofPassengers + accommodation.cost;
     }
 
     // Public member functions to access private members
     double getTotalCost() const { return total_cost; }
-    int getNumPeople() const { return num_people; }
+    int getNumPeople() const { return NoofPassengers; }
     int getNumRooms() const { return accommodation.num_rooms; }
     const string& getDestination() const { return destination; }
 
@@ -67,7 +76,7 @@ public:
         cout << "Destination: " << destination << endl;
         cout << "Transportation: " << transport.mode << endl;
         cout << "Accommodation: " << accommodation.name << endl;
-        cout << "Number of People: " << num_people << endl;
+        cout << "Number of People: " << NoofPassengers << endl;
         cout << "Number of Rooms: " << accommodation.num_rooms << endl;
         cout << "Total Cost: Rs." << total_cost << endl;
         cout << "Itinerary: " << endl << itinerary << endl; // Display itinerary
@@ -99,7 +108,7 @@ void printReceipt(const Trip& chosenPackage)
     chosenPackage.display();
 }
 
-int main() 
+int run() 
 {
     // Define transportation options
     Transportation car("Car", 50.0);

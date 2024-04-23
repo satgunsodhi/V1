@@ -86,6 +86,7 @@ class master {
     friend class Plane;
     friend class Car;
     friend class Hotel;
+    friend class Package;
 
     public:
     master() {
