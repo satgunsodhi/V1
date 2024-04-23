@@ -3,23 +3,7 @@
 #include "master.cpp"
 using namespace std;
 
-class Train:private master {
-    Train(int NoofPassengers, int TrainType, char * Couch, int TrainNumber, int TrainClass, int BerthNo) {
-        
-        this -> NoofPassengers = NoofPassengers;
-        this -> TrainType = TrainType;
-        strcpy(this -> Coach, Coach);
-        this -> DepartureTime = DepartureTime;
-        strcpy(this -> DepartingLocation, DepartingLocation);
-        strcpy(this -> Destination, Destination);
-        setTrainInfo(TrainNumber);
-        this -> TrainClass = TrainClass;
-        this -> BerthNo = BerthNo;
-
-        HandlingCharges = 40;
-        float CateringCharge = 400;
-        GST = 5;
-    }
+class Train:public master {
 
     protected:
     int NoofPassengers;
@@ -30,35 +14,59 @@ class Train:private master {
     int BerthNo;
     int TrainClass;
     Time DepartureTime;
+    float TrainSpeed;
+    float Distance;
     
     public:
+    Train(master& m) {
+        
+        NoofPassengers = m.NoofPassengers;
+        DepartingLocation = m.DepartingLocation;
+        Destination =  m.Destination;
+        ShowTrains();
+        cin >> TrainNumber;
+        setTrainInfo(TrainNumber);
+
+        ServiceFees = 15;
+        float CateringCharge = 400;
+        GST = 5;
+    }
+    void ShowTrains();
     void PrintTrain();
-    friend void setTrainInfo(int TrainNumber);
+    void setTrainInfo(int TrainNumber);
 };
 
-void AddTrain(/* take required inputs*/) {
-    int TrainType;
-    char Coach[3];
-    Time DepartureTime;
-    int TrainClass;
-    int TrainNumber;
-    int BerthNo;
-    ShowTrains();
-    cin >> TrainType;
-    cin >> Coach;
-    cin >> TrainNumber;
-    cin >> TrainClass;
-    cin >> BerthNo;
-    Train t1(NoofPassengers, TrainType, Coach, TrainNumber, TrainClass, BerthNo);
-}
 void Train::PrintTrain() {
-        // display booked train info
+        cout << "The Selected Train Booking is as follows:\n";
+        cout << DepartingLocation.Name << "To" << Destination.Name << endl;
+        cout << "Total Duration:" << DistanceFinder(DepartingLocation, Destination)/TrainSpeed;
+        cout << Duration;
 }
 
-void setTrainInfo(int TrainNumber) {
-    // Set info like departure, destination and time for the current train
+void Train::setTrainInfo(int TrainNumber) {
+    TrainType;
+    BerthNo;
+    cin >> TrainClass;
+    DepartureTime;
+    Coach;
 }
 
-void ShowTrains() {
-    // Show a list of all the available Train and its routes
+void Train::ShowTrains() {
+    // Location 1: Shimla
+    if (strcmp(DepartingLocation.Name, "Shimla")) {
+        
+    }
+
+    else if(strcmp(DepartingLocation.Name, "Goa")) {
+        cout << "2 Routes Available:\n";
+        cout << "1. GOHAD ROAD - AMBALA CANT JN VIA GWALIOR";
+        cout << "Total Duration: 12h56m";
+        cout << "Runs on M T W T F S S";
+        cout << "2. GOHAR ROAD - KALKA VIA ETAWAH JN";
+        cout << "Total Duration: 16h57m";
+    }
+
+    else if(strcmp(DepartingLocation.Name, "Manali")) {
+        
+    }
 }

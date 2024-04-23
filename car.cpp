@@ -1,121 +1,68 @@
-//#include "master.cpp"
 #include <iostream>
 #include <string>
-#include <iomanip>
+#include <vector>
+
 using namespace std;
 
-class Location {
+class Car {
 protected:
-    string location;
+    int location;
     string choice2;
     int distance;
 public:
-    Location() : distance(0) {}
-    virtual void calculateFare() = 0;
-};
+    Car() : distance(0) {}
+     Car (Car &C1){
+        C1.location=this->location;
+        strcpy(C1.choice2,this->choice2);
+        C1.distance=this->distance;
+    }
 
-class Car : public Location {
-private:
-    int distanceCost;
-    int seatType;
-public:
-    Car() : distanceCost(0) {}
-
-    void calculateFare() override {
-        cout << "Enter your location (A/B/C): ";
+    void selectLocation() {
+        cout << "TOURIST PLACES" << endl;
+        cout << "1. Goa\n2. Manali\n3. Sikkim" << endl;
+        cout << "Where do you want to go? ";
         cin >> location;
-        if (location == "A") {
-            cout << "A1\nDo you want to go to A1? [Y/N]: ";
+    }
+
+    void calculateFare() {
+        selectLocation();
+
+        vector<string> list;
+        vector<int> dist;
+
+        if (location == 1) {
+            list = {"Aguada Fort", "Dudhsagar", "Panaji", "Baga beach", "Chapora Fort"};
+            dist = {100, 120, 25, 140, 80};
+        } else if (location == 2) {
+            list = {"Jogini falls", "Nehru kund", "Rohtang valley", "Mall road", "Hadimba devi temple"};
+            dist = {110, 76, 130, 95, 150};
+        } else if (location == 3) {
+            list = {"Buddha Park", "Hanuman tok", "Gurudongmar lake", "Gangtok", "Khangchendzonga national park"};
+            dist = {98, 76, 135, 87, 133};
+        } else {
+            cout << "Invalid location choice." << endl;
+            return;
+        }
+
+        for (int i = 0; i < 5; i++) {
+            cout << list[i] << "\nDo you want to go to " << list[i] << "? [Y/N]: ";
             cin >> choice2;
             if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 35;
-            }
-            cout << "A2\nDo you want to go to A2? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 33;
-            }
-            cout << "A3\nDo you want to go to A3? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 40;
-            }
-            cout << "A4\nDo you want to go to A4? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 25;
-            }
-            cout << "A5\nDo you want to go to A5? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 22;
+                distance += dist[i];
             }
         }
-        if (location == "B") {
-            cout << "B1\nDo you want to go to B1? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 42;
-            }
-            cout << "B2\nDo you want to go to B2? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 28;
-            }
-            cout << "B3\nDo you want to go to B3? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 25;
-            }
-            cout << "B4\nDo you want to go to B4? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 33;
-            }
-            cout << "B5\nDo you want to go to B5? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 43;
-            }
-        }
-        if (location == "C") {
-            cout << "C1\nDo you want to go to C1? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 21;
-            }
-            cout << "C2\nDo you want to go to C2? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 34;
-            }
-            cout << "C3\nDo you want to go to C3? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 37;
-            }
-            cout << "C4\nDo you want to go to C4? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 49;
-            }
-            cout << "C5\nDo you want to go to C5? [Y/N]: ";
-            cin >> choice2;
-            if (choice2[0] == 'Y' || choice2[0] == 'y') {
-                distance += 28;
-            }
-        }
+
+        int seatType;
         cout << "What car type will you prefer[5 seater/7 seater]: ";
         cin >> seatType;
+        int distanceCost;
         if (seatType == 5) {
             distanceCost = distance * 19.5;
             cout << "Total Fare: " << distanceCost << endl;
-        }
-        else if (seatType == 7) {
+        } else if (seatType == 7) {
             distanceCost = distance * 33;
             cout << "Total Fare: " << distanceCost << endl;
-        }
-        else {
+        } else {
             cout << "Please enter either 5 or 7 for car type." << endl;
         }
     }

@@ -4,27 +4,25 @@
 #include <cmath>
 using namespace std;
 
-class hotel
+class Hotel
 {
     int location;
     int num;
-    int duration;
+    int roomcount;
+    float price;
+    char hotelName[40];
     public:
         void display();
-        hotel(int location,int noOfpeople, int duration)
+        hotel(int location,int noOfpeople)
         {
             this->location=location;
             this->num=noOfpeople;
-            this->duration=duration;
         }
 };
 
-void hotel::display()
+void Hotel::display()
 {
     int c1,c2;
-    //use num of people variable from master.cpp
-    int roomcount;
-    float price;
 
     //LOCATION 1-MANALI
     if(location==1)
@@ -196,13 +194,4 @@ void hotel::display()
             }
         }
     }
-}
-
-int main()
-{
-    hotel obj;
-    int location,num;
-    //Use location, num of people from master class- taking input below just to see if code works
-    cin>>location>>num;
-    obj.display(location,num);
 }
