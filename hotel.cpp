@@ -13,7 +13,12 @@ class Hotel: public master
     char hotelName[40];
     char roomType[20];
     void display();
+<<<<<<< HEAD
     void PrintBill(const char * roomname, float people, int base);
+=======
+    int PrintBill();
+    void f1(const char * roomname, int people, int base);
+>>>>>>> 04b67c3b2e69fb721e83a6139c2cd3f8332b47f4
     Hotel(master &m) : master("Ignore")
     {
         this->Destination.LocationId = m.Destination.LocationId;
@@ -256,6 +261,7 @@ void Hotel::PrintBill(const char * roomname, float people, int base)
 {
     strcpy(roomType, roomname);
     roomcount=ceil(NoofPassengers/people);
+<<<<<<< HEAD
     price=((base*roomcount)+(NoofPassengers-roomcount)*300)*(1+GST/100);
     cout<<"\nHotel Booked!!" << endl;
     cout<<"\n--------------------------------------------------------------------------------";
@@ -265,4 +271,29 @@ void Hotel::PrintBill(const char * roomname, float people, int base)
     cout<<"\n| GST= "<<GST<<"%";
     cout<<"\n| Total Price for Hotel along with additional(if needed): Rs."<<price;
     cout<<"\n-------------------------------------------------------------------------------\n";
+=======
+    price=((base-roomcount)+(NoofPassengers-roomcount)*300)*(1+GST/100);
+    cout<<"\nHotel Booked!!" << endl;
+    //cout<<"check"<<price;
+    //here it prints correct
+    cout<<"\n-------------------------------------------------";
+    cout<<"\n| Name of the Hotel: "<<hotelName<<" |";
+    cout<<"\n| Type of Room: "<<roomType<<" |";
+    cout<<"\n| Number of Rooms: "<<roomcount<<" |";
+    cout<<"\n| GST= "<<GST<<"% |";
+    cout<<"\n| Total Price for Hotel along with additional(if needed): Rs."<<price<<" |";
+    cout<<"\n-------------------------------------------------\n";
+>>>>>>> 04b67c3b2e69fb721e83a6139c2cd3f8332b47f4
+}
+int Hotel::PrintBill()
+{
+    //here it says 0
+    cout<<"\n--------------------------------------------------------------------------------";
+    cout<<"\n| Name of the Hotel: "<<hotelName<<"|";
+    cout<<"\n| Type of Room: "<<roomType<<"                                      |";
+    cout<<"\n| Number of Rooms: "<<roomcount<<"                                              |";
+    cout<<"\n| GST= "<<GST<<"%                                                       |";
+    cout<<"\n| Total Price for Hotel along with additional(if needed): Rs."<<price<<"    |";
+    cout<<"\n-------------------------------------------------------------------------------\n";
+    return 0;
 }
