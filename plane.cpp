@@ -36,9 +36,9 @@ class Plane: public master {
         this -> BaseCost = FindBaseCost(costs[this -> airline][this -> seatType],DepartingLocation,Destination);
         this -> ServiceFees = this -> BaseCost*AviationTax;
         this -> GST = BaseCost*GST;
-        cout << "You have chosen " << this -> airline << " airlines for your journey from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << endl;
+        cout << "You have chosen " << this -> airlines[airline] << " airlines for your journey from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << endl;
         cout << "Number of Passengers: " << this -> NoofPassengers << endl;
-        cout << "Your Seat Type is " << this -> seatType << endl;
+        cout << "Your Seat Type is " << this -> seatTypes[seatType] << endl;
         cout << "Your ticket price is Rs." << CalcPrice() << endl; 
 
     }
