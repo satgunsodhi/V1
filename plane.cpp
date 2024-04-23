@@ -60,6 +60,7 @@ int Plane::ChooseAirlines()
     cout << "Please Choose Airline: " << endl;
     for(int i = 0; i < 3; i++)
     {
+        
         cout << "[" << i+1 << "]  "<< airlines[i];
     }
     cout << endl << "Please Enter Choice: ";
