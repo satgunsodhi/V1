@@ -6,11 +6,20 @@ using namespace std;
 
 class hotel
 {
+    int location;
+    int num;
+    int duration;
     public:
-        void display(int location,int num);
+        void display();
+        hotel(int location,int noOfpeople, int duration)
+        {
+            this->location=location;
+            this->num=noOfpeople;
+            this->duration=duration;
+        }
 };
 
-void hotel::display(int location,int num)
+void hotel::display()
 {
     int c1,c2;
     //use num of people variable from master.cpp
