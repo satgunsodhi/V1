@@ -33,6 +33,9 @@ class Plane: public master {
         ShowAvailableFlights();
         this -> airline = ChooseAirlines() -1;
         this -> seatType = ChooseSeatType() -1;
+        this -> NoofPassengers = m1.NoofPassengers;
+        this -> DepartingLocation = m1.DepartingLocation;
+        this -> Destination = m1.Destination;
         this -> BaseCost = FindBaseCost(costs[this -> airline][this -> seatType],DepartingLocation,Destination);
         this -> ServiceFees = this -> BaseCost*AviationTax;
         this -> GST = BaseCost*GST;
