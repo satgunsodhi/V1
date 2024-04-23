@@ -13,7 +13,8 @@ class Hotel: public master
     char hotelName[40];
     char roomType[20];
     void display();
-    void PrintBill(const char * roomname, float people, int base);
+    void f1(const char * roomname, float people, int base);
+    int PrintBill();
     Hotel(master &m) : master("Ignore")
     {
         this->Destination.LocationId = m.Destination.LocationId;
@@ -45,13 +46,13 @@ void Hotel::display()
                 cin>>c2;
                 if(c2==1)
                 {
-                    PrintBill("King Room", 2.0,4000);
+                    f1("King Room", 2.0,4000);
                     break;
                 }
 
                 else if(c2==2)
                 {
-                    PrintBill("Deluxe Family Suite", 4.0,7000);
+                    f1("Deluxe Family Suite", 4.0,7000);
                     break;
                 }
                 else if(c2==3)
@@ -73,12 +74,12 @@ void Hotel::display()
                 cin>>c2;
                 if(c2==1)
                 {
-                    PrintBill("Double Room", 2.0,2000);
+                    f1("Double Room", 2.0,2000);
                     break;
                 }
                 else if(c2==2)
                 {
-                    PrintBill("Family Room with Balcony", 4.0,5000);
+                    f1("Family Room with Balcony", 4.0,5000);
                     break;
                 }
                 else if(c2==3)
@@ -120,12 +121,12 @@ void Hotel::display()
                 cin>>c2;
                 if(c2==1)
                 {
-                    PrintBill("King Room", 2.0,1000);
+                    f1("King Room", 2.0,1000);
                     break;
                 }
                 else if(c2==2)
                 {
-                    PrintBill("Deluxe Family Suite", 4.0,4000);
+                    f1("Deluxe Family Suite", 4.0,4000);
                     break;
                 }
                 else if(c2==3)
@@ -147,12 +148,12 @@ void Hotel::display()
                 cin>>c2;
                 if(c2==1)
                 {
-                    PrintBill("Double Room", 2.0,3000);
+                    f1("Double Room", 2.0,3000);
                     break;
                 }
                 else if(c2==2)
                 {
-                    PrintBill("Family Room with Balcony", 4.0,6000);
+                    f1("Family Room with Balcony", 4.0,6000);
                     break;
                 }
                 else if(c2==3)
@@ -194,12 +195,12 @@ void Hotel::display()
                 cin>>c2;
                 if(c2==1)
                 {
-                    PrintBill("King Room", 2.0,2000);
+                    f1("King Room", 2.0,2000);
                     break;
                 }
                 else if(c2==2)
                 {
-                    PrintBill("Deluxe Family Suite", 4.0,5000);
+                    f1("Deluxe Family Suite", 4.0,5000);
                     break;
                 }
                 else if(c2==3)
@@ -221,12 +222,12 @@ void Hotel::display()
                 cin>>c2;
                 if(c2==1)
                 {
-                    PrintBill("Double Room", 2.0,5000);
+                    f1("Double Room", 2.0,5000);
                     break;
                 }
                 else if(c2==2)
                 {
-                    PrintBill("Family Room with Balcony", 4.0,10000);
+                    f1("Family Room with Balcony", 4.0,10000);
                     break;
                 }
                 else if(c2==3)
@@ -252,7 +253,7 @@ void Hotel::display()
     }
     price=price*ceil(Duration.timeReadOut()/24);
 }
-void Hotel::PrintBill(const char * roomname, float people, int base) 
+void Hotel::f1(const char * roomname, float people, int base) 
 {
     strcpy(roomType, roomname);
     roomcount=ceil(NoofPassengers/people);
@@ -265,4 +266,8 @@ void Hotel::PrintBill(const char * roomname, float people, int base)
     cout<<"\n| GST= "<<GST<<"%";
     cout<<"\n| Total Price for Hotel along with additional(if needed): Rs."<<price;
     cout<<"\n-------------------------------------------------------------------------------\n";
+}
+
+int Hotel::PrintBill() {
+    return price;
 }

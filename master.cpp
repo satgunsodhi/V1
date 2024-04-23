@@ -81,7 +81,7 @@ class master {
     Location DepartingLocation;
     char NameOfPassenger[255];
     Location Destination;
-    char Route[255];
+    string Route;
     int BaseCost;
     float HandlingCharges = 150;
     float ServiceFees;
@@ -110,7 +110,7 @@ class master {
 
     master(const char * inp) {};
     virtual float FindBaseCost(int,Location, Location);
-    virtual float CalcGST(int);
+    virtual float CalcGST();
     virtual float CalcPrice();
     virtual int getRoute();
     virtual int PrintBill();
@@ -121,7 +121,7 @@ float master::FindBaseCost(int CostPerKm, Location a1, Location a2) {
     return CostPerKm*DistanceFinder(a1,a2);
 };
 
-float master::CalcGST(int BaseCost) {
+float master::CalcGST() {
     return GST*BaseCost;
 };
 
@@ -135,7 +135,9 @@ float DistanceFinder(Location a1, Location a2) {
 }
 
 float master::CalcPrice() {
-    return BaseCost;
+    float out = BaseCost+CalcGST()+HandlingCharges+ServiceFees;
+    cout << out;
+    return out;
 }
 
 int master::getRoute() {

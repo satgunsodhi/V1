@@ -22,22 +22,9 @@ class Plane: public master {
     int ChooseAirlines();
     int ChooseSeatType();
     float CalcPrice();
-    int PrintBill() {
-    cout << this ->airline << "Airlines" << endl;
-    cout << "your flight from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << " has been confirmed!" << endl << endl;
-    cout << "Tax Invoice: " << endl;
-    cout << "Name of Head Passenger: " << this -> NameOfPassenger << endl;
-    cout << "Number of Passengers: " << this -> NoofPassengers << endl;
-    cout << "Seat type: " << this -> seatType + 1<< endl;
-    cout << "Base Cost: " << this -> BaseCost << endl;
-    cout << "Aviation Tax: " << this -> ServiceFees << endl;
-    cout << "GST: " << GST << endl;
-    cout << "Grand Total: " << CalcPrice() << endl;
-    cout << "Thank you Flying with us!" << endl;
-    return 1;
-    }
 
     public:
+    int PrintBill();
     Plane(master& m1) : master("ignore")
 
     {
@@ -55,10 +42,6 @@ class Plane: public master {
         this -> BaseCost = FindBaseCost(costs[this -> airline][this -> seatType],DepartingLocation,Destination);
         this -> ServiceFees = this -> BaseCost*AviationTax;
         this -> GST = BaseCost*GST;
-        cout << "You have chosen " << airlines[this -> airline] << " airlines for your journey from " << this -> DepartingLocation.Name << " to " << this ->Destination.Name << endl;
-        cout << "Number of Passengers: " << this -> NoofPassengers << endl;
-        cout << "Your Seat Type is " << seatTypes[this -> seatType] << endl;
-        cout << "Your ticket price is Rs." << CalcPrice() << endl; 
     }
 
 };
@@ -114,3 +97,17 @@ float Plane:: CalcPrice()
     return NoofPassengers*(BaseCost + GST + ServiceFees);
 }
 
+int Plane::PrintBill() {
+    cout << this ->airline << "Airlines" << endl;
+    cout << "your flight from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << " has been confirmed!" << endl << endl;
+    cout << "Tax Invoice: " << endl;
+    cout << "Name of Head Passenger: " << this -> NameOfPassenger << endl;
+    cout << "Number of Passengers: " << this -> NoofPassengers << endl;
+    cout << "Seat type: " << this -> seatType + 1<< endl;
+    cout << "Base Cost: " << this -> BaseCost << endl;
+    cout << "Aviation Tax: " << this -> ServiceFees << endl;
+    cout << "GST: " << GST << endl;
+    cout << "Grand Total: " << CalcPrice() << endl;
+    cout << "Thank you Flying with us!" << endl;
+    return 1;
+}

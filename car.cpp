@@ -7,20 +7,19 @@ using namespace std;
 char places[][255] = {"Sikkim", "Goa", "Manali"};
 
 class Car: public master{
-protected:
-    int location;
-    int choice2;
-    int choice;
-    int distance = 0;
+    protected:
+        int location;
+        int choice2;
+        int choice;
+        int distance = 0;
 
-public:
+    public:
     Car() : distance(0) {}
-     Car (master &m): master("Ignore") {
+    Car (master &m): master("Ignore") {
         this-> Destination.LocationId = m.Destination.LocationId; // Location 1: Sikkim 2: Goa 3: Manali
         strcpy(NameOfPassenger,m.NameOfPassenger);
         this-> NoofPassengers = m.NoofPassengers;
         calculateFare();
-        printBill();
     }
     void calculateFare() {
         string * list;
@@ -53,7 +52,9 @@ public:
         for (int i = 0; i < 5; i++) {
             cout << list[i] << "\nDo you want to go to " << list[i] << "? [0: No, 1:Yes]: ";
             cin >> choice2;
-       if (choice2 == 1) {
+            fflush(stdout);
+            fflush(stdin);
+    if (choice2 == 1) {
                 distance += dist[i];
             }
         }
@@ -86,19 +87,22 @@ public:
         cout<<"Confirm your booking[0: No, 1: Yes]: ";
         cin>>choice;
         if(choice == 1){
-            cout<<"Booking Confirmed";
+            cout<<"Booking Confirmed\n";
         }
         else {
             distance=1;
             BaseCost=1;
         }
     }
-    void printBill(){
-        cout<<"CAR BOOKING"<<endl;
-        cout<<"Booking for:"<<NameOfPassenger << endl;
-        cout<<"Location selected:"<<places[Destination.LocationId]<<endl;
-        cout<<"Total distance:"<<distance<<endl;
-        cout<<"Total Fare:"<<BaseCost<<endl;
-        cout<<"THANK YOU";
+    int PrintBill(){
+        cout<<"--------------------------Car Booking--------------------------"<<endl;
+        cout<<"|    Booking for: "<<NameOfPassenger << endl;
+        cout<<"|    Location selected: "<<places[Destination.LocationId]<<endl;
+        cout<<"|    Total distance: "<<distance<<endl;
+        cout<<"|    HandlingFees: " << HandlingCharges << endl;
+        cout<<"|    ServiceFees: " << ServiceFees << endl;
+        cout<<"|    Total Fare: "<<BaseCost<<endl;
+        cout<<"\nWe thank you for choosing our new service!\n";
+        return CalcPrice();
     }
 };
