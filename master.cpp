@@ -95,21 +95,12 @@ class master {
         cout << "------------------------------------------------------------------------------------------------------\n";
         cout << "Please Enter Some Personal Info to get started!\n";
         cout << "Enter Name of head Passenger: ";
-<<<<<<< HEAD
         cin.getline(NameOfPassenger,255);
         cout << "How many of you will be travelling with us? ";
         cin >> NoofPassengers;
         cout << "\n\nWhere do you wish to visit? \n1. Sikkim\n2. Goa\n3. Manali\nEnter Choice as indicated: ";
         cin >> Destination.LocationId;
         cout << "\n\nWhere will you be travelling from?\n1. Mumbai\n2. Delhi\n3. Kolkata\nEnter Choice as indicated: ";
-=======
-        cin.getline(NameOfPassenger);
-        cout << "Enter No. of Passengers: ";
-        cin >> NoofPassengers;
-        cout << "Please Choose your destination Location: \n1. Sikkim\n2. Goa\n3. Manali\nChoice: ";
-        cin >> Destination.LocationId;
-        cout << "Please Choose your current Location: \n1. Sikkim\n2. Goa\n3. Manali\nChoice: ";
->>>>>>> 04b67c3b2e69fb721e83a6139c2cd3f8332b47f4
         cin >> DepartingLocation.LocationId;
     }
 
