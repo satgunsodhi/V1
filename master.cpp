@@ -42,6 +42,14 @@ class Time {
         this -> minute = rand() % (min_ub - min_lb + 1) + min_lb;
 
     }
+        void randomTimeGenerator() {
+        const int Hour_lb = 0, Hour_ub = 23;
+        const int min_lb = 0, min_ub = 59;
+
+        this -> hour = rand() % (Hour_ub - Hour_lb + 1) + Hour_lb;
+        this -> minute = rand() % (min_ub - min_lb + 1) + min_lb;
+
+    }
 };
 
 class Location {
