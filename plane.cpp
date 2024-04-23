@@ -50,8 +50,8 @@ void Plane::ShowAvailableFlights()
         cout << "[" << i+1 << "]  "<< airlines[i] << endl;
         cout << "Departure:" << t1 << endl;
         float time_of_flight = DistanceFinder(DepartingLocation,Destination) / (float)900;
-        Time FlightDuration((int)time_of_flight, time_of_flight%1);
-        cout << "Arrival:" t1 + FlightDuration << endl;
+        Time FlightDuration((int)time_of_flight, (int)(time_of_flight*100)%100,0);
+        cout << "Arrival:" << t1 + FlightDuration << endl;
         cout << "Duration: " << FlightDuration;
 
     }
