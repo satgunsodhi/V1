@@ -49,8 +49,8 @@ void Plane::ShowAvailableFlights()
         srand(time(NULL));
         cout << "[" << i+1 << "]  "<< airlines[i] << endl;
         cout << "Departure:" << t1 << endl;
-        float FlightDuration = DistanceFinder(DepartingLocation,Destination) / 900;
-        Duration.set()
+        float time_of_flight = DistanceFinder(DepartingLocation,Destination) / (float)900;
+        Time FlightDuration((int)time_of_flight, time_of_flight%1);
         cout << "Arrival:" t1 + FlightDuration << endl;
         cout << "Duration: " << FlightDuration;
 
@@ -79,7 +79,7 @@ int Plane::ChooseSeatType()
     cout << "Please Choose your Seat Type: " << endl;
     for(int i = 0; i < 3 ; i++)
     {
-        cout << "[" << i+1 << "]  "<< airlines[i];
+        cout << "[" << i+1 << "]  "<< seatTypes[i];
     }
     cout << endl << "Please Enter Choice: ";
     cin >> seatType;
@@ -88,5 +88,5 @@ int Plane::ChooseSeatType()
 }
 float Plane:: CalcPrice()
 {
-    return BaseCost + BaseCost*GST + ServiceFees;
+    return 2*(BaseCost + BaseCost*GST + ServiceFees);
 }
