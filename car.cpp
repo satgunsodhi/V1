@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
 using namespace std;
 
 class Car {
@@ -9,10 +10,12 @@ protected:
     string choice2;
     int distance;
 public:
-    // Default constructor
     Car() : distance(0) {}
-    // Copy constructor
-    Car(const Car &other) : location(other.location), choice2(other.choice2), distance(other.distance) {}
+     Car (Car &C1){
+        C1.location=this->location;
+        strcpy(C1.choice2,this->choice2);
+        C1.distance=this->distance;
+    }
 
     void selectLocation() {
         cout << "TOURIST PLACES" << endl;
@@ -20,8 +23,10 @@ public:
         cout << "Where do you want to go? ";
         cin >> location;
     }
+
     void calculateFare() {
         selectLocation();
+
         vector<string> list;
         vector<int> dist;
 
