@@ -24,7 +24,7 @@ class Plane: public master {
     int ChooseSeatType();
     float CalcPrice();
     void PrintBill();
-    void getLoc();
+    string getLoc();
 
     public:
     Plane(master& m1) : master("ignore")
