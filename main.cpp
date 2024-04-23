@@ -6,23 +6,24 @@
 #include "hotel.cpp"
 #include "car.cpp"
 #include "plane.cpp"
-//#include "package.cpp"
+#include "package.cpp"
 using namespace std;
 
 int main() {
     master m1;
     master *modeOfTransport;
-    cout << "Do you want custom/packages (1:Custom, 2:Package)?\nChoice: ";
+    cout << "\nDo you want custom/packages (1:Custom, 2:Package)?\nChoice: ";
     int choice;
     cin >> choice;
     if (choice == 1) {
         int mode;
         while(true) {
-            cout << "Enter your Method of travel (1:Plane, 2:Train): ";
+            cout << "\nWhich mode of you transport would you prefer? (1:Plane, 2:Train)\nEnter Choice as indicated:  ";
             cin >> mode;
             if(mode == 1) {
                 Plane p1(m1);
                 modeOfTransport = &p1;
+                modeOfTransport->PrintBill();
                 break;
             }
             else if (mode == 2) {
@@ -30,19 +31,36 @@ int main() {
                 modeOfTransport = &t1;
                 break;
             }
-            cout << "Invalid Input!";
+            cout << "Ah! It seems you have selected something outside of scope, Do Try Again!\n";
             continue;
         }
-        Hotel h1(m1);
-        Car c1(m1);
+        cout << "Would you wish to have a hotel reservation? [1:Yes, 0:No]: ";
+        cin >> choice;
+        if(choice == 1) {
+            Hotel h1(m1);
+        }
+        
+        cout << "What is the best way around town? Opt for our option car valet? [1:Yes, 2:No]";
+        cin >> choice;
+        if(choice == 1) {
+            Car c1(m1);
+        }
     }
     else if (choice == 2) {
-        //Package p1(m1);
+        Package p1(m1);
     }
-    cout << "The route chosen is: ";
+    cout << "\n----------------------------\n";
+    cout << "Trip Summary";
     modeOfTransport->getRoute();
     modeOfTransport->PrintBill();
-
-    // billing and payments
-    // exit
+    cout << "Would you like to settle the bill? [1:Yes, 0:No]";
+    cin >> choice;
+    if (choice != 1) {
+        cout << "It is a shame to let you go :(";
+        return 0;
+    }
+    cout << "\nBill Paid!"; 
+    cout << "\nYou have gotten one heck of a deal!\n";
+    cout << "Come back again for your next trip!\n";
+    cout << "Happy Travels!";
 }

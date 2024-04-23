@@ -13,7 +13,7 @@ class Hotel: public master
     char hotelName[40];
     char roomType[20];
     void display();
-    void f1(const char * roomname, int people, int base);
+    void PrintBill(const char * roomname, float people, int base);
     Hotel(master &m) : master("Ignore")
     {
         this->Destination.LocationId = m.Destination.LocationId;
@@ -45,17 +45,22 @@ void Hotel::display()
                 cin>>c2;
                 if(c2==1)
                 {
-                    f1("King Room", 2,4000);
+                    PrintBill("King Room", 2.0,4000);
                     break;
                 }
 
                 else if(c2==2)
                 {
-                    f1("Deluxe Family Suite", 4,7000);
+                    PrintBill("Deluxe Family Suite", 4.0,7000);
                     break;
                 }
                 else if(c2==3)
                 {
+                    continue;
+                }
+                else
+                {
+                    cout<<"Invalid Choice";
                     continue;
                 }
             }
@@ -68,22 +73,32 @@ void Hotel::display()
                 cin>>c2;
                 if(c2==1)
                 {
-                    f1("Double Room", 2,2000);
+                    PrintBill("Double Room", 2.0,2000);
                     break;
                 }
                 else if(c2==2)
                 {
-                    f1("Family Room with Balcony", 4,5000);
+                    PrintBill("Family Room with Balcony", 4.0,5000);
                     break;
                 }
                 else if(c2==3)
                 {
                     continue;
                 }
+                else
+                {
+                    cout<<"Invalid Choice";
+                    continue;
+                }
+            }
+            else if(c1==3)
+            {
+                break;
             }
             else
             {
-                break;
+                cout<<"Invalid Choice";
+                continue;
             }
         }
     }
@@ -105,16 +120,21 @@ void Hotel::display()
                 cin>>c2;
                 if(c2==1)
                 {
-                    f1("King Room", 2,1000);
+                    PrintBill("King Room", 2.0,1000);
                     break;
                 }
                 else if(c2==2)
                 {
-                    f1("Deluxe Family Suite", 4,4000);
+                    PrintBill("Deluxe Family Suite", 4.0,4000);
                     break;
                 }
                 else if(c2==3)
                 {
+                    continue;
+                }
+                else
+                {
+                    cout<<"Invalid Choice";
                     continue;
                 }
             }
@@ -127,22 +147,32 @@ void Hotel::display()
                 cin>>c2;
                 if(c2==1)
                 {
-                    f1("Double Room", 2,3000);
+                    PrintBill("Double Room", 2.0,3000);
                     break;
                 }
                 else if(c2==2)
                 {
-                    f1("Family Room with Balcony", 4,6000);
+                    PrintBill("Family Room with Balcony", 4.0,6000);
                     break;
                 }
                 else if(c2==3)
                 {
                     continue;
                 }
+                else
+                {
+                    cout<<"Invalid Choice";
+                    continue;
+                }
+            }
+            else if(c1==3)
+            {
+                break;
             }
             else
             {
-                break;
+                cout<<"Invalid Choice";
+                continue;
             }
         }
     }
@@ -164,16 +194,21 @@ void Hotel::display()
                 cin>>c2;
                 if(c2==1)
                 {
-                    f1("King Room", 2,2000);
+                    PrintBill("King Room", 2.0,2000);
                     break;
                 }
                 else if(c2==2)
                 {
-                    f1("Deluxe Family Suite", 4,5000);
+                    PrintBill("Deluxe Family Suite", 4.0,5000);
                     break;
                 }
                 else if(c2==3)
                 {
+                    continue;
+                }
+                else
+                {
+                    cout<<"Invalid Choice";
                     continue;
                 }
             }
@@ -186,32 +221,48 @@ void Hotel::display()
                 cin>>c2;
                 if(c2==1)
                 {
-                    f1("Double Room", 2,5000);
+                    PrintBill("Double Room", 2.0,5000);
                     break;
                 }
                 else if(c2==2)
                 {
-                    f1("Family Room with Balcony", 4,10000);
+                    PrintBill("Family Room with Balcony", 4.0,10000);
                     break;
                 }
                 else if(c2==3)
                 {
                     continue;
                 }
+                else
+                {
+                    cout<<"Invalid Choice";
+                    continue;
+                }
+            }
+            else if(c1==3)
+            {
+                break;
             }
             else
             {
-                break;
+                cout<<"Invalid Choice";
+                continue;
             }
         }
     }
     price=price*ceil(Duration.timeReadOut()/24);
 }
-void Hotel::f1(const char * roomname, int people, int base) 
+void Hotel::PrintBill(const char * roomname, float people, int base) 
 {
     strcpy(roomType, roomname);
     roomcount=ceil(NoofPassengers/people);
-    price=((base-roomcount)+(NoofPassengers-roomcount)*300)*(1+GST/100);
-    cout<<"\nPrice for Hotel: "<<price<<"\\-";
+    price=((base*roomcount)+(NoofPassengers-roomcount)*300)*(1+GST/100);
     cout<<"\nHotel Booked!!" << endl;
+    cout<<"\n--------------------------------------------------------------------------------";
+    cout<<"\n| Name of the Hotel: " << hotelName;
+    cout<<"\n| Type of Room: "<<roomType;
+    cout<<"\n| Number of Rooms: "<<roomcount;
+    cout<<"\n| GST= "<<GST<<"%";
+    cout<<"\n| Total Price for Hotel along with additional(if needed): Rs."<<price;
+    cout<<"\n-------------------------------------------------------------------------------\n";
 }
