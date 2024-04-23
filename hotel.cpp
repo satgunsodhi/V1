@@ -1,10 +1,10 @@
-#include "master.cpp"
-#include "main.cpp"
+//#include "master.cpp"
 #include <iostream>
 #include <ctype.h>
 #include <string.h>
 using namespace std;
 
+//class hotel: public location
 class Hotel
 {
     public:
@@ -24,9 +24,12 @@ class Hotel
     }
 };
 
-void Hotel::display()
+void Hotel::display(int location,int num)
 {
     int c1,c2;
+    //use num of people variable from master.cpp
+    int roomcount;
+    float price;
 
     //LOCATION 1-MANALI
     if(location==1)

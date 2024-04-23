@@ -17,7 +17,7 @@ class Plane: public master {
     void ShowAvailableFlights();
     int ChooseAirlines();
     int ChooseSeatType();
-    float CalculatePrice();
+    float CalcPrice();
 
 
     public:
@@ -32,7 +32,7 @@ class Plane: public master {
         cout << "You have chosen " << this -> airline << " airlines for your journey from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << endl;
         cout << "Number of Passengers: " << this -> NoofPassengers << endl;
         cout << "Your Seat Type is " << this -> seatType << endl;
-        cout << "Your ticket price is rs." << CalculatePrice() << endl; 
+        cout << "Your ticket price is rs." << CalcPrice() << endl; 
 
     }
 
@@ -45,9 +45,15 @@ void Plane::ShowAvailableFlights()
     for(int i = 0; i < 3; i++)
     {
         Time t1;
+        t1.randomTimeGenerator();
+        srand(time(NULL));
         cout << "[" << i+1 << "]  "<< airlines[i] << endl;
-        cout << "Departure:" t1.hours << " : " << t1.minute << ":" ;
-        cout << "Arrival:" t1.hours << " : " << t1.minute << ":" ;
+        cout << "Departure:" << t1 << endl;
+        float FlightDuration = DistanceFinder(DepartingLocation,Destination) / 900;
+        Duration.set()
+        cout << "Arrival:" t1 + FlightDuration << endl;
+        cout << "Duration: " << FlightDuration;
+
     }
     cout << endl << "Please Enter Choice: ";
     
@@ -59,6 +65,7 @@ int Plane::ChooseAirlines()
     cout << "Please Choose Airline: " << endl;
     for(int i = 0; i < 3; i++)
     {
+        
         cout << "[" << i+1 << "]  "<< airlines[i];
     }
     cout << endl << "Please Enter Choice: ";
@@ -79,7 +86,7 @@ int Plane::ChooseSeatType()
     return seatType;
 
 }
-float Plane:: CalculatePrice()
+float Plane:: CalcPrice()
 {
     return BaseCost + BaseCost*GST + ServiceFees;
 }

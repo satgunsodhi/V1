@@ -8,65 +8,87 @@ class Train:public master {
     protected:
     int NoofPassengers;
     int TrainType;
-    char Coach[3];
     Time Duration;
     int TrainNumber;
     int BerthNo;
     int TrainClass;
     Time DepartureTime;
-    float TrainSpeed;
-    float Distance;
+    float CateringCharge;
+    char Route[255];
     
     public:
-    Train(master& m) {
+    Train(master& m):master("Ignore") {
         
         NoofPassengers = m.NoofPassengers;
-        DepartingLocation = m.DepartingLocation;
-        Destination =  m.Destination;
-        ShowTrains();
-        cin >> TrainNumber;
-        setTrainInfo(TrainNumber);
+        DepartingLocation.LocationId = m.DepartingLocation.LocationId;
+        Destination.LocationId =  m.Destination.LocationId;
+        GetTrain();
 
-        ServiceFees = 15;
-        float CateringCharge = 400;
+        ServiceFees = 40; //Reservation Fees
+        float CateringCharge = 68;
         GST = 5;
     }
-    void ShowTrains();
+    int GetTrain();
     void PrintTrain();
-    void setTrainInfo(int TrainNumber);
+    void setTrainInfo(const char *, const char *, const char *, const char*, int, int);
+    float CalcPrice();
 };
 
 void Train::PrintTrain() {
         cout << "The Selected Train Booking is as follows:\n";
-        cout << DepartingLocation.Name << "To" << Destination.Name << endl;
-        cout << "Total Duration:" << DistanceFinder(DepartingLocation, Destination)/TrainSpeed;
+        cout << DepartingLocation.LocationPin << "To" << Destination.LocationPin << endl;
+        cout << "Total Duration:" << 1;
         cout << Duration;
 }
 
-void Train::setTrainInfo(int TrainNumber) {
-    TrainType;
-    BerthNo;
-    cin >> TrainClass;
-    DepartureTime;
-    Coach;
+void Train::setTrainInfo(const char * Station1, const char * Station2, const char * time,const char * info, int AC, int SL) {
+    strcpy(DepartingLocation.LocationPin, Station1);
+    strcpy(Destination.LocationPin, Station2);
+    strcpy(Route,strcat(strcat(DepartingLocation.LocationPin," - "), Destination.LocationPin));
+    Duration.set(time);
+    cout << Route << endl << Duration << endl << info << endl << "AC: " << AC << " SL: " << SL << endl; 
 }
 
-void Train::ShowTrains() {
-    // Location 1: Shimla
-    if (strcmp(DepartingLocation.Name, "Shimla")) {
-        
+int Train::GetTrain() {
+    int AC, SL;
+    static int Booked = 0;
+    cout << "Routes Available:\n";
+
+    // 1: Shimla, 2:Goa, 3:Manali
+    if((DepartingLocation.LocationId == 1 && Destination.LocationId == 2) || (Destination.LocationId == 1 && DepartingLocation.LocationId == 2) || TrainNumber == 1)  {
+        setTrainInfo("GOHAD ROAD" , "KALKAVIA VIA ETAWAH JN", "16h 57m", "Runs On: MTWTFSS", 441, 125);
+    }
+    
+    else if((DepartingLocation.LocationId == 1 && Destination.LocationId == 3) || (Destination.LocationId == 1 && DepartingLocation.LocationId == 3)) {
+        cout << "KALKA - AMBALA CANT JN"<< endl << "1h 18m"<< endl << "Runs On: MTWTFSS"<< endl << "AC: 490"<< endl << "SL: 820";
     }
 
-    else if(strcmp(DepartingLocation.Name, "Goa")) {
-        cout << "2 Routes Available:\n";
-        cout << "1. GOHAD ROAD - AMBALA CANT JN VIA GWALIOR";
-        cout << "Total Duration: 12h56m";
-        cout << "Runs on M T W T F S S";
-        cout << "2. GOHAR ROAD - KALKA VIA ETAWAH JN";
-        cout << "Total Duration: 16h57m";
+    else if((DepartingLocation.LocationId == 2 && Destination.LocationId == 3) || (Destination.LocationId == 2 && DepartingLocation.LocationId == 3)) {
+        cout << "GOHAD ROAD - AMBALA CANT JNVIA VIA GWALIOR" << "12h56m" << "Runs On:MTWTFSS"<< endl << "AC: 441" << endl << "SL: 125";
+        AC = 441; SL = 125; TrainNumber = 3;
     }
 
-    else if(strcmp(DepartingLocation.Name, "Manali")) {
-        
+    if(!Booked) {
+        cout << "Do you wish to confirm Booking? (0: No, 1:Yes): ";
+        int n;
+        cin >> n;
+        if (n != 1) {
+            return -1;
+        }
+        cout << "Choose Your SeatType: (1: AC, 2:SL): ";
+        cin >> TrainClass;
+        if(TrainClass == 1) {
+            BaseCost = AC;
+        }
+        else if(TrainClass == 2) {
+            BaseCost = SL;
+        }
+        Booked = 1;
+        cout << "Your Choices have been booked!";
     }
+    return 0;
+}
+
+float Train::CalcPrice() {
+    return BaseCost*(1+GST) + ServiceFees + CateringCharge;
 }
