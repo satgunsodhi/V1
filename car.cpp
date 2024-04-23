@@ -4,7 +4,7 @@
 #include "master.cpp"
 
 using namespace std;
-char places[][255] = {"Shimla", "Goa", "Manali"};
+char places[][255] = {"Sikkim", "Goa", "Manali"};
 
 class Car: public master{
 protected:
@@ -16,7 +16,7 @@ protected:
 public:
     Car() : distance(0) {}
      Car (master &m): master("Ignore") {
-        this-> Destination.LocationId = m.Destination.LocationId; // Location 1: Shimla 2: Goa 3: Manali
+        this-> Destination.LocationId = m.Destination.LocationId; // Location 1: Sikkim 2: Goa 3: Manali
         strcpy(NameOfPassenger,m.NameOfPassenger);
         this-> NoofPassengers = m.NoofPassengers;
         calculateFare();
@@ -25,21 +25,21 @@ public:
     void calculateFare() {
         string * list;
         int * dist;
-        if (Destination.LocationId == 1) {
+        if (Destination.LocationId == 2) {
             string l1[]= {"Aguada Fort", "Dudhsagar", "Panaji", "Baga beach", "Chapora Fort"};
             int d1[] = {100, 120, 25, 140, 80};
             list = l1;
             dist = d1;
         }
         
-        else if (Destination.LocationId== 2) {
+        else if (Destination.LocationId== 3) {
             string l1[] = {"Jogini falls", "Nehru kund", "Rohtang valley", "Mall road", "Hadimba devi temple"};
             int d1[] = {110, 76, 130, 95, 150};
             list = l1;
             dist = d1;
         }
 
-        else if (Destination.LocationId == 3) {
+        else if (Destination.LocationId == 1) {
             string l1[]= {"Buddha Park", "Hanuman tok", "Gurudongmar lake", "Gangtok", "Khangchendzonga national park"};
             int d1[] = {98, 76, 135, 87, 133};
             list = l1;

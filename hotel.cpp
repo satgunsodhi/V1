@@ -13,6 +13,7 @@ class Hotel: public master
     char hotelName[40];
     char roomType[20];
     void display();
+    int PrintBill();
     void f1(const char * roomname, int people, int base);
     Hotel(master &m) : master("Ignore")
     {
@@ -58,6 +59,11 @@ void Hotel::display()
                 {
                     continue;
                 }
+                else
+                {
+                    cout<<"Invalid Choice";
+                    continue;
+                }
             }
             else if(c1==2)
             {
@@ -80,10 +86,20 @@ void Hotel::display()
                 {
                     continue;
                 }
+                else
+                {
+                    cout<<"Invalid Choice";
+                    continue;
+                }
+            }
+            else if(c1==3)
+            {
+                break;
             }
             else
             {
-                break;
+                cout<<"Invalid Choice";
+                continue;
             }
         }
     }
@@ -117,6 +133,11 @@ void Hotel::display()
                 {
                     continue;
                 }
+                else
+                {
+                    cout<<"Invalid Choice";
+                    continue;
+                }
             }
             else if(c1==2)
             {
@@ -139,10 +160,20 @@ void Hotel::display()
                 {
                     continue;
                 }
+                else
+                {
+                    cout<<"Invalid Choice";
+                    continue;
+                }
+            }
+            else if(c1==3)
+            {
+                break;
             }
             else
             {
-                break;
+                cout<<"Invalid Choice";
+                continue;
             }
         }
     }
@@ -176,6 +207,11 @@ void Hotel::display()
                 {
                     continue;
                 }
+                else
+                {
+                    cout<<"Invalid Choice";
+                    continue;
+                }
             }
             else if(c1==2)
             {
@@ -198,10 +234,20 @@ void Hotel::display()
                 {
                     continue;
                 }
+                else
+                {
+                    cout<<"Invalid Choice";
+                    continue;
+                }
+            }
+            else if(c1==3)
+            {
+                break;
             }
             else
             {
-                break;
+                cout<<"Invalid Choice";
+                continue;
             }
         }
     }
@@ -212,6 +258,26 @@ void Hotel::f1(const char * roomname, int people, int base)
     strcpy(roomType, roomname);
     roomcount=ceil(NoofPassengers/people);
     price=((base-roomcount)+(NoofPassengers-roomcount)*300)*(1+GST/100);
-    cout<<"\nPrice for Hotel: "<<price<<"\\-";
     cout<<"\nHotel Booked!!" << endl;
+    //cout<<"check"<<price;
+    //here it prints correct
+    cout<<"\n-------------------------------------------------";
+    cout<<"\n| Name of the Hotel: "<<hotelName<<" |";
+    cout<<"\n| Type of Room: "<<roomType<<" |";
+    cout<<"\n| Number of Rooms: "<<roomcount<<" |";
+    cout<<"\n| GST= "<<GST<<"% |";
+    cout<<"\n| Total Price for Hotel along with additional(if needed): Rs."<<price<<" |";
+    cout<<"\n-------------------------------------------------\n";
+}
+int Hotel::PrintBill()
+{
+    //here it says 0
+    cout<<"\n--------------------------------------------------------------------------------";
+    cout<<"\n| Name of the Hotel: "<<hotelName<<"|";
+    cout<<"\n| Type of Room: "<<roomType<<"                                      |";
+    cout<<"\n| Number of Rooms: "<<roomcount<<"                                              |";
+    cout<<"\n| GST= "<<GST<<"%                                                       |";
+    cout<<"\n| Total Price for Hotel along with additional(if needed): Rs."<<price<<"    |";
+    cout<<"\n-------------------------------------------------------------------------------\n";
+    return 0;
 }

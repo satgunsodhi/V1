@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cmath>
 #include <cstring>
+#include <string>
 using namespace std;
 
 class Time {
@@ -54,7 +55,7 @@ class Location {
     float Longitude;
     friend float DistanceFinder(Location, Location);
     public:
-    char Name[255];
+    string Name;
     int LocationId;
     char LocationPin[255];
     Location(float latitude, float Longitude) {
@@ -91,12 +92,12 @@ class master {
     public:
     master() {
         cout << "Enter Name of head Passenger: ";
-        cin >> NameOfPassenger;
+        cin.getline(NameOfPassenger);
         cout << "Enter No. of Passengers: ";
         cin >> NoofPassengers;
-        cout << "Please Choose your destination Location: \n1. Shimla\n2. Goa\n3. Manali\nChoice: ";
+        cout << "Please Choose your destination Location: \n1. Sikkim\n2. Goa\n3. Manali\nChoice: ";
         cin >> Destination.LocationId;
-        cout << "Please Choose your current Location: \n1. Shimla\n2. Goa\n3. Manali\nChoice: ";
+        cout << "Please Choose your current Location: \n1. Sikkim\n2. Goa\n3. Manali\nChoice: ";
         cin >> DepartingLocation.LocationId;
     }
 
@@ -104,8 +105,9 @@ class master {
     virtual float FindBaseCost(int,Location, Location);
     virtual float CalcGST(int);
     virtual float CalcPrice();
-    virtual void getRoute();
-    virtual void PrintBill();
+    virtual int getRoute();
+    virtual int PrintBill();
+    virtual string getLoc(int);
 };
 
 float master::FindBaseCost(int CostPerKm, Location a1, Location a2) {
@@ -139,11 +141,27 @@ float master::CalcPrice() {
     return BaseCost;
 }
 
-void master::getRoute() {
+int master::getRoute() {
     cout << Route;
+    return 0;
 }
 
-void master::PrintBill() {
-    cout << 'a';
+int master::PrintBill() {
+    cout << "testMessage";
+    return 0;
+}
+
+string master:: getLoc(int location)
+{
+    if(location == 1)
+    {
+        return "Shimla";
+    }
+    else if(location == 2)
+    {
+        return "Goa";
+    }
+    return "Manali";
+
 }
 #endif

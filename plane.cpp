@@ -23,8 +23,20 @@ class Plane: public master {
     int ChooseAirlines();
     int ChooseSeatType();
     float CalcPrice();
-    void PrintBill();
-    string getLoc(int);
+    int PrintBill() {
+    cout << this ->airline << "Airlines" << endl ;
+    cout << "your flight from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << " has been confirmed!" << endl << endl;
+    cout << "Tax Invoice: ";
+    cout << "Name  of Head Passenger: " << this -> NameOfPassenger;
+    cout << "Number of Passengers: " << this -> NoofPassengers;
+    cout << "Seat type" << this -> seatType;
+    cout << "Base Cost: " << this -> BaseCost;
+    cout << "Aviation Tax: " << this -> ServiceFees;
+    cout << "GST: " << this -> GST;
+    cout << "Grand Total: " << CalcPrice() << endl;
+    cout << "Thank you Flying with us!";
+    return 1;
+    }
 
     public:
     Plane(master& m1) : master("ignore")
@@ -98,33 +110,7 @@ int Plane::ChooseSeatType()
 }
 float Plane:: CalcPrice()
 {
+    cout << "hello";
     return NoofPassengers*(BaseCost + GST + ServiceFees);
 }
-void Plane::PrintBill()
-{
-    cout << this ->airline << "Airlines" << endl ;
-    cout << "your flight from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << " has been confirmed!" << endl << endl;
-    cout << "Tax Invoice: ";
-    cout << "Name  of Head Passenger: " << this -> NameOfPassenger;
-    cout << "Number of Passengers: " << this -> NoofPassengers;
-    cout << "Seat type" << this -> seatType;
-    cout << "Base Cost: " << this -> BaseCost;
-    cout << "Aviation Tax: " << this -> ServiceFees;
-    cout << "GST: " << this -> GST;
-    cout << "Grand Total: " << CalcPrice() << endl;
-    cout << "Thank you Flying with us!";
 
-}
-string Plane:: getLoc(int location)
-{
-    if(location == 1)
-    {
-        return "Shimla";
-    }
-    else if(location == 2)
-    {
-        return "Goa";
-    }
-    return "Manali";
-
-}

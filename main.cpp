@@ -6,7 +6,7 @@
 #include "hotel.cpp"
 #include "car.cpp"
 #include "plane.cpp"
-//#include "package.cpp"
+#include "package.cpp"
 using namespace std;
 
 int main() {
@@ -34,12 +34,14 @@ int main() {
             continue;
         }
         Hotel h1(m1);
+        h1.PrintBill();
         Car c1(m1);
     }
     else if (choice == 2) {
-        //Package p1(m1);
+        Package p1(m1);
     }
-    cout << "The route chosen is: ";
+    cout << "\n----------------------------\n";
+    cout << "Trip Summary";
     modeOfTransport->getRoute();
     modeOfTransport->PrintBill();
 
