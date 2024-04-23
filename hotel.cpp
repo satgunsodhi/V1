@@ -5,22 +5,22 @@
 #include <cmath>
 using namespace std;
 
-class Hotel: public master,Location
+class Hotel: public master
 {
     public:
     int location;
     int num;
-    int duration;
+    Time duration;
     int roomcount;
     float price;
     char hotelName[40];
     char roomType[20];
     void display();
-    Hotel(int location,int noOfpeople,int duration)
+    Hotel(Hotel &h1)
     {
-        this->location=location;
-        this->num=noOfpeople;
-        this->duration=duration;
+        location = Destination.LocationId;
+        num = NoofPassengers;
+        duration = Duration;
     }
 };
 
@@ -216,5 +216,5 @@ void Hotel::display()
             }
         }
     }
-    price=price*duration;
+    //price=price*duration;
 }
