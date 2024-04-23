@@ -125,8 +125,6 @@ string Plane:: getLoc(int location)
     {
         return "Goa";
     }
-    else if(location == 3)
-    {
-        return "Manali";
-    }
+    return "Manali";
+
 }
