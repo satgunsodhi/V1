@@ -40,8 +40,8 @@ int main() {
         //Package p1(m1);
     }
     cout << "The route chosen is: ";
-    (*modeOfTransport).getRoute();
-    (*modeOfTransport).PrintBill();
+    modeOfTransport->getRoute();
+    modeOfTransport->PrintBill();
 
     // billing and payments
     // exit

@@ -45,7 +45,6 @@ class Plane: public master {
         cout << "Number of Passengers: " << this -> NoofPassengers << endl;
         cout << "Your Seat Type is " << seatTypes[this -> seatType] << endl;
         cout << "Your ticket price is Rs." << CalcPrice() << endl; 
-
     }
 
 };
