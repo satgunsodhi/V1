@@ -24,7 +24,7 @@ class Plane: public master {
     int ChooseSeatType();
     float CalcPrice();
     void PrintBill();
-
+    void getLoc();
 
     public:
     Plane(master& m1) : master("ignore")
@@ -39,7 +39,7 @@ class Plane: public master {
         this -> BaseCost = FindBaseCost(costs[this -> airline][this -> seatType],DepartingLocation,Destination);
         this -> ServiceFees = this -> BaseCost*AviationTax;
         this -> GST = BaseCost*GST;
-        cout << "You have chosen " << airlines[this -> airline] << " airlines for your journey from " << this -> DepartingLocation.Name << "to " << this -> Destination.Name << endl;
+        cout << "You have chosen " << airlines[this -> airline] << " airlines for your journey from " << this -> getLoc(DepartingLocation.LocationId) << "to " << this -> getLoc(Destination.LocationId) << endl;
         cout << "Number of Passengers: " << this -> NoofPassengers << endl;
         cout << "Your Seat Type is " << seatTypes[this -> seatType] << endl;
         cout << "Your ticket price is Rs." << CalcPrice() << endl; 
@@ -115,4 +115,18 @@ void Plane::PrintBill()
     cout << "Thank you Flying with us!";
 
 }
-
+string Plane:: getLoc(int location)
+{
+    if(location == 1)
+    {
+        return "Shimla";
+    }
+    else if(location == 2)
+    {
+        return "Goa";
+    }
+    else if(location == 3)
+    {
+        return "Manali";
+    }
+}
