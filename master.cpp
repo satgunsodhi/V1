@@ -34,21 +34,17 @@ class Time {
         this -> minute;
         this -> second = second;
     }
+
         void randomTimeGenerator() {
         const int Hour_lb = 0, Hour_ub = 23;
         const int min_lb = 0, min_ub = 59;
 
         this -> hour = rand() % (Hour_ub - Hour_lb + 1) + Hour_lb;
         this -> minute = rand() % (min_ub - min_lb + 1) + min_lb;
-
     }
-        void randomTimeGenerator() {
-        const int Hour_lb = 0, Hour_ub = 23;
-        const int min_lb = 0, min_ub = 59;
 
-        this -> hour = rand() % (Hour_ub - Hour_lb + 1) + Hour_lb;
-        this -> minute = rand() % (min_ub - min_lb + 1) + min_lb;
-
+    float timeReadOut() {
+        return hour+minute/60+second/3600;
     }
 };
 
@@ -81,11 +77,15 @@ class master {
     Location DepartingLocation;
     char NameOfPassenger[255];
     Location Destination;
+    char Route[255];
     int BaseCost;
     float HandlingCharges = 150;
     float ServiceFees;
     float GST;
     friend class Train;
+    friend class Plane;
+    friend class Car;
+    friend class Hotel;
 
     public:
     master() {
@@ -103,6 +103,7 @@ class master {
     virtual float FindBaseCost(int,Location, Location);
     virtual float CalcGST(int);
     virtual float CalcPrice();
+    virtual void getRoute();
 };
 
 float master::FindBaseCost(int CostPerKm, Location a1, Location a2) {
@@ -124,5 +125,9 @@ float DistanceFinder(Location a1, Location a2) {
 
 float master::CalcPrice() {
     return BaseCost;
+}
+
+void master::getRoute() {
+    cout << Route;
 }
 #endif

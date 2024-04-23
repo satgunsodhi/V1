@@ -3,8 +3,8 @@
 #include <cstring>
 #include <ctype.h>
 #include "train.cpp"
-//#include "hotel.cpp"
-//#include "car.cpp"
+#include "hotel.cpp"
+#include "car.cpp"
 #include "plane.cpp"
 //#include "package.cpp"
 using namespace std;
@@ -33,13 +33,14 @@ int main() {
             cout << "Invalid Input!";
             continue;
         }
-        //Hotel h1(m1);
-        //Car c1(m1);
+        Hotel h1(m1);
+        Car c1(m1);
     }
     else if (choice == 2) {
         //Package p1(m1);
     }
-    // final route
+    cout << "The route chosen is: ";
+    (*modeOfTransport).getRoute();
     // billing and payments
     // exit
 }

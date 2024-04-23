@@ -30,7 +30,7 @@ class Train:public master {
     }
     int GetTrain();
     void PrintTrain();
-    void setTrainInfo(const char *, const char *, const char *, const char*, int, int);
+    void setTrainInfo(const char *, const char *, int, int, const char*, int, int);
     float CalcPrice();
 };
 
@@ -41,11 +41,11 @@ void Train::PrintTrain() {
         cout << Duration;
 }
 
-void Train::setTrainInfo(const char * Station1, const char * Station2, const char * time,const char * info, int AC, int SL) {
+void Train::setTrainInfo(const char * Station1, const char * Station2, int hour, int minute,const char * info, int AC, int SL) {
     strcpy(DepartingLocation.LocationPin, Station1);
     strcpy(Destination.LocationPin, Station2);
     strcpy(Route,strcat(strcat(DepartingLocation.LocationPin," - "), Destination.LocationPin));
-    Duration.set(time);
+    Duration.set(hour, minute);
     cout << Route << endl << Duration << endl << info << endl << "AC: " << AC << " SL: " << SL << endl; 
 }
 
@@ -56,16 +56,15 @@ int Train::GetTrain() {
 
     // 1: Shimla, 2:Goa, 3:Manali
     if((DepartingLocation.LocationId == 1 && Destination.LocationId == 2) || (Destination.LocationId == 1 && DepartingLocation.LocationId == 2) || TrainNumber == 1)  {
-        setTrainInfo("GOHAD ROAD" , "KALKAVIA VIA ETAWAH JN", "16h 57m", "Runs On: MTWTFSS", 441, 125);
+        setTrainInfo("GOHAD ROAD" , "KALKAVIA VIA ETAWAH JN", 16, 57, "Runs On: MTWTFSS", 441, 125);
     }
     
     else if((DepartingLocation.LocationId == 1 && Destination.LocationId == 3) || (Destination.LocationId == 1 && DepartingLocation.LocationId == 3)) {
-        cout << "KALKA - AMBALA CANT JN"<< endl << "1h 18m"<< endl << "Runs On: MTWTFSS"<< endl << "AC: 490"<< endl << "SL: 820";
+        setTrainInfo("KALKA", "AMBALA CANT JN", 1, 18, "Runs On: MTWTFSS", 490, 820);
     }
 
     else if((DepartingLocation.LocationId == 2 && Destination.LocationId == 3) || (Destination.LocationId == 2 && DepartingLocation.LocationId == 3)) {
-        cout << "GOHAD ROAD - AMBALA CANT JNVIA VIA GWALIOR" << "12h56m" << "Runs On:MTWTFSS"<< endl << "AC: 441" << endl << "SL: 125";
-        AC = 441; SL = 125; TrainNumber = 3;
+        setTrainInfo("GOHAD ROAD", "AMBALA CANT JN VIA GWALIOR", 12, 56, "Runs On:MTWTFSS", 441, 225);
     }
 
     if(!Booked) {
@@ -84,7 +83,7 @@ int Train::GetTrain() {
             BaseCost = SL;
         }
         Booked = 1;
-        cout << "Your Choices have been booked!";
+        cout << "Your Choices have been booked!" << endl;
     }
     return 0;
 }
