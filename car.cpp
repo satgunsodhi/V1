@@ -7,6 +7,7 @@ using namespace std;
 char places[][255] = {"Sikkim", "Goa", "Manali"};
 
 //class to encapsulate data members and member functions needed for car
+//inherited master class
 class Car: public master{
     protected:
         int location;
