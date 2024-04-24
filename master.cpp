@@ -48,7 +48,8 @@ class Time {
         this -> minute = rand() % (min_ub - min_lb + 1) + min_lb;
     }
 
-    float timeReadOut() { // get an hour readout
+    float timeReadOut() { 
+        // get an hour readout
         return hour+minute/60+second/3600;
     }
 };
