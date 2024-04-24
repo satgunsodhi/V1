@@ -84,7 +84,6 @@ class Car: public master{
             cout<<"Which seater car do you prefer[5/7]: ";
             SetConsoleTextAttribute(hc, 0x0A);
             cin>>carType;
-            SetConsoleTextAttribute(hc, 0x07);
             //cost of car for 5 seater
             if(carType==5){
                 int num_cars = (NoofPassengers + 4) / 5;
@@ -114,6 +113,7 @@ class Car: public master{
     //function to print total car bill
     int PrintBill(){
         LineOne();
+        cout << "\t\t\t\t\t\t\tCar Booking\n";
         cout<<"|    Booking for: "<<NameOfPassenger << endl;
         cout<<"|    Location selected: "<<places[Destination.LocationId]<<endl;
         cout<<"|    Total distance: "<<distance<<endl;
