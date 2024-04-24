@@ -116,6 +116,7 @@ class Car: public master{
         cout<<"|    ServiceFees: " << ServiceFees << endl;
         cout<<"|    Total Fare: "<<CalcPrice()<<endl;
         cout<<"\nWe thank you for choosing our new service!\n";
+        //returns price to main function
         return CalcPrice();
     }
 };
