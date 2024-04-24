@@ -23,9 +23,11 @@ class Plane: public master {
     int ChooseAirlines();
     int ChooseSeatType();
     float CalcPrice();
+    int ConfirmBooking();
 
     public:
     int PrintBill();
+    int BookingConfirm;
     Plane(master& m1) : master("ignore") // Copy Constructor
     {
         this -> DepartingLocation = m1.DepartingLocation;
@@ -35,9 +37,20 @@ class Plane: public master {
         this -> seatType = ChooseSeatType() -1;
         this -> NoofPassengers = m1.NoofPassengers;
         strcpy(NameOfPassenger, m1.NameOfPassenger);
-        this -> BaseCost = FindBaseCost(costs[this -> airline][this -> seatType],DepartingLocation,Destination);
-        this -> ServiceFees = this -> BaseCost*AviationTax;
-        this -> GST = BaseCost*GST;
+        this -> BookingConfirm = ConfirmBooking();
+        if (BookingConfirm)
+        {
+            this -> BaseCost = FindBaseCost(costs[this -> airline][this -> seatType],DepartingLocation,Destination);
+            this -> ServiceFees = this -> BaseCost*AviationTax;
+            this -> GST = BaseCost*GST;
+        }
+        else
+        {
+            this -> BaseCost = 0;
+            this -> ServiceFees = 0;
+            this -> GST = 0;
+        }
+        
     }
 
 };
@@ -88,8 +101,23 @@ int Plane::ChooseAirlines() // Select Airlines
     return Airline;
     LineTwo();
 }
-int ConfirmBooking()
-{return 0;}
+int Plane::ConfirmBooking()
+{
+    char confirm;
+    LineTwo();
+    cout << "Confirm Booking [Y/N]:";
+    SetConsoleTextAttribute(hc, 0x0A);
+    cin >> confirm;
+    SetConsoleTextAttribute(hc, 0x07);
+    if (confirm == 'Y' || confirm == 'y')
+    {
+        cout << "Booking confirmed!\n";
+        return 1;
+    }
+    cout << "Booking not confirmed!\n";
+    return 0;
+    
+}
 int Plane::ChooseSeatType() // Select SeatType
 {
     int seatType;
