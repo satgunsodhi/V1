@@ -102,8 +102,8 @@ class Car: public master{
         cout<<"|    Total distance: "<<distance<<endl;
         cout<<"|    HandlingFees: " << HandlingCharges << endl;
         cout<<"|    ServiceFees: " << ServiceFees << endl;
-        cout<<"|    Total Fare: "<<CalcPrice()<<endl;
+        cout<<"|    Total Fare: "<<calculateFare()<<endl;
         cout<<"\nWe thank you for choosing our new service!\n";
-        return CalcPrice();
+        return calculateFare();
     }
 };
