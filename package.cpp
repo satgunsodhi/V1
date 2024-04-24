@@ -109,9 +109,9 @@ int run(string destination, int NoofPassengers) {
     // Array to store pre-made packages
     const int numPackages = 9;
     Trip packages[numPackages] = {
-        Trip("Shimla", car, budgetHotel, 2, "Itinerary for Shimla:\nDay 1: Arrival and check-in at the hotel.\nDay 2: Sightseeing around the city.\nDay 3: Departure."),
-        Trip("Shimla", train, standardHotel, 4, "Itinerary for Shimla:\nDay 1: Arrival and check-in at the hotel.\nDay 2-3: Explore local attractions.\nDay 4: Departure."),
-        Trip("Shimla", plane, luxuryHotel, 6, "Itinerary for Shimla:\nDay 1: Arrival and transfer to the hotel.\nDay 2-4: Enjoy leisure activities and city tours.\nDay 5: Departure."),
+        Trip("Shimla", car, budgetHotel, 2, "Itinerary for Sikkim:\nDay 1: Arrival and check-in at the hotel.\nDay 2: Sightseeing around the city.\nDay 3: Departure."),
+        Trip("Shimla", train, standardHotel, 4, "Itinerary for Sikkim:\nDay 1: Arrival and check-in at the hotel.\nDay 2-3: Explore local attractions.\nDay 4: Departure."),
+        Trip("Shimla", plane, luxuryHotel, 6, "Itinerary for Sikkim:\nDay 1: Arrival and transfer to the hotel.\nDay 2-4: Enjoy leisure activities and city tours.\nDay 5: Departure."),
         Trip("Manali", car, standardHotel, 3, "Itinerary for Manali:\nDay 1: Arrival and check-in at the hotel.\nDay 2: Explore nearby attractions.\nDay 3: Departure."),
         Trip("Manali", train, luxuryHotel, 2, "Itinerary for Manali:\nDay 1: Arrival and transfer to the luxury hotel.\nDay 2: Enjoy spa and relaxation.\nDay 3: Departure."),
         Trip("Manali", plane, budgetHotel, 5, "Itinerary for Manali:\nDay 1: Arrival and check-in at the budget hotel.\nDay 2-4: Visit tourist attractions.\nDay 5: Departure."),
