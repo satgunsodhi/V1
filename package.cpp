@@ -2,7 +2,7 @@
 #include <cstring>
 #include "master.cpp"
 
-using namespace std;
+using namespace std; // Function prototype
 
 int run(string, int);
 
