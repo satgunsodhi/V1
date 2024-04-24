@@ -29,11 +29,15 @@ int main() {
             SetConsoleTextAttribute(hc, 0x0A);
             cin >> mode;
             SetConsoleTextAttribute(hc, 0x07);
+            LineOne();
             if(mode == 1) {
                 FlightBanner();
                 Plane p1(m1);
                 modeOfTransport = &p1;
-                price += p1.PrintBill(); // printing bill and adding return value calcprice to global price
+                if (p1.BookingConfirm)
+                {
+                    price += p1.PrintBill(); // printing bill and adding return value calcprice to global price
+                }
                 Sleep(5000);
                 LineOne();
                 break;
@@ -83,7 +87,6 @@ int main() {
     // billing, payments and summary
     BillingBanner();
     cout << "\n----------------------------------------------Trip Summary------------------------------------------------------------------------\n";
-    cout << modeOfTransport->getRoute();
     cout << "Total Cost for Trip: " << price << endl;
     cout << "Would you like to settle the bill? [1:Yes, 0:No]: ";
     SetConsoleTextAttribute(hc, 0x0A);
@@ -93,6 +96,7 @@ int main() {
         cout << "It is a shame to let you go :(";
         return 0;
     }
+    LineOne();
     cout << "\nBill Paid!\n";
 
     // exit

@@ -54,6 +54,7 @@ class Train:public master {
 
 void Train::setTrainInfo(float ti, float distance, const char * info, int AC, int SL) {
     Route = DepartingLocation.Name + " - " + Destination.Name; // defining route
+    cout << DistanceFinder(DepartingLocation,Destination);
     Duration.set((int)ti, round((ti-(int)ti)*60)); // set function for hour and minute
     cout << Route << endl << Duration << endl << info << endl << "AC: " << AC << " SL: " << SL << endl; 
 }
@@ -65,7 +66,7 @@ int Train::GetTrain() {
     cout << "\nWe found these routes for you!\n\n";
 
     // 1: Shimla, 2:Goa, 3:Manali
-    setTrainInfo(DistanceFinder(DepartingLocation, Destination)/380, DistanceFinder(DepartingLocation, Destination),"Runs on MTWTFSS",AC, SL);
+    setTrainInfo(DistanceFinder(DepartingLocation, Destination)/120, DistanceFinder(DepartingLocation, Destination),"Runs on MTWTFSS",AC, SL);
 
     if(!Booked) {
         // booking if not nooked

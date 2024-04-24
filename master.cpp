@@ -7,6 +7,85 @@
 #include "banners.cpp"
 using namespace std;
 
+
+class Date
+{
+    int date;
+    int month;
+    int year;
+
+    public:
+    Date(int date, int month, int year)
+    {
+        this ->date = date;
+        this ->month = month;
+        this ->year = year;
+    }
+    Date()
+    {
+        this ->date = 0;
+        this ->month = 0;
+        this ->year = 0;
+    }
+
+    string DisplayDate()
+    {
+        return to_string(date) + "/" + to_string(month) + "/" + to_string(year); 
+    }
+    void setDate() 
+    {
+        cout << endl << "When would you like to Travel?" << endl;
+        int days30[] = {4,6,9,11};
+        int days31[] = {1,3,5,7,8,10,12};
+        while (true)
+        {
+            cout << "DD: ";
+            SetConsoleTextAttribute(hc, 0x0A);
+            cin >> date;
+            SetConsoleTextAttribute(hc, 0x07);
+            cout << "MM: ";
+            SetConsoleTextAttribute(hc, 0x0A);
+            cin >> month;
+            SetConsoleTextAttribute(hc, 0x07);
+            year = 2024;
+
+            if (month > 12 || month < 1)
+            {
+                cout << "Invalid Date";
+                setDate();
+                return ;
+            }
+            
+            for (int i = 0; i < sizeof(days30)/sizeof(days30[0]); i++)
+            {
+                if (month == days30[i] && (date > 30 || date < 0))
+                {
+                    cout << "Invalid Date";
+                    setDate();
+                    return ;
+                }
+                
+            }
+            for (int i = 0; i < sizeof(days31)/sizeof(days31[0]); i++)
+            {
+                if (month == days31[i] && (date > 31 || date < 0))
+                {
+                    cout << "Invalid Date";
+                    setDate();
+                    return ;
+                }
+                
+            }
+            if (month == 2 && (date > 29 || date < 0))
+            {
+                cout << "Invalid Date";
+                setDate();
+                return ;
+            }
+            break;
+        }
+    }
+};
 //creating time class
 class Time {
     private:
@@ -64,7 +143,7 @@ class Location {
     string Name;
     int LocationId;
     char LocationPin[255];
-    void set(float latitude, float Longitude) {
+    void set(float Latitude, float Longitude) {
         this -> Latitude = Latitude*3.14152/180;
         this -> Longitude = Longitude*3.14152/180;
     }
@@ -86,6 +165,7 @@ class master {
     // defining base variables
     protected:
     Time Duration;
+    Date date;
     int NoofPassengers;
     Location DepartingLocation;
     char NameOfPassenger[255];
@@ -95,6 +175,7 @@ class master {
     float HandlingCharges = 150;
     float ServiceFees;
     float GST;
+
 
     // letting other classes use master's private variables
     friend class Train;
@@ -106,7 +187,7 @@ class master {
     public:
     master() { 
         // default constructor
-        cout << "\t\t\t\t\tWelcome To GetSetJourneys Travels!\n";
+        cout << "\n\t\t\t\t\tWelcome To GetSetJourneys Travels!\n";
         cout << "---------------------------------------------------------------------------------------------------------------------------\n";
         cout << "Please Enter Some Personal Info to get started!\n";
         cout << "Enter Name of head Passenger: ";
@@ -126,6 +207,11 @@ class master {
         cin >> DepartingLocation.LocationId;
         SetConsoleTextAttribute(hc, 0x07);
         setloc(Destination, DepartingLocation); // adding name to both location objects
+        date.setDate();
+        SetConsoleTextAttribute(hc, 0x0A);
+        cout << endl << "Searching for Trips on "<< date.DisplayDate() << "....." << endl << endl;
+        SetConsoleTextAttribute(hc, 0x07);
+        Sleep(1000);
     }
 
     master(const char * inp) {}; // adding so default constructor is not called in derived classes
