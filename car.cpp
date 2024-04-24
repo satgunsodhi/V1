@@ -78,7 +78,7 @@ class Car: public master{
                 BaseCost = distance * num_cars * 19.5;
             }
             else if(carType==7){
-                int num_cars = (NoofPassengers + 4) / 7;
+                int num_cars = (NoofPassengers + 6) / 7;
                 BaseCost = distance * num_cars * 33;
             }
             else{
