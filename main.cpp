@@ -73,7 +73,7 @@ int main() {
         cout << "It is a shame to let you go :(";
         return 0;
     }
-    cout << "\nBill Paid!";
+    cout << "\nBill Paid!\n";
 
     // exit
     LineTwo();
