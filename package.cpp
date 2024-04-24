@@ -2,45 +2,57 @@
 #include <cstring>
 #include "master.cpp"
 
-using namespace std; // Function prototype
+using namespace std; 
 
-int run(string, int);
+int run(string, int); // Function prototype
 
+// Use of copy constructor
 class Package : public master {
     public:
+    // Constructor initializing Package object with a master object
     Package(master &m1) : master("Ignore") {
+        // Initialize Package object with values from the provided master object
         this -> NoofPassengers = m1.NoofPassengers;
         strcpy(NameOfPassenger, m1.NameOfPassenger);
         DepartingLocation.LocationId = m1.DepartingLocation.LocationId;
         Destination.LocationId = m1.Destination.LocationId;
         Destination.Name = m1.Destination.Name;
+        // Run a function to process the destination and number of passengers
         run(Destination.Name, NoofPassengers);
     }
+    // Function to print bill
     int PrintBill() {return 0;};
 };
 
+// Class 'Option' to represent customizable options
 class Option {
 public:
     string name;
     double cost;
 
+    // Constructor to initialize option with name and cost
     Option(const string& name, double cost) : name(name), cost(cost) {}
 };
 
+// Class 'Transportation' derived from 'Option'
 class Transportation : public Option {
 public:
     string mode;
 
+    // Constructor to initialize transportation with mode and cost
     Transportation(const string& mode, double cost) : Option(mode, cost), mode(mode) {}
 };
 
+// Class 'Accommodation' derived from 'Option'
 class Accommodation : public Option {
 public:
     int num_rooms;
 
+    // Constructor to initialize accommodation with name, cost, and number of rooms
     Accommodation(const string& name, double cost, int num_rooms) : Option(name, cost), num_rooms(num_rooms) {}
 };
 
+// Class 'Trip' to represent a travel package
 class Trip {
 private:
     Transportation transport;
@@ -51,20 +63,24 @@ private:
     string destination;
 
 public:
+    // Constructor to initialize a Trip object with destination, transport, accommodation, number of people, and itinerary
     Trip(const string& destination, const Transportation& transport, const Accommodation& accommodation, int num_people, const string& itinerary)
         : destination(destination), transport(transport), accommodation(accommodation), num_people(num_people), itinerary(itinerary) {
         total_cost = calculateTripCost();
     }
 
+    // Function to calculate the total cost of the trip
     double calculateTripCost() const {
         return transport.cost * num_people + accommodation.cost;
     }
 
+    // Get functions to access the trip details
     double getTotalCost() const { return total_cost; }
     int getNumPeople() const { return num_people; }
     int getNumRooms() const { return accommodation.num_rooms; }
     const string& getDestination() const { return destination; }
-
+    
+    // Function to display trip details
     void display() const {
         cout << "Destination: " << destination << endl;
         cout << "Transportation: " << transport.mode << endl;
@@ -76,6 +92,7 @@ public:
     }
 };
 
+// Function to display available packages meeting specified criteria
 void displayAvailablePackages(const Trip* packages, int numPackages, const string& destination, double Cost, int Passengers, int Rooms) {
     cout << "Available Packages for " << destination << ":" << endl;
     for (int i = 0; i < numPackages; ++i) {
@@ -90,11 +107,13 @@ void displayAvailablePackages(const Trip* packages, int numPackages, const strin
     }
 }
 
+// Function to print receipt for the chosen package
 void printReceipt(const Trip& chosenPackage) {
     cout << "Receipt for the chosen tour package:" << endl;
     chosenPackage.display();
 }
 
+// Function to process destination and number of passengers
 int run(string destination, int NoofPassengers) {
     // Transportation options
     Transportation car("Car", 50.0);
@@ -129,6 +148,7 @@ int run(string destination, int NoofPassengers) {
     cin >> Rooms;
     bool packagesAvailable = false;
     do {
+        // Display available packages based on user preferences
         displayAvailablePackages(packages, numPackages, destination, Cost, Passengers, Rooms);
         for (int i = 0; i < numPackages; ++i) {
             const Trip& package = packages[i];
@@ -141,6 +161,7 @@ int run(string destination, int NoofPassengers) {
             }
         }
 
+        // If no packages meet the criteria, prompt user to adjust preferences
         if (!packagesAvailable) {
             cout << "No packages available for the given details. ";
             cout << "Please adjust your preferences.\n";
