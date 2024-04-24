@@ -76,6 +76,7 @@ int main() {
     cout << "\nBill Paid!";
 
     // exit
+    LineTwo();
     cout << "\nYou have gotten one heck of a deal!\n";
     cout << "Come back again for your next trip!\n";
     cout << "Happy Travels!\n";

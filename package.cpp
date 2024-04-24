@@ -120,9 +120,9 @@ void printReceipt(const Trip& chosenPackage) {
 // This is the main logic for travel package application which defines options, takes user preferences, displays matching travel packages and allows user to choose one.
 int run(string destination, int NoofPassengers) {
     // Transportation options
-    Transportation car("Car", 50.0);
-    Transportation train("Train", 100.0);
-    Transportation plane("Plane", 200.0);
+    Transportation car("Car", 100.0);
+    Transportation train("Train", 200.0);
+    Transportation plane("Plane", 300.0);
 
     // Accommodation options
     Accommodation budgetHotel("Budget Hotel", 50.0, 1);

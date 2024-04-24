@@ -23,6 +23,7 @@ class Train:public master {
         NoofPassengers = m.NoofPassengers;
         DepartingLocation = m.DepartingLocation;
         Destination =  m.Destination;
+        // taking inputs
         GetTrain();
 
         ServiceFees = 40; //Reservation Fees
@@ -47,14 +48,15 @@ class Train:public master {
 };
 
 void Train::setTrainInfo(float ti, float distance, const char * info, int AC, int SL) {
-    Route = DepartingLocation.Name + " - " + Destination.Name;
-    Duration.set((int)ti, round((ti-(int)ti)*60));
+    Route = DepartingLocation.Name + " - " + Destination.Name; // defining route
+    Duration.set((int)ti, round((ti-(int)ti)*60)); // set function for hour and minute
     cout << Route << endl << Duration << endl << info << endl << "AC: " << AC << " SL: " << SL << endl; 
 }
 
 int Train::GetTrain() {
     int AC = 441, SL = 225;
     static int Booked = 0;
+    LineOne();
     cout << "\nWe found these routes for you!\n\n";
 
     // 1: Shimla, 2:Goa, 3:Manali

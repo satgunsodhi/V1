@@ -190,6 +190,7 @@ void master::setloc(Location &Destination, Location &DepartingLocation) {
     case 3:
         DepartingLocation.Name = "Kolkata";
         DepartingLocation.set(22.5726, 88.3639);
+        break;
     }
 }
 #endif
