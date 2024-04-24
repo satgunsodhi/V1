@@ -6,7 +6,8 @@
 using namespace std;
 char places[][255] = {"Sikkim", "Goa", "Manali"};
 
-//class to encapsulate data members and member functions needed for CARS
+//class to encapsulate data members and member functions needed for car
+//inherited master class
 class Car: public master{
     protected:
         int location;
@@ -15,6 +16,7 @@ class Car: public master{
         int distance = 0;
 
     public:
+    //copy constructor
     Car() : distance(0) {}
     //copy constructor
     Car (master &m): master("Ignore") {
@@ -24,24 +26,27 @@ class Car: public master{
         ServiceFees = 50;
         calculateFare();
     }
+    //function to calculate fare
     void calculateFare() {
         string * list;
         int * dist;
-        //Tourist places and distance for Goa
+        
+        //fare for location - goa
         if (Destination.LocationId == 2) {
             string l1[]= {"Aguada Fort", "Dudhsagar", "Panaji", "Baga beach", "Chapora Fort"};
             int d1[] = {100, 120, 25, 140, 80};
             list = l1;
             dist = d1;
         }
-        //Tourist places and distance for Manali
+        
+        //fare for location - manali
         else if (Destination.LocationId== 3) {
             string l1[] = {"Jogini falls", "Nehru kund", "Rohtang valley", "Mall road", "Hadimba devi temple"};
             int d1[] = {110, 76, 130, 95, 150};
             list = l1;
             dist = d1;
         }
-        //Tourist places and distance for Sikkim
+        //fare for location - sikkim
         else if (Destination.LocationId == 1) {
             string l1[]= {"Buddha Park", "Hanuman tok", "Gurudongmar lake", "Gangtok", "Khangchendzonga national park"};
             int d1[] = {98, 76, 135, 87, 133};
@@ -65,6 +70,7 @@ class Car: public master{
         
         ////choosing car type and calculating the BaseCost
         int carType;
+        //entering cost according to number of passengers
         if((NoofPassengers==0)||(NoofPassengers<0)){
             cout<<"retry";
         }
@@ -77,10 +83,12 @@ class Car: public master{
         else{
             cout<<"Which seater car do you prefer[5/7]: ";
             cin>>carType;
+            //cost of car for 5 seater
             if(carType==5){
                 int num_cars = (NoofPassengers + 4) / 5;
                 BaseCost = distance * num_cars * 19.5;
             }
+            //cost of car for 7 seater
             else if(carType==7){
                 int num_cars = (NoofPassengers + 6) / 7;
                 BaseCost = distance * num_cars * 33;
@@ -89,7 +97,7 @@ class Car: public master{
                 cout<<"Please enter between 5 or 7";
             }
         }
-        //confirming booking
+        //menu option to confirm booking
         cout<<"Confirm your booking[0: No, 1: Yes]: ";
         cin>>choice;
         if(choice == 1){
@@ -100,7 +108,7 @@ class Car: public master{
             BaseCost=1;
         }
     }
-    //displaying the final bill
+    //function to print total car bill
     int PrintBill(){
         LineOne();
         cout << "\t\t\t\t\t\t\tCar Booking\n";
@@ -111,6 +119,7 @@ class Car: public master{
         cout<<"|    ServiceFees: " << ServiceFees << endl;
         cout<<"|    Total Fare: Rs."<<CalcPrice()<<endl;
         cout<<"\nWe thank you for choosing our new service!\n";
+        //returns price to main function
         return CalcPrice();
     }
 };

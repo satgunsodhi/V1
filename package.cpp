@@ -2,56 +2,60 @@
 #include <cstring>
 #include "master.cpp"
 
-using namespace std; // Function prototype
+using namespace std; 
 
-int run(string, int);
+int run(string, int); // Function prototype, this is the forward declaration of run which will be defined later.
 
-// Package class inheriting from 'master' class
+// Inherits from master class in public mode.
 class Package : public master {
     public:
-    // Copy constructor
+    // Use of copy contrusctor.
     Package(master &m1) : master("Ignore") {
-        // Copying data from 'master' object to 'Package' object
+        // the constructor copies data from an object of master and then calls run to initialize the booking process.
         this -> NoofPassengers = m1.NoofPassengers;
         strcpy(NameOfPassenger, m1.NameOfPassenger);
         DepartingLocation.LocationId = m1.DepartingLocation.LocationId;
         Destination.LocationId = m1.Destination.LocationId;
         Destination.Name = m1.Destination.Name;
+        // Run a function to process the destination and number of passengers
         run(Destination.Name, NoofPassengers);
     }
-    int PrintBill() {return 0;}; // Printing bill 
+    // Function to print bill (placeholder).
+    int PrintBill() {return 0;};
 };
 
-// Option class for package option
+// 'Option' is a base class for travel-related services with subclasses 'Transportation' and 'Accomodation'.
 class Option {
 public:
     string name;
     double cost;
 
-    // Constructor initializing name and cost
+    // Constructor to initialize option with name and cost.
     Option(const string& name, double cost) : name(name), cost(cost) {}
 };
 
-// Transportation class inheriting from Option class
+// Class 'Transportation' derived from 'Option' in public mode of inheritance.
 class Transportation : public Option {
 public:
     string mode;
 
-    // Constructor initializing mode and cost using Option constructor
+    // Constructor to initialize transportation with mode and cost.
     Transportation(const string& mode, double cost) : Option(mode, cost), mode(mode) {}
 };
 
-// Accommodation class inheriting from Option class
+// Class 'Accommodation' derived from 'Option' in public mode of inheritance.
 class Accommodation : public Option {
 public:
     int num_rooms;
 
-    // Constructor initializing name, cost, and number of rooms using Option constructor
+    // Constructor to initialize accommodation with name, cost, and number of rooms.
     Accommodation(const string& name, double cost, int num_rooms) : Option(name, cost), num_rooms(num_rooms) {}
 };
 
-// Trip class representing a trip package
-class Trip {
+// The class 'Trip' manages a travel package, encapsulating transportation, accomodation, number of people, total cost, an itinerary, and a destination.(in private mode)
+// Also contains methods to compute trip costs, display details and other getters.
+class Trip 
+{
 private:
     Transportation transport;
     Accommodation accommodation;
@@ -61,24 +65,24 @@ private:
     string destination;
 
 public:
-    // Constructor initializing trip details
+    // Constructor to initialize a Trip object with destination, transport, accommodation, number of people, and itinerary.
     Trip(const string& destination, const Transportation& transport, const Accommodation& accommodation, int num_people, const string& itinerary)
         : destination(destination), transport(transport), accommodation(accommodation), num_people(num_people), itinerary(itinerary) {
         total_cost = calculateTripCost();
     }
 
-    // Function to calculate total cost of the trip
+    // Function to calculate the total cost of the trip.
     double calculateTripCost() const {
         return transport.cost * num_people * accommodation.cost * 10;
     }
 
-    // Get functions for trip details
+    // Get functions to access the trip details.
     double getTotalCost() const { return total_cost; }
     int getNumPeople() const { return num_people; }
     int getNumRooms() const { return accommodation.num_rooms; }
     const string& getDestination() const { return destination; }
-
-    // Functions to display trip details
+    
+    // Function to display trip details.
     void display() const {
         cout << "Destination: " << destination << endl;
         cout << "Transportation: " << transport.mode << endl;
@@ -90,7 +94,7 @@ public:
     }
 };
 
-// Function to display available packages for a destination based on user preferences
+// Function to display available packages meeting specified criteria using FOR loop.
 void displayAvailablePackages(const Trip* packages, int numPackages, const string& destination, double Cost, int Passengers, int Rooms) {
     cout << "Available Packages for " << destination << ":" << endl;
     for (int i = 0; i < numPackages; ++i) {
@@ -106,12 +110,14 @@ void displayAvailablePackages(const Trip* packages, int numPackages, const strin
     }
 }
 
-// Function to print receipt
+// Function to print receipt for the chosen package.
 void printReceipt(const Trip& chosenPackage) {
     cout << "Receipt for the chosen tour package:" << endl;
     chosenPackage.display();
 }
 
+// Function to process destination and number of passengers.
+// This is the main logic for travel package application which defines options, takes user preferences, displays matching travel packages and allows user to choose one.
 int run(string destination, int NoofPassengers) {
     // Transportation options
     Transportation car("Car", 50.0);
@@ -146,7 +152,7 @@ int run(string destination, int NoofPassengers) {
     cin >> Rooms;
     bool packagesAvailable = false;
     do {
-        // Loop until suitable packages are found
+        // Display available packages based on user preferences of destination, cost, passengers and room capacity.
         displayAvailablePackages(packages, numPackages, destination, Cost, Passengers, Rooms);
         for (int i = 0; i < numPackages; ++i) {
             const Trip& package = packages[i];
@@ -158,7 +164,8 @@ int run(string destination, int NoofPassengers) {
                 break;
             }
         }
-        // If no suitable packages found, prompt user to adjust preferences
+
+        // If no packages meet the criteria, prompt user to adjust preferences
         if (!packagesAvailable) {
             cout << "No packages available for the given details. ";
             cout << "Please adjust your preferences.\n";
