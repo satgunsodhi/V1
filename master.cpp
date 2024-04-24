@@ -64,7 +64,7 @@ class Location {
     string Name;
     int LocationId;
     char LocationPin[255];
-    void set(float latitude, float Longitude) {
+    void set(float Latitude, float Longitude) {
         this -> Latitude = Latitude*3.14152/180;
         this -> Longitude = Longitude*3.14152/180;
     }
@@ -218,3 +218,10 @@ void master::setloc(Location &Destination, Location &DepartingLocation) {
     }
 }
 #endif
+
+int main() {
+    Location a1,a2;
+    a1.set(0,77);
+    a2.set(21,66);
+    cout << DistanceFinder(a1,a2);
+}
