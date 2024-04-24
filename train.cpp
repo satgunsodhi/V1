@@ -65,7 +65,13 @@ int Train::GetTrain() {
     if(!Booked) {
         // booking if not nooked
         cout << "\nHow comfortable do you wish to be? [1: AC, 2:SL]: ";
-        cin >> TrainClass;
+        while (true) {
+            cin >> TrainClass;
+            if(TrainClass == 1 || TrainClass == 2) {
+                break;
+            }
+            cout << "Uh Oh, That class dosent exist! Enter a choice from the given options: ";
+        }
         if(TrainClass == 1) {
             BaseCost = AC;
         }
@@ -74,7 +80,13 @@ int Train::GetTrain() {
         }
         cout << "\nDo you wish to confirm Booking? [0: No, 1:Yes]: ";
         int n;
-        cin >> n;
+        while (true) {
+            cin >> n;
+            if(n == 0 || n == 1) {
+                break;
+            }
+            cout << "Coudn't get that, please enter your choice again: ";
+        }
         if (n != 1) { // error checking
             return -1;
         }
