@@ -3,8 +3,9 @@
 #include "master.cpp"
 using namespace std;
 
+//creating a derived class train from master base class
 class Train:public master {
-
+    //creating variables that were not inherited
     protected:
     int NoofPassengers;
     int TrainType;
@@ -18,20 +19,21 @@ class Train:public master {
     
     public:
     Train(master& m):master("Ignore") {
-        
+        // copy constructor
         NoofPassengers = m.NoofPassengers;
         DepartingLocation = m.DepartingLocation;
         Destination =  m.Destination;
         GetTrain();
 
         ServiceFees = 40; //Reservation Fees
-        CateringCharge = 68;
+        CateringCharge = 68; // price for catering
         GST = 5;
     }
-    int GetTrain();
-    void setTrainInfo(float, float, const char*, int, int);
-    float CalcPrice();
+    int GetTrain(); // gets user input
+    void setTrainInfo(float, float, const char*, int, int); // sets internal variables
+    float CalcPrice();  // calculates final price
     int PrintBill() {
+        // get a bill representation
         LineOne();
         cout << "                           Train Booking";
         cout << "|  Route Chosen: " << Route << endl;
@@ -59,6 +61,7 @@ int Train::GetTrain() {
     setTrainInfo(DistanceFinder(DepartingLocation, Destination)/380, DistanceFinder(DepartingLocation, Destination),"Runs on MTWTFSS",AC, SL);
 
     if(!Booked) {
+        // booking if not nooked
         cout << "\nHow comfortable do you wish to be? [1: AC, 2:SL]: ";
         cin >> TrainClass;
         if(TrainClass == 1) {
@@ -70,7 +73,7 @@ int Train::GetTrain() {
         cout << "\nDo you wish to confirm Booking? [0: No, 1:Yes]: ";
         int n;
         cin >> n;
-        if (n != 1) {
+        if (n != 1) { // error checking
             return -1;
         }
         Booked = 1;
@@ -80,5 +83,6 @@ int Train::GetTrain() {
 }
 
 float Train::CalcPrice() {
+    // calculate final price
     return BaseCost*(1+GST) + ServiceFees + CateringCharge;
 }
