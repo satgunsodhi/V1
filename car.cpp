@@ -30,7 +30,7 @@ class Car: public master{
         string * list;
         int * dist;
         
-        //fare for location - goa
+        //distance and location stored in array - goa
         if (Destination.LocationId == 2) {
             string l1[]= {"Aguada Fort", "Dudhsagar", "Panaji", "Baga beach", "Chapora Fort"};
             int d1[] = {100, 120, 25, 140, 80};
@@ -38,14 +38,14 @@ class Car: public master{
             dist = d1;
         }
         
-        //fare for location - Manali
+        //distance and location stored in array- Manali
         else if (Destination.LocationId== 3) {
             string l1[] = {"Jogini Falls ", "Nehru Kund", "Rohtang Valley", "Mall Road", "Hadimba Devi temple"};
             int d1[] = {110, 76, 130, 95, 150};
             list = l1;
             dist = d1;
         }
-        //fare for location - Sikkim
+        //distance and location stored in array- Sikkim
         else if (Destination.LocationId == 1) {
             string l1[]= {"Buddha Park", "Hanuman tok", "Gurudongmar Lake", "Gangtok", "Khangchendzonga National Park"};
             int d1[] = {98, 76, 135, 87, 133};

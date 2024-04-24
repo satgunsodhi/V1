@@ -23,25 +23,34 @@ class Plane: public master {
     int ChooseAirlines();
     int ChooseSeatType();
     float CalcPrice();
+    int ConfirmBooking();
 
     public:
     int PrintBill();
+    int BookingConfirm;
     Plane(master& m1) : master("ignore") // Copy Constructor
     {
-        this -> DepartingLocation.LocationId = m1.DepartingLocation.LocationId;
-        this -> Destination.LocationId = m1.Destination.LocationId;
+        this -> DepartingLocation = m1.DepartingLocation;
+        this -> Destination = m1.Destination;
         ShowAvailableFlights();
         this -> airline = ChooseAirlines() -1;
         this -> seatType = ChooseSeatType() -1;
         this -> NoofPassengers = m1.NoofPassengers;
-        this -> DepartingLocation.LocationId = m1.DepartingLocation.LocationId;
-        this -> Destination.LocationId = m1.Destination.LocationId;
-        this -> Destination.Name = m1.Destination.Name;
-        this -> DepartingLocation.Name = m1.DepartingLocation.Name;
         strcpy(NameOfPassenger, m1.NameOfPassenger);
-        this -> BaseCost = FindBaseCost(costs[this -> airline][this -> seatType],DepartingLocation,Destination);
-        this -> ServiceFees = this -> BaseCost*AviationTax;
-        this -> GST = BaseCost*GST;
+        this -> BookingConfirm = ConfirmBooking();
+        if (BookingConfirm)
+        {
+            this -> BaseCost = FindBaseCost(costs[this -> airline][this -> seatType],DepartingLocation,Destination);
+            this -> ServiceFees = this -> BaseCost*AviationTax;
+            this -> GST = BaseCost*GST;
+        }
+        else
+        {
+            this -> BaseCost = 0;
+            this -> ServiceFees = 0;
+            this -> GST = 0;
+        }
+        
     }
 
 };
@@ -57,7 +66,7 @@ void Plane::ShowAvailableFlights() //Listing all Availalbe Flights
         srand(time(NULL));
         cout << "[" << i+1 << "]  "<< airlines[i] << endl;
         cout << "Departure:" << t1 << endl;
-        float time_of_flight = DistanceFinder(DepartingLocation,Destination) / (float)900;
+        float time_of_flight = DistanceFinder(DepartingLocation,Destination) / 900;
         cout << "Duration: " << (int)time_of_flight << "hrs " << (int)((time_of_flight-(int)time_of_flight) * 60) << "mins"<< endl;
         LineTwo();
     }
@@ -92,8 +101,23 @@ int Plane::ChooseAirlines() // Select Airlines
     return Airline;
     LineTwo();
 }
-int ConfirmBooking()
-{return 0;}
+int Plane::ConfirmBooking()
+{
+    char confirm;
+    LineTwo();
+    cout << "Confirm Booking [Y/N]:";
+    SetConsoleTextAttribute(hc, 0x0A);
+    cin >> confirm;
+    SetConsoleTextAttribute(hc, 0x07);
+    if (confirm == 'Y' || confirm == 'y')
+    {
+        cout << "Booking confirmed!\n";
+        return 1;
+    }
+    cout << "Booking not confirmed!\n";
+    return 0;
+    
+}
 int Plane::ChooseSeatType() // Select SeatType
 {
     int seatType;
