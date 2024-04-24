@@ -60,7 +60,9 @@ class Car: public master{
         //choosing tourist places 
         for (int i = 0; i < 5; i++) {
             cout << list[i] << "\nDo you want to go to " << list[i] << "? [0: No, 1:Yes]: ";
+            SetConsoleTextAttribute(hc, 0x0A);
             cin >> choice2;
+            SetConsoleTextAttribute(hc, 0x07);
             fflush(stdout);
             fflush(stdin);
             if (choice2 == 1) {
@@ -82,7 +84,9 @@ class Car: public master{
         }
         else{
             cout<<"Which seater car do you prefer[5/7]: ";
+            SetConsoleTextAttribute(hc, 0x0A);
             cin>>carType;
+            SetConsoleTextAttribute(hc, 0x07);
             //cost of car for 5 seater
             if(carType==5){
                 int num_cars = (NoofPassengers + 4) / 5;
@@ -99,7 +103,9 @@ class Car: public master{
         }
         //menu option to confirm booking
         cout<<"Confirm your booking[0: No, 1: Yes]: ";
+        SetConsoleTextAttribute(hc, 0x0A);
         cin>>choice;
+        SetConsoleTextAttribute(hc, 0x07);
         if(choice == 1){
             cout<<"Booking Confirmed\n";
         }

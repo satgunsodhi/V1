@@ -103,13 +103,21 @@ class master {
         cout << "---------------------------------------------------------------------------------------------------------------------------\n";
         cout << "Please Enter Some Personal Info to get started!\n";
         cout << "Enter Name of head Passenger: ";
+        SetConsoleTextAttribute(hc, 0x0A);
         cin.getline(NameOfPassenger,255);
+        SetConsoleTextAttribute(hc, 0x07);
         cout << "How many of you will be travelling with us? ";
+        SetConsoleTextAttribute(hc, 0x0A);
         cin >> NoofPassengers;
+        SetConsoleTextAttribute(hc, 0x07);
         cout << "\n\nWhere do you wish to visit? \n1. Sikkim\n2. Goa\n3. Manali\nEnter Choice as indicated: ";
+        SetConsoleTextAttribute(hc, 0x0A);
         cin >> Destination.LocationId;
+        SetConsoleTextAttribute(hc, 0x07);
         cout << "\n\nWhere will you be travelling from?\n1. Mumbai\n2. Delhi\n3. Kolkata\nEnter Choice as indicated: ";
+        SetConsoleTextAttribute(hc, 0x0A);
         cin >> DepartingLocation.LocationId;
+        SetConsoleTextAttribute(hc, 0x07);
         setloc(Destination, DepartingLocation); // adding name to both location objects
     }
 

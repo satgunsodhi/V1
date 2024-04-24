@@ -65,7 +65,9 @@ int Train::GetTrain() {
     if(!Booked) {
         // booking if not nooked
         cout << "\nHow comfortable do you wish to be? [1: AC, 2:SL]: ";
+        SetConsoleTextAttribute(hc, 0x0A);
         cin >> TrainClass;
+        SetConsoleTextAttribute(hc, 0x07);
         if(TrainClass == 1) {
             BaseCost = AC;
         }
@@ -74,7 +76,9 @@ int Train::GetTrain() {
         }
         cout << "\nDo you wish to confirm Booking? [0: No, 1:Yes]: ";
         int n;
+        SetConsoleTextAttribute(hc, 0x0A);
         cin >> n;
+        SetConsoleTextAttribute(hc, 0x07);
         if (n != 1) { // error checking
             return -1;
         }
