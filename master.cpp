@@ -70,7 +70,8 @@ class Location {
     }
     Location() {};
 
-    void operator=(const Location &loc) { // operator overload
+    void operator=(const Location &loc) { 
+        // assignment operator overload
         Latitude = loc.Latitude;
         Longitude = loc.Longitude;
         Name = loc.Name;
@@ -81,6 +82,7 @@ class Location {
 
 // creating a class for everyone to inherit from
 class master {
+
     // defining base variables
     protected:
     Time Duration;
@@ -93,6 +95,7 @@ class master {
     float HandlingCharges = 150;
     float ServiceFees;
     float GST;
+
     // letting other classes use master's private variables
     friend class Train;
     friend class Plane;
@@ -101,7 +104,8 @@ class master {
     friend class Package;
 
     public:
-    master() { // default constructor
+    master() { 
+        // default constructor
         cout << "\t\t\t\t\tWelcome To GetSetJourneys Travels!\n";
         cout << "---------------------------------------------------------------------------------------------------------------------------\n";
         cout << "Please Enter Some Personal Info to get started!\n";
@@ -118,7 +122,7 @@ class master {
 
     master(const char * inp) {}; // adding so default constructor is not called in derived classes
 
-    // defining some defualt functions for derived classes to use
+    // defining some default functions for derived classes to use
     virtual float FindBaseCost(int,Location, Location);
     virtual float CalcGST();
     virtual float CalcPrice();
