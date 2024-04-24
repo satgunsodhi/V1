@@ -154,7 +154,16 @@ ostream & operator << (ostream &out,  Time &time) {
 
 float DistanceFinder(Location a1, Location a2) {
     // calculating distance from latitude and longitude
-    return acos(sin(a1.Latitude)*sin(a2.Latitude)+cos(a1.Latitude)*cos(a2.Latitude)*cos(a2.Longitude-a1.Longitude))*6371;
+    fflush(stdin);
+    float R = 6371;
+    float r1 = a1.Latitude;
+    float r2 = a2.Latitude;
+    float phi = a2.Latitude - a1.Latitude;
+    float lam = a2.Longitude - a1.Longitude;
+    float a = sin(phi/2)*sin(phi/2)+cos(a1.Latitude)*cos(a2.Latitude)*sin(lam/2)*sin(lam/2);
+    float c = 2*atan2(sqrt(a), sqrt(1-a));
+    float d = R * c;
+    return d; 
 }
 
 float master::CalcPrice() {

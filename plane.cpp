@@ -92,6 +92,8 @@ int Plane::ChooseAirlines() // Select Airlines
     return Airline;
     LineTwo();
 }
+int ConfirmBooking()
+{return 0;}
 int Plane::ChooseSeatType() // Select SeatType
 {
     int seatType;

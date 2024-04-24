@@ -24,11 +24,16 @@ class Train:public master {
         DepartingLocation = m.DepartingLocation;
         Destination =  m.Destination;
         // taking inputs
-        GetTrain();
 
         ServiceFees = 40; //Reservation Fees
         CateringCharge = 68; // price for catering
         GST = 5;
+        
+        if(GetTrain()) {
+            BaseCost = 0;
+            ServiceFees = 0;
+            GST = 0;
+        }
     }
     int GetTrain(); // gets user input
     void setTrainInfo(float, float, const char*, int, int); // sets internal variables
@@ -36,7 +41,7 @@ class Train:public master {
     int PrintBill() {
         // get a bill representation
         LineOne();
-        cout << "                           Train Booking";
+        cout << "                           Train Booking\n";
         cout << "|  Route Chosen: " << Route << endl;
         cout << "|  Train Fare: " << BaseCost << endl;
         cout << "|  Catering Charges: " << CateringCharge << endl;
