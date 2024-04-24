@@ -74,10 +74,26 @@ int Plane::ChooseAirlines() // Select Airlines
         cout << "[" << i+1 << "]  "<< airlines[i] << endl;
     }
     cout << endl << "Please Enter Choice: ";
-    cin >> Airline;
+    while (true) // Boundary Condition
+    {
+        SetConsoleTextAttribute(hc, 0x0A);
+        cin >> Airline;
+        SetConsoleTextAttribute(hc, 0x07);
+        if( Airline >= 4 || Airline < 1)
+        {
+            cout << endl << "Please Select from the given options." << endl;
+        }
+        else
+        {
+            break;
+        }
+    }
+    
     return Airline;
     LineTwo();
 }
+int ConfirmBooking()
+{return 0;}
 int Plane::ChooseSeatType() // Select SeatType
 {
     int seatType;
@@ -87,7 +103,20 @@ int Plane::ChooseSeatType() // Select SeatType
         cout << "[" << i+1 << "]  "<< seatTypes[i] << endl;
     }
     cout << endl << "Enter choice as indicated: ";
-    cin >> seatType;
+    while (true) //Boundary Condition
+    {
+        SetConsoleTextAttribute(hc, 0x0A);
+        cin >> seatType;
+        SetConsoleTextAttribute(hc, 0x07);
+        if( seatType >= 4 || seatType < 1)
+        {
+            cout << endl << "Please Select from the given options." << endl;
+        }
+        else
+        {
+            break;
+        }
+    }
     return seatType;
     LineTwo();
 }
@@ -99,17 +128,17 @@ float Plane:: CalcPrice() //Function to Claculate Price
 //Function to Print Bill
 int Plane::PrintBill() {
     LineTwo();
-    cout << airlines[this ->airline] << "Airlines" << endl;
-    cout << "your flight from " << this -> DepartingLocation.Name << " to " << this -> Destination.Name << " has been confirmed!" << endl << endl;
-    cout << "Tax Invoice: " << endl;
-    cout << "Name of Head Passenger: " << this -> NameOfPassenger << endl;
-    cout << "Number of Passengers: " << this -> NoofPassengers << endl;
-    cout << "Seat type: " << this -> seatType + 1<< endl;
-    cout << "Base Cost: " << this -> BaseCost << endl;
-    cout << "Aviation Tax: " << this -> ServiceFees << endl;
-    cout << "GST: " << GST << endl;
-    cout << "Grand Total: " << CalcPrice() << endl;
-    cout << "Thank you Flying with us!" << endl;
+    cout << "|  " << airlines[this ->airline] << " Airlines" << endl;
+    cout << "|  " << "your flight from " << this -> DepartingLocation.Name << " to " << this -> Destination.Name << " has been confirmed!" << endl << endl;
+    cout << "|  " << "Tax Invoice: " << endl << endl;
+    cout << "|  " << "Name of Head Passenger: " << this -> NameOfPassenger << endl;
+    cout << "|  " << "Number of Passengers: " << this -> NoofPassengers << endl;
+    cout << "|  " << "Seat type: " << this -> seatType + 1<< endl;
+    cout << "|  " << "Base Cost: " << this -> BaseCost << endl;
+    cout << "|  " << "Aviation Tax: " << this -> ServiceFees << endl;
+    cout << "|  " << "GST: " << GST << endl;
+    cout << "|  " << "Grand Total: " << CalcPrice() << endl;
+    cout << "|  " << "Thank you Flying with us!" << endl;
     LineTwo();
     return CalcPrice();
 }

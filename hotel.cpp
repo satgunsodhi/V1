@@ -24,7 +24,9 @@ class Hotel: public master
         this-> NoofPassengers = m.NoofPassengers;
         cout << "How many nights do you intend to stay? ";
         int days;
+        SetConsoleTextAttribute(hc, 0x0A);
         cin >> days;
+        SetConsoleTextAttribute(hc, 0x07);
         Duration.set(days*24,0);
         GST=12;
         getDATA();
@@ -43,7 +45,9 @@ void Hotel::getDATA()
             //Menu for user to choose hotel
             cout<<"\nMAIN MENU:"<<endl<<"1. The Royal Majestic Mountain View"<<endl<<"2. Hotel New Meadows Inn"<<endl<<"3. Exit";
             cout<<"\nEnter your choice: ";
+            SetConsoleTextAttribute(hc, 0x0A);
             cin>>c1;
+            SetConsoleTextAttribute(hc, 0x07);
             if(c1==1)
             {
                 strcpy(hotelName,"The Royal Majestic Mountain View");
@@ -51,7 +55,9 @@ void Hotel::getDATA()
                 //menu for user to choose room type
                 cout<<"\nMENU:"<<endl<<"1. King Room (2 guests max,4000/-)"<<endl<<"2. Deluxe Family Suite (4 guests max,7000/-)"<<endl<<"3. Go back to MAIN";
                 cout<<"\nChoose room type: ";
+                SetConsoleTextAttribute(hc, 0x0A);
                 cin>>c2;
+                SetConsoleTextAttribute(hc, 0x07);
                 if(c2==1)
                 {
                     //Function call to calculate and display price
@@ -80,7 +86,9 @@ void Hotel::getDATA()
                 cout<<"\nFACILITIES AVAILABLE: Complementary Brekafast, Free WIFI, Spa and Sauna\n";
                 cout<<"\nMENU:"<<endl<<"1. Double Room (2 guests max,2000/-)"<<endl<<"2. Family Room with Balcony (4 guests max,5000/-)"<<endl<<"3. Go back to MAIN";
                 cout<<"\nChoose room type: ";
+                SetConsoleTextAttribute(hc, 0x0A);
                 cin>>c2;
+                SetConsoleTextAttribute(hc, 0x07);
                 if(c2==1)
                 {
                     price("Double Room", 2.0,2000);
@@ -120,14 +128,18 @@ void Hotel::getDATA()
         {
             cout<<"\nMAIN MENU:"<<endl<<"1. Casa De Goa"<<endl<<"2. The Fern Habitat"<<endl<<"3. Exit";
             cout<<"\nEnter your choice: ";
+            SetConsoleTextAttribute(hc, 0x0A);
             cin>>c1;
+            SetConsoleTextAttribute(hc, 0x07);
             if(c1==1)
             {
                 strcpy(hotelName,"Casa De Goa");
                 cout<<"\nFACILITIES AVAILABLE: Complementary Breakfast, Free Parking and WIFI, Pool and Gym inclusive";
                 cout<<"\nMENU:"<<endl<<"1. King Room (2 guests max,1000/-)"<<endl<<"2. Deluxe Family Suite (4 guests max,4000/-)"<<endl<<"3. Go back to MAIN";
                 cout<<"\nChoose room type: ";
+                SetConsoleTextAttribute(hc, 0x0A);
                 cin>>c2;
+                SetConsoleTextAttribute(hc, 0x07);
                 if(c2==1)
                 {
                     price("King Room", 2.0,1000);
@@ -154,7 +166,9 @@ void Hotel::getDATA()
                 cout<<"\nFACILITIES AVAILABLE: Complementary Brekafast, Free WIFI, Spa and Sauna";
                 cout<<"\nMENU:"<<endl<<"1. Double Room (2 guests max,3000/-)"<<endl<<"2. Family Room with Balcony (4 guests max,6000/-)"<<endl<<"3. Go back to MAIN";
                 cout<<"\nChoose room type: ";
+                SetConsoleTextAttribute(hc, 0x0A);
                 cin>>c2;
+                SetConsoleTextAttribute(hc, 0x07);
                 if(c2==1)
                 {
                     price("Double Room", 2.0,3000);
@@ -194,14 +208,18 @@ void Hotel::getDATA()
         {
             cout<<"\nMAIN MENU:"<<endl<<"1. Golden Crescent"<<endl<<"2. Vivanta"<<endl<<"3. Exit";
             cout<<"\nEnter your choice: ";
+            SetConsoleTextAttribute(hc, 0x0A);
             cin>>c1;
+            SetConsoleTextAttribute(hc, 0x07);
             if(c1==1)
             {
                 strcpy(hotelName,"Golden Crescent");
                 cout<<"\nFACILITIES AVAILABLE: Complementary Breakfast, Free Parking and WIFI, Pool and Gym inclusive";
                 cout<<"\nMENU:"<<endl<<"1. King Room (2 guests max, 2000/-)"<<endl<<"2. Deluxe Family Suite (4 guests max, 5000/-)"<<endl<<"3. Go back to MAIN";
                 cout<<"\nChoose room type: ";
+                SetConsoleTextAttribute(hc, 0x0A);
                 cin>>c2;
+                SetConsoleTextAttribute(hc, 0x07);
                 if(c2==1)
                 {
                     price("King Room", 2.0,2000);
@@ -228,7 +246,9 @@ void Hotel::getDATA()
                 cout<<"\nFACILITIES AVAILABLE: Complementary Brekafast, Free WIFI, Spa and Sauna";
                 cout<<"\nMENU:"<<endl<<"1. Double Room (2 guests max, 5000/-)"<<endl<<"2. Family Room with Balcony (4 guests max, 10000/-)"<<endl<<"3. Go back to MAIN";
                 cout<<"\nChoose room type: ";
+                SetConsoleTextAttribute(hc, 0x0A);
                 cin>>c2;
+                SetConsoleTextAttribute(hc, 0x07);
                 if(c2==1)
                 {
                     price("Double Room", 2.0,5000);
