@@ -28,16 +28,12 @@ class Plane: public master {
     int PrintBill();
     Plane(master& m1) : master("ignore") // Copy Constructor
     {
-        this -> DepartingLocation.LocationId = m1.DepartingLocation.LocationId;
-        this -> Destination.LocationId = m1.Destination.LocationId;
+        this -> DepartingLocation = m1.DepartingLocation;
+        this -> Destination = m1.Destination;
         ShowAvailableFlights();
         this -> airline = ChooseAirlines() -1;
         this -> seatType = ChooseSeatType() -1;
         this -> NoofPassengers = m1.NoofPassengers;
-        this -> DepartingLocation.LocationId = m1.DepartingLocation.LocationId;
-        this -> Destination.LocationId = m1.Destination.LocationId;
-        this -> Destination.Name = m1.Destination.Name;
-        this -> DepartingLocation.Name = m1.DepartingLocation.Name;
         strcpy(NameOfPassenger, m1.NameOfPassenger);
         this -> BaseCost = FindBaseCost(costs[this -> airline][this -> seatType],DepartingLocation,Destination);
         this -> ServiceFees = this -> BaseCost*AviationTax;
@@ -57,7 +53,8 @@ void Plane::ShowAvailableFlights() //Listing all Availalbe Flights
         srand(time(NULL));
         cout << "[" << i+1 << "]  "<< airlines[i] << endl;
         cout << "Departure:" << t1 << endl;
-        float time_of_flight = DistanceFinder(DepartingLocation,Destination) / (float)900;
+        float time_of_flight = DistanceFinder(DepartingLocation,Destination) / 900;
+        cout << time_of_flight;
         cout << "Duration: " << (int)time_of_flight << "hrs " << (int)((time_of_flight-(int)time_of_flight) * 60) << "mins"<< endl;
         LineTwo();
     }
