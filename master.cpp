@@ -24,7 +24,8 @@ class Time {
     }
     friend ostream & operator << (ostream &out, Time &loc);
 
-    Time operator+(Time const &t1) { // operator overloading
+    Time operator+(Time const &t1) { 
+        // operator overloading
         Time out;
         out.hour = hour + t1.hour;
         out.minute = minute + t1.minute;
@@ -38,13 +39,14 @@ class Time {
         this -> second = second;
     }
 
-        void randomTimeGenerator() { // random time generator
-        const int Hour_lb = 0, Hour_ub = 23;
-        const int min_lb = 0, min_ub = 59;
+        void randomTimeGenerator() { 
+            // random time generator
+            const int Hour_lb = 0, Hour_ub = 23;
+            const int min_lb = 0, min_ub = 59;
 
-        this -> hour = rand() % (Hour_ub - Hour_lb + 1) + Hour_lb;
-        this -> minute = rand() % (min_ub - min_lb + 1) + min_lb;
-    }
+            this -> hour = rand() % (Hour_ub - Hour_lb + 1) + Hour_lb;
+            this -> minute = rand() % (min_ub - min_lb + 1) + min_lb;
+        }
 
     float timeReadOut() { // get an hour readout
         return hour+minute/60+second/3600;
