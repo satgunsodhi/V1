@@ -64,7 +64,7 @@ class Location {
     string Name;
     int LocationId;
     char LocationPin[255];
-    void set(float latitude, float Longitude) {
+    void set(float Latitude, float Longitude) {
         this -> Latitude = Latitude*3.14152/180;
         this -> Longitude = Longitude*3.14152/180;
     }
