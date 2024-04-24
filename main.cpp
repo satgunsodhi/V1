@@ -7,15 +7,19 @@
 #include "car.cpp"
 #include "plane.cpp"
 #include "package.cpp"
+#include "banners.cpp"
 using namespace std;
 
 int main() {
+    Title();
     master m1;
+    LineTwo();
     master * modeOfTransport;
     int price = 0;
     cout << "\nDo you want custom/packages (1:Custom, 2:Package)?\nChoice: ";
     int choice;
     cin >> choice;
+    LineTwo();
     if (choice == 1) {
         int mode;
         while(true) {
@@ -25,29 +29,35 @@ int main() {
                 Plane p1(m1);
                 modeOfTransport = &p1;
                 price += p1.PrintBill();
+                LineTwo();
                 break;
             }
             else if (mode == 2) {
                 Train t1(m1);
                 modeOfTransport = &t1;
                 price += t1.PrintBill();
+                LineTwo();
                 break;
             }
+            LineOne();
             cout << "Ah! It seems you have selected something outside of scope, Do Try Again!\n";
+            LineOne();
             continue;
         }
+        LineTwo();
         cout << "\nWould you wish to have a hotel reservation? [1:Yes, 0:No]: ";
         cin >> choice;
         if(choice == 1) {
             Hotel h1(m1);
             price += h1.PrintBill();
         }
-        
+        LineTwo();
         cout << "What is the best way around town? Our Car valet!\nOpt for our option car valet? [1:Yes, 2:No]: ";
         cin >> choice;
         if(choice == 1) {
             Car c1(m1);
             price += c1.PrintBill();
+            LineTwo();
         }
     }
     else if (choice == 2) {

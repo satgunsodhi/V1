@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include "master.cpp"
+#include "banners.cpp"
 using namespace std;
 
 string airlines[3] = {"IndiGo","Vistara","AirIndia"};
@@ -61,6 +62,7 @@ void Plane::ShowAvailableFlights()
         // Time FlightDuration((int)time_of_flight, (int)(time_of_flight*100)%100,0);
         // cout << "Arrival:" << t1 + FlightDuration << endl;
         cout << "Duration: " << (int)time_of_flight << "hrs " << (int)((time_of_flight-(int)time_of_flight) * 60) << "mins"<< endl;
+        LineOne();
     }
     
 };
@@ -77,7 +79,7 @@ int Plane::ChooseAirlines()
     cout << endl << "Please Enter Choice: ";
     cin >> Airline;
     return Airline;
-
+    LineOne();
 }
 int Plane::ChooseSeatType()
 {
@@ -90,7 +92,7 @@ int Plane::ChooseSeatType()
     cout << endl << "Enter choice as indicated: ";
     cin >> seatType;
     return seatType;
-
+    LineOne();
 }
 float Plane:: CalcPrice()
 {
@@ -98,6 +100,7 @@ float Plane:: CalcPrice()
 }
 
 int Plane::PrintBill() {
+    LineOne();
     cout << this ->airline << "Airlines" << endl;
     cout << "your flight from " << this -> DepartingLocation.Name << " to " << this -> Destination.Name << " has been confirmed!" << endl << endl;
     cout << "Tax Invoice: " << endl;
@@ -109,5 +112,6 @@ int Plane::PrintBill() {
     cout << "GST: " << GST << endl;
     cout << "Grand Total: " << CalcPrice() << endl;
     cout << "Thank you Flying with us!" << endl;
+    LineOne();
     return CalcPrice();
 }
