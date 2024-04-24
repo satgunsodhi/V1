@@ -69,7 +69,7 @@ public:
 
     // Function to calculate total cost of the trip
     double calculateTripCost() const {
-        return transport.cost * num_people + accommodation.cost;
+        return transport.cost * num_people * accommodation.cost * 10;
     }
 
     // Get functions for trip details

@@ -26,8 +26,7 @@ class Plane: public master {
 
     public:
     int PrintBill();
-    Plane(master& m1) : master("ignore")
-
+    Plane(master& m1) : master("ignore") // Copy Constructor
     {
         this -> DepartingLocation.LocationId = m1.DepartingLocation.LocationId;
         this -> Destination.LocationId = m1.Destination.LocationId;
@@ -48,7 +47,7 @@ class Plane: public master {
 };
 
 
-void Plane::ShowAvailableFlights()
+void Plane::ShowAvailableFlights() //Listing all Availalbe Flights
 {
     cout << "\nExcellent! We have the following Flights available for you!\n" << endl;
     for(int i = 0; i < 3; i++)
@@ -65,7 +64,7 @@ void Plane::ShowAvailableFlights()
     
 };
 
-int Plane::ChooseAirlines()
+int Plane::ChooseAirlines() // Select Airlines
 {
     int Airline;
     cout << "\nLet us know your preffered brand for Aviation: " << endl;
@@ -79,7 +78,7 @@ int Plane::ChooseAirlines()
     return Airline;
     LineTwo();
 }
-int Plane::ChooseSeatType()
+int Plane::ChooseSeatType() // Select SeatType
 {
     int seatType;
     cout << "\nHow comfortable do you wish to be? " << endl;
@@ -92,11 +91,12 @@ int Plane::ChooseSeatType()
     return seatType;
     LineTwo();
 }
-float Plane:: CalcPrice()
+float Plane:: CalcPrice() //Function to Claculate Price
 {
     return NoofPassengers*(BaseCost + GST + ServiceFees);
 }
 
+//Function to Print Bill
 int Plane::PrintBill() {
     LineTwo();
     cout << airlines[this ->airline] << "Airlines" << endl;
