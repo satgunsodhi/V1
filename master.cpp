@@ -199,13 +199,25 @@ class master {
         cin >> NoofPassengers;
         SetConsoleTextAttribute(hc, 0x07);
         cout << "\n\nWhere do you wish to visit? \n1. Sikkim\n2. Goa\n3. Manali\nEnter Choice as indicated: ";
-        SetConsoleTextAttribute(hc, 0x0A);
-        cin >> Destination.LocationId;
-        SetConsoleTextAttribute(hc, 0x07);
+        while(true) {
+            SetConsoleTextAttribute(hc, 0x0A);
+            cin >> Destination.LocationId;
+            SetConsoleTextAttribute(hc, 0x07);
+            if (Destination.LocationId > 0 && Destination.LocationId <= 3) {
+                break;
+            }
+            cout << "We dont serve there yet! Please choose from the given choices: ";
+        }
         cout << "\n\nWhere will you be travelling from?\n1. Mumbai\n2. Delhi\n3. Kolkata\nEnter Choice as indicated: ";
-        SetConsoleTextAttribute(hc, 0x0A);
-        cin >> DepartingLocation.LocationId;
-        SetConsoleTextAttribute(hc, 0x07);
+        while(true) {
+            SetConsoleTextAttribute(hc, 0x0A);
+            cin >> DepartingLocation.LocationId;
+            SetConsoleTextAttribute(hc, 0x07);
+            if (DepartingLocation.LocationId > 0 && DepartingLocation.LocationId <= 3) {
+                break;
+            }
+            cout << "We dont serve there yet! Please choose from the given choices: ";
+        }
         setloc(Destination, DepartingLocation); // adding name to both location objects
         date.setDate();
         SetConsoleTextAttribute(hc, 0x0A);
