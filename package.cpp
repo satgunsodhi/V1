@@ -146,10 +146,14 @@ int run(string destination, int NoofPassengers) {
     double Cost;
     int Passengers, Rooms;
     cout << "Enter your budget (min. 10,000/-Rs): Rs.";
+    SetConsoleTextAttribute(hc, 0x0A);
     cin >> Cost;
+    SetConsoleTextAttribute(hc, 0x07);
     Passengers = NoofPassengers;
     cout << "Enter number of rooms: ";
+    SetConsoleTextAttribute(hc, 0x0A);
     cin >> Rooms;
+    SetConsoleTextAttribute(hc, 0x07);
     bool packagesAvailable = false;
     do {
         // Display available packages based on user preferences of destination, cost, passengers and room capacity.
@@ -170,17 +174,23 @@ int run(string destination, int NoofPassengers) {
             cout << "No packages available for the given details. ";
             cout << "Please adjust your preferences.\n";
             cout << "Enter your budget: Rs.";
+            SetConsoleTextAttribute(hc, 0x0A);
             cin >> Cost;
+            SetConsoleTextAttribute(hc, 0x07);
             Passengers = NoofPassengers;
             cout << "Enter number of rooms: ";
+            SetConsoleTextAttribute(hc, 0x0A);
             cin >> Rooms;
+            SetConsoleTextAttribute(hc, 0x07);
         }
     } while (!packagesAvailable);
 
     // Choose a package
     int choice;
     cout << "Enter the package number you want to choose: ";
+    SetConsoleTextAttribute(hc, 0x0A);
     cin >> choice;
+    SetConsoleTextAttribute(hc, 0x07);
     
     // Print reciept
     if (choice >= 1 && choice <= numPackages) {

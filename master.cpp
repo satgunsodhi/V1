@@ -110,13 +110,21 @@ class master {
         cout << "---------------------------------------------------------------------------------------------------------------------------\n";
         cout << "Please Enter Some Personal Info to get started!\n";
         cout << "Enter Name of head Passenger: ";
+        SetConsoleTextAttribute(hc, 0x0A);
         cin.getline(NameOfPassenger,255);
+        SetConsoleTextAttribute(hc, 0x07);
         cout << "How many of you will be travelling with us? ";
+        SetConsoleTextAttribute(hc, 0x0A);
         cin >> NoofPassengers;
+        SetConsoleTextAttribute(hc, 0x07);
         cout << "\n\nWhere do you wish to visit? \n1. Sikkim\n2. Goa\n3. Manali\nEnter Choice as indicated: ";
+        SetConsoleTextAttribute(hc, 0x0A);
         cin >> Destination.LocationId;
+        SetConsoleTextAttribute(hc, 0x07);
         cout << "\n\nWhere will you be travelling from?\n1. Mumbai\n2. Delhi\n3. Kolkata\nEnter Choice as indicated: ";
+        SetConsoleTextAttribute(hc, 0x0A);
         cin >> DepartingLocation.LocationId;
+        SetConsoleTextAttribute(hc, 0x07);
         setloc(Destination, DepartingLocation); // adding name to both location objects
     }
 
@@ -146,7 +154,16 @@ ostream & operator << (ostream &out,  Time &time) {
 
 float DistanceFinder(Location a1, Location a2) {
     // calculating distance from latitude and longitude
-    return acos(sin(a1.Latitude)*sin(a2.Latitude)+cos(a1.Latitude)*cos(a2.Latitude)*cos(a2.Longitude-a1.Longitude))*6371;
+    fflush(stdin);
+    float R = 6371;
+    float r1 = a1.Latitude;
+    float r2 = a2.Latitude;
+    float phi = a2.Latitude - a1.Latitude;
+    float lam = a2.Longitude - a1.Longitude;
+    float a = sin(phi/2)*sin(phi/2)+cos(a1.Latitude)*cos(a2.Latitude)*sin(lam/2)*sin(lam/2);
+    float c = 2*atan2(sqrt(a), sqrt(1-a));
+    float d = R * c;
+    return d; 
 }
 
 float master::CalcPrice() {
