@@ -6,6 +6,7 @@
 using namespace std;
 char places[][255] = {"Sikkim", "Goa", "Manali"};
 
+//class to encapsulate data members and member functions needed for CARS
 class Car: public master{
     protected:
         int location;
@@ -15,6 +16,7 @@ class Car: public master{
 
     public:
     Car() : distance(0) {}
+    //copy constructor
     Car (master &m): master("Ignore") {
         this-> Destination.LocationId = m.Destination.LocationId; // Location 1: Sikkim 2: Goa 3: Manali
         strcpy(NameOfPassenger,m.NameOfPassenger);
@@ -25,20 +27,21 @@ class Car: public master{
     void calculateFare() {
         string * list;
         int * dist;
+        //Tourist places and distance for Goa
         if (Destination.LocationId == 2) {
             string l1[]= {"Aguada Fort", "Dudhsagar", "Panaji", "Baga beach", "Chapora Fort"};
             int d1[] = {100, 120, 25, 140, 80};
             list = l1;
             dist = d1;
         }
-        
+        //Tourist places and distance for Manali
         else if (Destination.LocationId== 3) {
             string l1[] = {"Jogini falls", "Nehru kund", "Rohtang valley", "Mall road", "Hadimba devi temple"};
             int d1[] = {110, 76, 130, 95, 150};
             list = l1;
             dist = d1;
         }
-
+        //Tourist places and distance for Sikkim
         else if (Destination.LocationId == 1) {
             string l1[]= {"Buddha Park", "Hanuman tok", "Gurudongmar lake", "Gangtok", "Khangchendzonga national park"};
             int d1[] = {98, 76, 135, 87, 133};
@@ -49,17 +52,18 @@ class Car: public master{
         else {
             cout << "Invalid location choice." << endl;
         }
-
+        //choosing tourist places 
         for (int i = 0; i < 5; i++) {
             cout << list[i] << "\nDo you want to go to " << list[i] << "? [0: No, 1:Yes]: ";
             cin >> choice2;
             fflush(stdout);
             fflush(stdin);
-    if (choice2 == 1) {
+            if (choice2 == 1) {
                 distance += dist[i];
             }
         }
         
+        ////choosing car type and calculating the BaseCost
         int carType;
         if((NoofPassengers==0)||(NoofPassengers<0)){
             cout<<"retry";
@@ -85,6 +89,7 @@ class Car: public master{
                 cout<<"Please enter between 5 or 7";
             }
         }
+        //confirming booking
         cout<<"Confirm your booking[0: No, 1: Yes]: ";
         cin>>choice;
         if(choice == 1){
@@ -95,14 +100,16 @@ class Car: public master{
             BaseCost=1;
         }
     }
+    //displaying the final bill
     int PrintBill(){
-        cout<<"--------------------------Car Booking--------------------------"<<endl;
+        LineOne();
+        cout << "\t\t\t\t\t\t\tCar Booking\n";
         cout<<"|    Booking for: "<<NameOfPassenger << endl;
         cout<<"|    Location selected: "<<places[Destination.LocationId]<<endl;
         cout<<"|    Total distance: "<<distance<<endl;
         cout<<"|    HandlingFees: " << HandlingCharges << endl;
         cout<<"|    ServiceFees: " << ServiceFees << endl;
-        cout<<"|    Total Fare: "<<CalcPrice()<<endl;
+        cout<<"|    Total Fare: Rs."<<CalcPrice()<<endl;
         cout<<"\nWe thank you for choosing our new service!\n";
         return CalcPrice();
     }

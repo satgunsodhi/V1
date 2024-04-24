@@ -1,23 +1,23 @@
 #include <iostream>
 #include <cstring>
 #include "master.cpp"
-#include "banners.cpp"
 using namespace std;
 
-string airlines[3] = {"IndiGo","Vistara","AirIndia"};
-string seatTypes[3] = {"FirstClass" , "BuisnessClass" , "Economy"};
+string airlines[3] = {"IndiGo","Vistara","AirIndia"}; //List of Airlines 
+string seatTypes[3] = {"FirstClass" , "BuisnessClass" , "Economy"};//List of SeatTypes
+//Cost Array
 float costs[3][3] = {
     {6, 5, 4},
     {7.5, 6, 5.5},
     {7, 5.5, 4.5}
 };
 
-
+//Plane Class
 class Plane: public master {
     int airline;
     int seatType;
-    float GST = 0.18;
-    float AviationTax = 0.20;
+    float GST = 0.18; //Defining GST
+    float AviationTax = 0.20; //Defining Aviation Tax
     
     void ShowAvailableFlights();
     int ChooseAirlines();
@@ -59,10 +59,8 @@ void Plane::ShowAvailableFlights()
         cout << "[" << i+1 << "]  "<< airlines[i] << endl;
         cout << "Departure:" << t1 << endl;
         float time_of_flight = DistanceFinder(DepartingLocation,Destination) / (float)900;
-        // Time FlightDuration((int)time_of_flight, (int)(time_of_flight*100)%100,0);
-        // cout << "Arrival:" << t1 + FlightDuration << endl;
         cout << "Duration: " << (int)time_of_flight << "hrs " << (int)((time_of_flight-(int)time_of_flight) * 60) << "mins"<< endl;
-        LineOne();
+        LineTwo();
     }
     
 };
@@ -79,7 +77,7 @@ int Plane::ChooseAirlines()
     cout << endl << "Please Enter Choice: ";
     cin >> Airline;
     return Airline;
-    LineOne();
+    LineTwo();
 }
 int Plane::ChooseSeatType()
 {
@@ -92,7 +90,7 @@ int Plane::ChooseSeatType()
     cout << endl << "Enter choice as indicated: ";
     cin >> seatType;
     return seatType;
-    LineOne();
+    LineTwo();
 }
 float Plane:: CalcPrice()
 {
@@ -100,8 +98,8 @@ float Plane:: CalcPrice()
 }
 
 int Plane::PrintBill() {
-    LineOne();
-    cout << this ->airline << "Airlines" << endl;
+    LineTwo();
+    cout << airlines[this ->airline] << "Airlines" << endl;
     cout << "your flight from " << this -> DepartingLocation.Name << " to " << this -> Destination.Name << " has been confirmed!" << endl << endl;
     cout << "Tax Invoice: " << endl;
     cout << "Name of Head Passenger: " << this -> NameOfPassenger << endl;
@@ -112,6 +110,6 @@ int Plane::PrintBill() {
     cout << "GST: " << GST << endl;
     cout << "Grand Total: " << CalcPrice() << endl;
     cout << "Thank you Flying with us!" << endl;
-    LineOne();
+    LineTwo();
     return CalcPrice();
 }

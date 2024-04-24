@@ -48,7 +48,6 @@ void Hotel::getDATA()
             {
                 strcpy(hotelName,"The Royal Majestic Mountain View");
                 cout<<"\nFACILITIES AVAILABLE: Complementary Breakfast, Free Parking and WIFI, Pool and Gym inclusive";
-
                 //menu for user to choose room type
                 cout<<"\nMENU:"<<endl<<"1. King Room (2 guests max,4000/-)"<<endl<<"2. Deluxe Family Suite (4 guests max,7000/-)"<<endl<<"3. Go back to MAIN";
                 cout<<"\nChoose room type: ";
@@ -273,7 +272,8 @@ void Hotel::price(const char * roomname, float people, int base)
     BaseCost=((base*roomcount)+(NoofPassengers-roomcount)*300)*(1+GST/100);
     //Display bill
     cout<<"\nHotel Booked!!" << endl;
-    cout<<"\n-----------------------------Hotel Booking-----------------------------";
+    cout<<"\n---------------------------------------------------------------------------------------------------------------------\n";
+    cout << "                                   Hotel Booking\n";
     cout<<"\n| Name of the Hotel: " << hotelName;
     cout<<"\n| Type of Room: "<<roomType;
     cout<<"\n| Number of Rooms: "<<roomcount;

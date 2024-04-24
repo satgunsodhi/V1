@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cstring>
 #include <string>
+#include "banners.cpp"
 using namespace std;
 
 class Time {
@@ -95,7 +96,7 @@ class master {
     public:
     master() {
         cout << "\t\t\t\t\tWelcome To GetSetJourneys Travels!\n";
-        cout << "------------------------------------------------------------------------------------------------------\n";
+        cout << "---------------------------------------------------------------------------------------------------------------------------\n";
         cout << "Please Enter Some Personal Info to get started!\n";
         cout << "Enter Name of head Passenger: ";
         cin.getline(NameOfPassenger,255);

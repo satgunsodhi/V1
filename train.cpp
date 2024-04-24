@@ -32,7 +32,8 @@ class Train:public master {
     void setTrainInfo(float, float, const char*, int, int);
     float CalcPrice();
     int PrintBill() {
-        cout << "-------------------------Train Booking-------------------------\n";
+        LineOne();
+        cout << "                           Train Booking";
         cout << "|  Route Chosen: " << Route << endl;
         cout << "|  Train Fare: " << BaseCost << endl;
         cout << "|  Catering Charges: " << CateringCharge << endl;
