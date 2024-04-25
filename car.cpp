@@ -81,7 +81,7 @@ class Car: public master{
         if((NoofPassengers==0)||(NoofPassengers<0)){
             cout<<"retry";
         }
-        else if(NoofPassengers<6){
+        else if(NoofPassengers<8){
             BaseCost = distance * 19.5;
         }
         else if((NoofPassengers>5) &&(NoofPassengers<8)){
