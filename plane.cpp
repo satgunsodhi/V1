@@ -50,7 +50,7 @@ class Plane: public master {
             this -> ServiceFees = 0;
             this -> GST = 0;
         }
-        
+        m1.Route = DepartingLocation.Name + " - " + Destination.Name; // defining route        
     }
 
 };
