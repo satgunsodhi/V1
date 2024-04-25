@@ -59,13 +59,13 @@ class Plane: public master {
 void Plane::ShowAvailableFlights() //Listing all Availalbe Flights
 {
     cout << "\nExcellent! We have the following Flights available for you!\n" << endl;
+    srand(time(NULL));
     for(int i = 0; i < 3; i++)
     {
         Time t1;
         t1.randomTimeGenerator();
-        srand(time(NULL));
         cout << "[" << i+1 << "]  "<< airlines[i] << endl;
-        cout << "Departure:" << t1 << endl;
+        cout << "Departure: " << t1.ReturnTime() << endl;
         float time_of_flight = DistanceFinder(DepartingLocation,Destination) / 900;
         cout << "Duration: " << (int)time_of_flight << "hrs " << (int)((time_of_flight-(int)time_of_flight) * 60) << "mins"<< endl;
         LineTwo();

@@ -131,6 +131,11 @@ class Time {
         // get an hour readout
         return hour+minute/60+second/3600;
     }
+
+    string ReturnTime()
+    {
+        return to_string(hour) + ":" + to_string(minute) ;
+    };
 };
 
 // defining location class
