@@ -13,7 +13,6 @@ int main() {
     Title(); // printing logo
     master m1; // defining an object of base class to use the default constructor once
     LineOne(); // visuals
-    master * modeOfTransport; // polymorphism
     int price = 0;
     cout << "\nDo you want custom/packages (1:Custom, 2:Package)?\nChoice: ";
     int choice;
@@ -33,7 +32,6 @@ int main() {
             if(mode == 1) {
                 FlightBanner();
                 Plane p1(m1);
-                modeOfTransport = &p1;
                 if (p1.BookingConfirm)
                 {
                     price += p1.PrintBill(); // printing bill and adding return value calcprice to global price
@@ -45,7 +43,6 @@ int main() {
             else if (mode == 2) {
                 TrainBanner();
                 Train t1(m1);
-                modeOfTransport = &t1;
                 price += t1.PrintBill(); // printing bill and adding return value calcprice to global price
                 Sleep(5000);
                 LineOne();
