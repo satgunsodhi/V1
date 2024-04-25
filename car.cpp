@@ -12,6 +12,7 @@ class Car: public master{
         int location;
         int choice2;
         int choice;
+        int choice3;
         int distance = 0;
 
     public:
@@ -60,11 +61,17 @@ class Car: public master{
         for (int i = 0; i < 5; i++) {
             cout << list[i] << "\nDo you want to go to " << list[i] << "? [0: No, 1:Yes]: ";
             SetConsoleTextAttribute(hc, 0x0A);
-            cin >> choice2;
+            while(true) {
+                cin >> choice;
+                if(choice == 0 || choice == 1) {
+                    break;
+                }
+                cout << "Invalid Place, Please enter a valid choice: ";
+            }
             SetConsoleTextAttribute(hc, 0x07);
             fflush(stdout);
             fflush(stdin);
-            if (choice2 == 1) {
+            if (choice == 1) {
                 distance += dist[i];
             }
         }
@@ -83,31 +90,39 @@ class Car: public master{
         else{
             cout<<"Which seater car do you prefer[5/7]: ";
             SetConsoleTextAttribute(hc, 0x0A);
-            cin>>carType;
-            //cost of car for 5 seater
-            if(carType==5){
-                int num_cars = (NoofPassengers + 4) / 5;
-                BaseCost = distance * num_cars * 19.5;
-            }
-            else if(carType==7){
-                int num_cars = (NoofPassengers + 6) / 7;
-                BaseCost = distance * num_cars * 33;
-            }
-            else{
-                cout<<"Please enter between 5 or 7";
+            while(true){
+                cin>>carType;
+                //cost of car for 5 seater
+                if(carType==5){
+                    int num_cars = (NoofPassengers + 4) / 5;
+                    BaseCost = distance * num_cars * 19.5;
+                    break;
+                }
+                else if(carType==7){
+                    int num_cars = (NoofPassengers + 6) / 7;
+                    BaseCost = distance * num_cars * 33;
+                    break;
+                }
+                else{
+                    cout<<"Please enter between 5 or 7: ";
+                }
             }
         }
         //confirm booking
         cout<<"Confirm your booking[0: No, 1: Yes]: ";
-        SetConsoleTextAttribute(hc, 0x0A);
-        cin>>choice;
-        SetConsoleTextAttribute(hc, 0x07);
-        if(choice == 1){
-            cout<<"Booking Confirmed\n";
-        }
-        else {
-            distance=1;
-            BaseCost=1;
+        while(true){
+            SetConsoleTextAttribute(hc, 0x0A);
+            cin>>choice3;
+            SetConsoleTextAttribute(hc, 0x07);
+            if(choice3 == 1){
+                cout<<"Booking Confirmed!\n";
+                break;
+            }
+            else {
+                distance=1;
+                BaseCost=1;
+                break;
+            }
         }
     }
     //function to print total car bill
