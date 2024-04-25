@@ -65,7 +65,7 @@ int main() {
         }
         LineOne();
         CabBanner();
-        cout << "What is the best way around town? Our Car valet!\nOpt for our option car valet? [1:Yes, 2:No]: ";
+        cout << "What is the best way around town? Our Car valet!\nOpt for our option car valet? [1:Yes, 0:No]: ";
         SetConsoleTextAttribute(hc, 0x0A);
         cin >> choice; // asking if car tour is desired
         SetConsoleTextAttribute(hc, 0x07);
