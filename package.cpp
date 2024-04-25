@@ -201,3 +201,33 @@ int run(string destination, int NoofPassengers) {
     }
     return 0;
 }
+
+
+
+/*
+do {
+    displayAvailablePackages(packages, numPackages, destination, Cost, Passengers, Rooms);
+    bool packageFound = false; // Flag to track if any suitable package is found
+    for (int i = 0; i < numPackages; ++i) {
+        const Trip& package = packages[i];
+        if (package.getDestination() == destination &&
+            package.getTotalCost() <= Cost &&
+            package.getNumPeople() >= Passengers &&
+            package.getNumRooms() >= Rooms) {
+            packageFound = true;
+            package.display(); 
+            cout << endl;
+        }
+    }
+
+    if (!packageFound) {
+        cout << "No packages available for the given details. ";
+        cout << "Please adjust your preferences.\n";
+        cout << "Enter your budget: Rs.";
+        cin >> Cost;
+        Passengers = NoofPassengers;
+        cout << "Enter number of rooms: ";
+        cin >> Rooms;
+    }
+} while (!packageFound);
+*/
