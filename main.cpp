@@ -79,6 +79,7 @@ int main() {
     else if (choice == 2) {
         PackagesBanner();
         Package p1(m1); // jumping to seperate interface for package
+        price += p1.PrintBill();
     }
 
     // billing, payments and summary

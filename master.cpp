@@ -282,8 +282,7 @@ float master::CalcPrice() {
 }
 
 int master::PrintBill() {
-    cout << "Bill will be printed here once the function is overridden\n";
-    return 0;
+    return CalcPrice();
 }
 
 void master::setloc(Location &Destination, Location &DepartingLocation) {

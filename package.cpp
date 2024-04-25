@@ -14,14 +14,13 @@ class Package : public master {
         // the constructor copies data from an object of master and then calls run to initialize the booking process.
         this -> NoofPassengers = m1.NoofPassengers;
         strcpy(NameOfPassenger, m1.NameOfPassenger);
-        DepartingLocation.LocationId = m1.DepartingLocation.LocationId;
-        Destination.LocationId = m1.Destination.LocationId;
-        Destination.Name = m1.Destination.Name;
+        DepartingLocation = m1.DepartingLocation;
+        Destination = m1.Destination;
         // Run a function to process the destination and number of passengers
-        run(Destination.Name, NoofPassengers);
+        BaseCost = run(Destination.Name, NoofPassengers);
+        m1.Route = DepartingLocation.Name + " - " + Destination.Name; // defining route
     }
     // Function to print bill (placeholder).
-    int PrintBill() {return 0;};
 };
 
 // 'Option' is a base class for travel-related services with subclasses 'Transportation' and 'Accomodation'.
@@ -89,14 +88,15 @@ public:
         cout << "Accommodation: " << accommodation.name << endl;
         cout << "Number of People: " << num_people << endl;
         cout << "Number of Rooms: " << accommodation.num_rooms << endl;
-        cout << "Total Cost: Rs." << total_cost << endl;
+        cout << "Total Cost: Rs." << total_cost + 150 << endl;
         cout << "Itinerary: " << endl << itinerary << endl; // Display itinerary
     }
 };
 
 // Function to display available packages meeting specified criteria using FOR loop.
-void displayAvailablePackages(const Trip* packages, int numPackages, const string& destination, double Cost, int Passengers, int Rooms) {
+int displayAvailablePackages(const Trip* packages, int numPackages, const string& destination, double Cost, int Passengers, int Rooms) {
     cout << "Available Packages for " << destination << ":" << endl;
+    int PackageFound = 0;
     for (int i = 0; i < numPackages; ++i) {
         const Trip& package = packages[i];
         // Check if package meets user preferences
@@ -106,8 +106,18 @@ void displayAvailablePackages(const Trip* packages, int numPackages, const strin
             package.getNumRooms() >= Rooms) {
             package.display();
             cout << endl;
+            PackageFound = 1;
         }
     }
+    if (PackageFound)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+
 }
 
 // Function to print receipt for the chosen package.
@@ -145,46 +155,24 @@ int run(string destination, int NoofPassengers) {
 
     double Cost;
     int Passengers, Rooms;
-    cout << "Enter your budget (min. 10,000/-Rs): Rs.";
-    SetConsoleTextAttribute(hc, 0x0A);
-    cin >> Cost;
-    SetConsoleTextAttribute(hc, 0x07);
-    Passengers = NoofPassengers;
-    cout << "Enter number of rooms: ";
-    SetConsoleTextAttribute(hc, 0x0A);
-    cin >> Rooms;
-    SetConsoleTextAttribute(hc, 0x07);
-    bool packagesAvailable = false;
-    do {
-        // Display available packages based on user preferences of destination, cost, passengers and room capacity.
-        displayAvailablePackages(packages, numPackages, destination, Cost, Passengers, Rooms);
-        for (int i = 0; i < numPackages; ++i) {
-            const Trip& package = packages[i];
-            if (package.getDestination() == destination &&
-                package.getTotalCost() <= Cost &&
-                package.getNumPeople() >= Passengers &&
-                package.getNumRooms() >= Rooms) {
-                packagesAvailable = true;
-                break;
-            }
+    while (true)
+    {
+        cout << "Enter your budget (min. 1,00,000/-Rs): Rs.";
+        SetConsoleTextAttribute(hc, 0x0A);
+        cin >> Cost;
+        SetConsoleTextAttribute(hc, 0x07);
+        Passengers = NoofPassengers;
+        cout << "Enter number of rooms: ";
+        SetConsoleTextAttribute(hc, 0x0A);
+        cin >> Rooms;
+        SetConsoleTextAttribute(hc, 0x07);
+        if (displayAvailablePackages(packages, numPackages, destination, Cost, Passengers, Rooms))
+        {
+            break;
         }
-
-        // If no packages meet the criteria, prompt user to adjust preferences
-        if (!packagesAvailable) {
-            cout << "No packages available for the given details. ";
-            cout << "Please adjust your preferences.\n";
-            cout << "Enter your budget: Rs.";
-            SetConsoleTextAttribute(hc, 0x0A);
-            cin >> Cost;
-            SetConsoleTextAttribute(hc, 0x07);
-            Passengers = NoofPassengers;
-            cout << "Enter number of rooms: ";
-            SetConsoleTextAttribute(hc, 0x0A);
-            cin >> Rooms;
-            SetConsoleTextAttribute(hc, 0x07);
-        }
-    } while (!packagesAvailable);
-
+    }
+    
+    
     // Choose a package
     int choice;
     cout << "Enter the package number you want to choose: ";
@@ -199,35 +187,5 @@ int run(string destination, int NoofPassengers) {
     } else {
         cout << "Invalid package choice!" << endl;
     }
-    return 0;
+    return Cost;
 }
-
-
-
-/*
-do {
-    displayAvailablePackages(packages, numPackages, destination, Cost, Passengers, Rooms);
-    bool packageFound = false; // Flag to track if any suitable package is found
-    for (int i = 0; i < numPackages; ++i) {
-        const Trip& package = packages[i];
-        if (package.getDestination() == destination &&
-            package.getTotalCost() <= Cost &&
-            package.getNumPeople() >= Passengers &&
-            package.getNumRooms() >= Rooms) {
-            packageFound = true;
-            package.display(); 
-            cout << endl;
-        }
-    }
-
-    if (!packageFound) {
-        cout << "No packages available for the given details. ";
-        cout << "Please adjust your preferences.\n";
-        cout << "Enter your budget: Rs.";
-        cin >> Cost;
-        Passengers = NoofPassengers;
-        cout << "Enter number of rooms: ";
-        cin >> Rooms;
-    }
-} while (!packageFound);
-*/
