@@ -84,7 +84,10 @@ int main() {
     // billing, payments and summary
     BillingBanner();
     cout << "\n----------------------------------------------Trip Summary------------------------------------------------------------------------\n";
-    cout << "Total Cost for Trip: " << price << endl;
+    cout << "Trip for: " << m1.NameOfPassenger;
+    cout << "\nDate: " << m1.date;
+    cout << "\nRoute: " << m1.Route;
+    cout << "\nTotal Cost for Trip: " << price << endl;
     cout << "Would you like to settle the bill? [1:Yes, 0:No]: ";
     SetConsoleTextAttribute(hc, 0x0A);
     cin >> choice;

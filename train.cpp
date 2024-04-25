@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstring>
+#include <string>
 #include "master.cpp"
 using namespace std;
 
@@ -34,6 +34,7 @@ class Train:public master {
             ServiceFees = 0;
             GST = 0;
         }
+        m.Route = Route;
     }
     int GetTrain(); // gets user input
     void setTrainInfo(float, float, const char*, int, int); // sets internal variables
@@ -54,7 +55,6 @@ class Train:public master {
 
 void Train::setTrainInfo(float ti, float distance, const char * info, int AC, int SL) {
     Route = DepartingLocation.Name + " - " + Destination.Name; // defining route
-    cout << DistanceFinder(DepartingLocation,Destination);
     Duration.set((int)ti, round((ti-(int)ti)*60)); // set function for hour and minute
     cout << Route << endl << Duration << endl << info << endl << "AC: " << AC << " SL: " << SL << endl; 
 }
@@ -108,5 +108,5 @@ int Train::GetTrain() {
 
 float Train::CalcPrice() {
     // calculate final price
-    return BaseCost*(1+GST) + ServiceFees + CateringCharge;
+    return BaseCost*(1+GST/100) + ServiceFees + CateringCharge;
 }

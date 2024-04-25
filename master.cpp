@@ -3,7 +3,6 @@
 #include <iostream>
 #include <cmath>
 #include <cstring>
-#include <string>
 #include "banners.cpp"
 using namespace std;
 
@@ -85,7 +84,15 @@ class Date
             break;
         }
     }
+    friend ostream & operator << (ostream &out, Date &date);
 };
+
+ostream & operator << (ostream &out, Date &da) {
+    out << da.date << '/' << da.month << '/' << da.year;
+    return out;
+}
+
+
 //creating time class
 class Time {
     private:
@@ -170,12 +177,9 @@ class master {
     // defining base variables
     protected:
     Time Duration;
-    Date date;
     int NoofPassengers;
     Location DepartingLocation;
-    char NameOfPassenger[255];
     Location Destination;
-    string Route;
     int BaseCost;
     float HandlingCharges = 150;
     float ServiceFees;
@@ -190,6 +194,10 @@ class master {
     friend class Package;
 
     public:
+    char NameOfPassenger[255];
+    Date date;
+    string Route;
+    int BookingConfirm;
     master() { 
         // default constructor
         cout << "\n\t\t\t\t\tWelcome To GetSetJourneys Travels!\n";
@@ -237,7 +245,6 @@ class master {
     virtual float FindBaseCost(int,Location, Location);
     virtual float CalcGST();
     virtual float CalcPrice();
-    virtual int getRoute();
     virtual int PrintBill();
     void setloc(Location &, Location&);
 };
@@ -272,12 +279,6 @@ float DistanceFinder(Location a1, Location a2) {
 float master::CalcPrice() {
     // finding final price
     return BaseCost+CalcGST()+HandlingCharges+ServiceFees;
-}
-
-int master::getRoute() {
-    // outputs route
-    cout << Route;
-    return 0;
 }
 
 int master::PrintBill() {
